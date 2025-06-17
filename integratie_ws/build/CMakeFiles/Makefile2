@@ -655,6 +655,24 @@ clean: hmi_interface/CMakeFiles/std_msgs_generate_messages_py.dir/clean
 .PHONY : clean
 
 #=============================================================================
+# Directory level rules for directory main_pkg
+
+# Convenience name for "all" pass in the directory.
+main_pkg/all:
+
+.PHONY : main_pkg/all
+
+# Convenience name for "clean" pass in the directory.
+main_pkg/clean:
+
+.PHONY : main_pkg/clean
+
+# Convenience name for "preinstall" pass in the directory.
+main_pkg/preinstall:
+
+.PHONY : main_pkg/preinstall
+
+#=============================================================================
 # Directory level rules for directory my_lite6_description
 
 # Convenience name for "all" pass in the directory.

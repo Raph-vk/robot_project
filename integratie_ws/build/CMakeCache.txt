@@ -471,6 +471,12 @@ lib:FILEPATH=/opt/ros/melodic/lib/libmoveit_move_group_capabilities_base.so
 //The directory containing a CMake configuration file for libnop.
 libnop_DIR:PATH=/usr/local/lib/cmake/depthai/dependencies/lib/cmake/libnop
 
+//Value Computed by CMake
+main_pkg_BINARY_DIR:STATIC=/home/student/Git-projects/robot_project/integratie_ws/build/main_pkg
+
+//Value Computed by CMake
+main_pkg_SOURCE_DIR:STATIC=/home/student/Git-projects/robot_project/integratie_ws/src/main_pkg
+
 //The directory containing a CMake configuration file for message_filters.
 message_filters_DIR:PATH=/opt/ros/melodic/share/message_filters/cmake
 
@@ -771,7 +777,7 @@ CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_NM
 CMAKE_NM-ADVANCED:INTERNAL=1
 //number of local generators
-CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=14
+CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=15
 //ADVANCED property for variable: CMAKE_OBJCOPY
 CMAKE_OBJCOPY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_OBJDUMP
