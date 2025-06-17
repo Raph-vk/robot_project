@@ -1,0 +1,32 @@
+<launch>
+  <!-- 
+    all_system.launch
+    Launches:
+      1) rosserial_python serial_node.py for Arduino ↔ ROS communication
+      2) controller_transportsystem.py for IR‐sensor → motor logic
+  -->
+
+  <!-- 1) Start rosserial to connect to the Arduino -->
+  <node
+    name="arduino_node"
+    pkg="rosserial_python"
+    type="serial_node.py"
+    output="screen">
+    <!-- Serial port to which the Arduino is connected -->
+    <param name="port" value="/dev/ttyACM0" />
+    <!-- Must match the baudrate in your Arduino sketch -->
+    <param name="baud" value="57600" />
+  </node>
+
+  <!-- 2) Launch your IR‐motor controller node -->
+  <node
+    name="system_control_node"
+    pkg="transportsysteem_pkg"
+    type="controller_transportsystem.py"
+    output="screen">
+    <!-- If you want to remap topics or add params, do it here. Example:
+    <remap from="/motor_command" to="/my_motor_topic"/>
+    <param name="some_param" value="123"/>
+    -->
+  </node>
+</launch>

@@ -1,0 +1,12 @@
+<launch>
+
+  <!-- Arduino serial communication using rosserial -->
+  <node pkg="rosserial_python" type="serial_node.py" name="arduino_node" output="screen">
+    <param name="port" value="/dev/ttyACM0"/> <!-- Or your Arduino's serial port -->
+    <param name="baud" value="57600"/>      <!-- Must match baud rate in Arduino sketch -->
+  </node>
+
+  <!-- Range Based Motor Control Node -->
+  <node pkg="arduino_nodes" type="range_based_motor_control.py" name="range_based_motor_control" output="screen" />
+
+</launch>
