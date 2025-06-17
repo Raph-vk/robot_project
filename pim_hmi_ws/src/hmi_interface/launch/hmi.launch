@@ -1,0 +1,8 @@
+<launch>
+  <!-- Start de Flask-HMI (hmi_control_panel.py) -->
+  <node pkg="hmi_interface"
+        type="hmi_control_panel.py"
+        name="hmi_node"
+        output="screen"/>
+</launch>
+
