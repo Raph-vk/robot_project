@@ -1,0 +1,1 @@
+/home/student/ufactory_ws/devel/.private/camera_demo/share/camera_demo/cmake/camera_demoConfig.cmake

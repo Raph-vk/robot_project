@@ -1,0 +1,3 @@
+Warning: Cannot symlink from /home/student/ufactory_ws/devel/.private/my_depthai/lib/libnodelet_stereo.so to existing file /home/student/ufactory_ws/devel/lib/libnodelet_stereo.so
+Warning: Source hash: 8d829550a5920d581bfc67bf191d2d56
+Warning: Dest hash: 5865f1d400caaaa8830fed9f1c35eda7

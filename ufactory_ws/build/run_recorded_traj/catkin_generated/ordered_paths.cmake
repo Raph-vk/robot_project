@@ -1,0 +1,1 @@
+set(ORDERED_PATHS "/home/student/ufactory_ws/devel/.private/xarm_api/lib;/home/student/ufactory_ws/devel/.private/xarm_sdk/lib;/opt/ros/melodic/lib")

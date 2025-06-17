@@ -1,0 +1,1 @@
+/home/student/ufactory_ws/devel/.private/xarm7_moveit_config/share/xarm7_moveit_config/cmake/xarm7_moveit_configConfig-version.cmake

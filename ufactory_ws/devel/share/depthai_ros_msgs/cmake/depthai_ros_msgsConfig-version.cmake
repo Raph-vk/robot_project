@@ -1,0 +1,1 @@
+/home/student/ufactory_ws/devel/.private/depthai_ros_msgs/share/depthai_ros_msgs/cmake/depthai_ros_msgsConfig-version.cmake

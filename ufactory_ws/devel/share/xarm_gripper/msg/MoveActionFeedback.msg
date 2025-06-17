@@ -1,0 +1,1 @@
+/home/student/ufactory_ws/devel/.private/xarm_gripper/share/xarm_gripper/msg/MoveActionFeedback.msg

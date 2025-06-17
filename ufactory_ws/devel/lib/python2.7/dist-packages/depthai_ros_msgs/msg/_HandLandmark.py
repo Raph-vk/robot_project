@@ -1,0 +1,1 @@
+/home/student/ufactory_ws/devel/.private/depthai_ros_msgs/lib/python2.7/dist-packages/depthai_ros_msgs/msg/_HandLandmark.py

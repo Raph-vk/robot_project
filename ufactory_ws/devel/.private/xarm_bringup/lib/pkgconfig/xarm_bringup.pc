@@ -1,0 +1,8 @@
+prefix=/home/student/ufactory_ws/devel/.private/xarm_bringup
+
+Name: xarm_bringup
+Description: Description of xarm_bringup
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

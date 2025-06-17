@@ -1,0 +1,1 @@
+/home/student/ufactory_ws/devel/.private/xarm_gripper/include/xarm_gripper/MoveGoal.h

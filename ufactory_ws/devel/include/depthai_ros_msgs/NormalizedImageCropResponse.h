@@ -1,0 +1,1 @@
+/home/student/ufactory_ws/devel/.private/depthai_ros_msgs/include/depthai_ros_msgs/NormalizedImageCropResponse.h
