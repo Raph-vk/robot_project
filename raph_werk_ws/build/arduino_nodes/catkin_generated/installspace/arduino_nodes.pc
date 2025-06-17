@@ -1,0 +1,8 @@
+prefix=/home/student/Git-projects/robot_project/raph_werk_ws/install
+
+Name: arduino_nodes
+Description: Description of arduino_nodes
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 
