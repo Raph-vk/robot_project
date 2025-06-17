@@ -1,0 +1,1 @@
+/home/student/ufactory_ws/devel/.private/depthai_ros_msgs/share/gennodejs/ros/depthai_ros_msgs/msg/HandLandmark.js

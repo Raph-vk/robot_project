@@ -1,0 +1,1 @@
+/home/student/ufactory_ws/devel/.private/robotarm/share/gennodejs/ros/robotarm/_index.js

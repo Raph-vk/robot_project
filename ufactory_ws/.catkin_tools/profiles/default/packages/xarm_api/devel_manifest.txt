@@ -1,0 +1,15 @@
+xarm_ros/xarm_api
+/home/student/ufactory_ws/devel/.private/xarm_api/cmake.lock /home/student/ufactory_ws/devel/./cmake.lock
+/home/student/ufactory_ws/devel/.private/xarm_api/lib/libxarm_ros_driver.so /home/student/ufactory_ws/devel/lib/libxarm_ros_driver.so
+/home/student/ufactory_ws/devel/.private/xarm_api/lib/libxarm_ros_client.so /home/student/ufactory_ws/devel/lib/libxarm_ros_client.so
+/home/student/ufactory_ws/devel/.private/xarm_api/lib/xarm_api/xarm_driver_node /home/student/ufactory_ws/devel/lib/xarm_api/xarm_driver_node
+/home/student/ufactory_ws/devel/.private/xarm_api/lib/xarm_api/test_xarm_states /home/student/ufactory_ws/devel/lib/xarm_api/test_xarm_states
+/home/student/ufactory_ws/devel/.private/xarm_api/lib/xarm_api/servo_cartesian_test /home/student/ufactory_ws/devel/lib/xarm_api/servo_cartesian_test
+/home/student/ufactory_ws/devel/.private/xarm_api/lib/xarm_api/example1_report_norm /home/student/ufactory_ws/devel/lib/xarm_api/example1_report_norm
+/home/student/ufactory_ws/devel/.private/xarm_api/lib/xarm_api/move_test /home/student/ufactory_ws/devel/lib/xarm_api/move_test
+/home/student/ufactory_ws/devel/.private/xarm_api/lib/xarm_api/test_xarm_ros_client /home/student/ufactory_ws/devel/lib/xarm_api/test_xarm_ros_client
+/home/student/ufactory_ws/devel/.private/xarm_api/lib/xarm_api/test_xarm_velo_move /home/student/ufactory_ws/devel/lib/xarm_api/test_xarm_velo_move
+/home/student/ufactory_ws/devel/.private/xarm_api/lib/xarm_api/test_tool_modbus /home/student/ufactory_ws/devel/lib/xarm_api/test_tool_modbus
+/home/student/ufactory_ws/devel/.private/xarm_api/lib/pkgconfig/xarm_api.pc /home/student/ufactory_ws/devel/lib/pkgconfig/xarm_api.pc
+/home/student/ufactory_ws/devel/.private/xarm_api/share/xarm_api/cmake/xarm_apiConfig-version.cmake /home/student/ufactory_ws/devel/share/xarm_api/cmake/xarm_apiConfig-version.cmake
+/home/student/ufactory_ws/devel/.private/xarm_api/share/xarm_api/cmake/xarm_apiConfig.cmake /home/student/ufactory_ws/devel/share/xarm_api/cmake/xarm_apiConfig.cmake

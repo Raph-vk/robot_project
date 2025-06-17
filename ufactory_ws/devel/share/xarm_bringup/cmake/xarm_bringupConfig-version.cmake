@@ -1,0 +1,1 @@
+/home/student/ufactory_ws/devel/.private/xarm_bringup/share/xarm_bringup/cmake/xarm_bringupConfig-version.cmake

@@ -1,0 +1,1 @@
+/home/student/ufactory_ws/devel/.private/depthai_examples/share/depthai_examples/cmake/depthai_examplesConfig.cmake

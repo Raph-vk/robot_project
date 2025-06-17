@@ -1,0 +1,1 @@
+set(ORDERED_PATHS "/home/student/ufactory_ws/devel/.private/depthai_bridge/lib;/opt/ros/melodic/lib")

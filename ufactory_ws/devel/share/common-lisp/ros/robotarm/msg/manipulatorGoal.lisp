@@ -1,0 +1,1 @@
+/home/student/ufactory_ws/devel/.private/robotarm/share/common-lisp/ros/robotarm/msg/manipulatorGoal.lisp

@@ -1,0 +1,11 @@
+Symlinking /home/student/ufactory_ws/devel/include/depthai_ros_driver/parametersConfig.h
+Symlinking /home/student/ufactory_ws/devel/lib/libdepthai_ros_driver.so
+Symlinking /home/student/ufactory_ws/devel/lib/python2.7/dist-packages/depthai_ros_driver/__init__.py
+Symlinking /home/student/ufactory_ws/devel/lib/python2.7/dist-packages/depthai_ros_driver/cfg/__init__.py
+Symlinking /home/student/ufactory_ws/devel/lib/python2.7/dist-packages/depthai_ros_driver/cfg/parametersConfig.py
+Symlinking /home/student/ufactory_ws/devel/lib/pkgconfig/depthai_ros_driver.pc
+Symlinking /home/student/ufactory_ws/devel/share/depthai_ros_driver/docs/parametersConfig-usage.dox
+Symlinking /home/student/ufactory_ws/devel/share/depthai_ros_driver/docs/parametersConfig.dox
+Symlinking /home/student/ufactory_ws/devel/share/depthai_ros_driver/docs/parametersConfig.wikidoc
+Symlinking /home/student/ufactory_ws/devel/share/depthai_ros_driver/cmake/depthai_ros_driverConfig.cmake
+Symlinking /home/student/ufactory_ws/devel/share/depthai_ros_driver/cmake/depthai_ros_driverConfig-version.cmake

@@ -1,0 +1,1 @@
+/home/student/ufactory_ws/devel/.private/depthai_ros_driver/include/depthai_ros_driver/parametersConfig.h

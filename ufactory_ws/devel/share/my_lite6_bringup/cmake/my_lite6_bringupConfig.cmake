@@ -1,0 +1,1 @@
+/home/student/ufactory_ws/devel/.private/my_lite6_bringup/share/my_lite6_bringup/cmake/my_lite6_bringupConfig.cmake

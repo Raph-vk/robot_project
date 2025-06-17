@@ -1,0 +1,6 @@
+xarm_ros/xarm_sdk
+/home/student/ufactory_ws/devel/.private/xarm_sdk/cmake.lock /home/student/ufactory_ws/devel/./cmake.lock
+/home/student/ufactory_ws/devel/.private/xarm_sdk/lib/libxarm_cxx_sdk.so /home/student/ufactory_ws/devel/lib/libxarm_cxx_sdk.so
+/home/student/ufactory_ws/devel/.private/xarm_sdk/lib/pkgconfig/xarm_sdk.pc /home/student/ufactory_ws/devel/lib/pkgconfig/xarm_sdk.pc
+/home/student/ufactory_ws/devel/.private/xarm_sdk/share/xarm_sdk/cmake/xarm_sdkConfig-version.cmake /home/student/ufactory_ws/devel/share/xarm_sdk/cmake/xarm_sdkConfig-version.cmake
+/home/student/ufactory_ws/devel/.private/xarm_sdk/share/xarm_sdk/cmake/xarm_sdkConfig.cmake /home/student/ufactory_ws/devel/share/xarm_sdk/cmake/xarm_sdkConfig.cmake

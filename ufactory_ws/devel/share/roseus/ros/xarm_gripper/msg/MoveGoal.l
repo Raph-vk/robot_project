@@ -1,0 +1,1 @@
+/home/student/ufactory_ws/devel/.private/xarm_gripper/share/roseus/ros/xarm_gripper/msg/MoveGoal.l

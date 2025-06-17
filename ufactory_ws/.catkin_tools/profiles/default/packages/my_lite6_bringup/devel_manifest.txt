@@ -1,0 +1,5 @@
+my_xarm_lite6/my_lite6_bringup
+/home/student/ufactory_ws/devel/.private/my_lite6_bringup/cmake.lock /home/student/ufactory_ws/devel/./cmake.lock
+/home/student/ufactory_ws/devel/.private/my_lite6_bringup/lib/pkgconfig/my_lite6_bringup.pc /home/student/ufactory_ws/devel/lib/pkgconfig/my_lite6_bringup.pc
+/home/student/ufactory_ws/devel/.private/my_lite6_bringup/share/my_lite6_bringup/cmake/my_lite6_bringupConfig-version.cmake /home/student/ufactory_ws/devel/share/my_lite6_bringup/cmake/my_lite6_bringupConfig-version.cmake
+/home/student/ufactory_ws/devel/.private/my_lite6_bringup/share/my_lite6_bringup/cmake/my_lite6_bringupConfig.cmake /home/student/ufactory_ws/devel/share/my_lite6_bringup/cmake/my_lite6_bringupConfig.cmake
