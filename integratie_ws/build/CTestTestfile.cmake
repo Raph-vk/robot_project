@@ -5,4 +5,10 @@
 # This file includes the relevant testing commands required for 
 # testing this directory and lists subdirectories to be tested as well.
 subdirs("gtest")
+subdirs("depth-ai-avans/depthai-ros")
+subdirs("hmi_interface")
 subdirs("transportsysteem_pkg")
+subdirs("depth-ai-avans/depthai_ros_msgs")
+subdirs("depth-ai-avans/depthai_bridge")
+subdirs("depth-ai-avans/depthai_ros_driver")
+subdirs("my_depthai")
