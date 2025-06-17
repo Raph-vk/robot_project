@@ -7,7 +7,4 @@
 # new environment variables
 
 # modified environment variables
-export CMAKE_PREFIX_PATH="/home/student/Git-projects/robot_project/raph_werk_ws/devel:$CMAKE_PREFIX_PATH"
 export PWD='/home/student/Git-projects/robot_project/raph_werk_ws/build'
-export ROSLISP_PACKAGE_DIRECTORIES="/home/student/Git-projects/robot_project/raph_werk_ws/devel/share/common-lisp:$ROSLISP_PACKAGE_DIRECTORIES"
-export ROS_PACKAGE_PATH="/home/student/Git-projects/robot_project/raph_werk_ws/src:$ROS_PACKAGE_PATH"

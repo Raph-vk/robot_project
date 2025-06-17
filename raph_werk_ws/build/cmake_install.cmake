@@ -131,7 +131,8 @@ endif()
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
   include("/home/student/Git-projects/robot_project/raph_werk_ws/build/gtest/cmake_install.cmake")
-  include("/home/student/Git-projects/robot_project/raph_werk_ws/build/my_test_pkg/cmake_install.cmake")
+  include("/home/student/Git-projects/robot_project/raph_werk_ws/build/arduino_nodes/cmake_install.cmake")
+  include("/home/student/Git-projects/robot_project/raph_werk_ws/build/transportsysteem_pkg/cmake_install.cmake")
 
 endif()
 
