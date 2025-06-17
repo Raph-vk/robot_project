@@ -1,1 +1,0 @@
-/home/student/ufactory_ws/devel/.private/xarm_planner/include/xarm_planner/single_straight_plan.h

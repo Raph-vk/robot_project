@@ -1,1 +1,0 @@
-/home/student/ufactory_ws/devel/.private/xarm_moveit_servo/share/xarm_moveit_servo/cmake/xarm_moveit_servoConfig.cmake

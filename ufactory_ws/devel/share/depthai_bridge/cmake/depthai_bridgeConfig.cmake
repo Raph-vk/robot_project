@@ -1,1 +1,0 @@
-/home/student/ufactory_ws/devel/.private/depthai_bridge/share/depthai_bridge/cmake/depthai_bridgeConfig.cmake

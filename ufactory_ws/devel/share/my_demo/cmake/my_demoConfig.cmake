@@ -1,1 +1,0 @@
-/home/student/ufactory_ws/devel/.private/my_demo/share/my_demo/cmake/my_demoConfig.cmake

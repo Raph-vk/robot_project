@@ -1,1 +1,0 @@
-/home/student/ufactory_ws/devel/.private/my_demo/lib/pkgconfig/my_demo.pc

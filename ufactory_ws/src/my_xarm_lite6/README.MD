@@ -1,1 +1,0 @@
-[Documentatie](https://avansmechatronica.github.io/my_xarm_lite6/)

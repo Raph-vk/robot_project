@@ -1,1 +1,0 @@
-/home/student/ufactory_ws/devel/.private/d435i_xarm_setup/lib/pkgconfig/d435i_xarm_setup.pc
