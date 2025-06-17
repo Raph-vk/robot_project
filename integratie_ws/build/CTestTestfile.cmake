@@ -6,9 +6,12 @@
 # testing this directory and lists subdirectories to be tested as well.
 subdirs("gtest")
 subdirs("depth-ai-avans/depthai-ros")
+subdirs("my_lite6_moveit_config")
 subdirs("hmi_interface")
+subdirs("my_lite6_description")
 subdirs("transportsysteem_pkg")
 subdirs("depth-ai-avans/depthai_ros_msgs")
 subdirs("depth-ai-avans/depthai_bridge")
 subdirs("depth-ai-avans/depthai_ros_driver")
 subdirs("my_depthai")
+subdirs("robotarm")

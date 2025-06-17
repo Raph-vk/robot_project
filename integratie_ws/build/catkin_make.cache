@@ -1,2 +1,2 @@
-depth-ai-avans/depthai-ros:depth-ai-avans/depthai_bridge:depth-ai-avans/depthai_ros_driver:depth-ai-avans/depthai_ros_msgs:hmi_interface:my_depthai:transportsysteem_pkg
+depth-ai-avans/depthai-ros:depth-ai-avans/depthai_bridge:depth-ai-avans/depthai_ros_driver:depth-ai-avans/depthai_ros_msgs:hmi_interface:my_depthai:my_lite6_description:my_lite6_moveit_config:robotarm:transportsysteem_pkg
 -DCATKIN_DEVEL_PREFIX=/home/student/Git-projects/robot_project/integratie_ws/devel -DCMAKE_INSTALL_PREFIX=/home/student/Git-projects/robot_project/integratie_ws/install -G Unix Makefiles

@@ -132,12 +132,15 @@ if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
   include("/home/student/Git-projects/robot_project/integratie_ws/build/gtest/cmake_install.cmake")
   include("/home/student/Git-projects/robot_project/integratie_ws/build/depth-ai-avans/depthai-ros/cmake_install.cmake")
+  include("/home/student/Git-projects/robot_project/integratie_ws/build/my_lite6_moveit_config/cmake_install.cmake")
   include("/home/student/Git-projects/robot_project/integratie_ws/build/hmi_interface/cmake_install.cmake")
+  include("/home/student/Git-projects/robot_project/integratie_ws/build/my_lite6_description/cmake_install.cmake")
   include("/home/student/Git-projects/robot_project/integratie_ws/build/transportsysteem_pkg/cmake_install.cmake")
   include("/home/student/Git-projects/robot_project/integratie_ws/build/depth-ai-avans/depthai_ros_msgs/cmake_install.cmake")
   include("/home/student/Git-projects/robot_project/integratie_ws/build/depth-ai-avans/depthai_bridge/cmake_install.cmake")
   include("/home/student/Git-projects/robot_project/integratie_ws/build/depth-ai-avans/depthai_ros_driver/cmake_install.cmake")
   include("/home/student/Git-projects/robot_project/integratie_ws/build/my_depthai/cmake_install.cmake")
+  include("/home/student/Git-projects/robot_project/integratie_ws/build/robotarm/cmake_install.cmake")
 
 endif()
 
