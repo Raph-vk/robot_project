@@ -181,7 +181,7 @@
 
   <xacro:include filename="$(find my_lite6_description)/urdf/Opstelling.urdf.xacro" />
   <xacro:Opstelling_urdf prefix="$(arg prefix)wand" parent_link="baseplate_link" 
-  mesh_file="package://robotarm/mesh/wand.STL" xyz="-0.32 -0.3791 -0.015" rpy="0 0 1.57" />
+  mesh_file="package://robotarm/mesh/wand.STL" xyz="-0.28 -0.3791 -0.015" rpy="0 0 1.57" />
   <!-- <xacro:include filename="$(find my_lite6_description)/urdf/Opstelling.urdf.xacro" />
   <xacro:Opstelling_urdf prefix="$(arg prefix)oak_rgb_camera_optical" parent_link="baseplate_link" 
   mesh_file="package://robotarm/mesh/camera.stl" xyz="-0.1 -0.29 0.5580" rpy="0 3.14 0" /> -->

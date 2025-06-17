@@ -15,10 +15,14 @@ import time
 
 class unit_manipulator:
     def __init__(self):
+        #positie object t.o.v. camera assenstelsel
         self.positie_object_vanuit_camera = None
+        #getransformeerde coordinaten
         self.positie_object_vanuit_base = None
         self.type_tandenborstel = None
+        #getal waarmee gripper kan worden gesloten
         self.GRIPPER_DICHT = 0
+        #getal waarmee gripper kan worden geopend
         self.GRIPPER_OPEN = 1
 
         self.naar_locatie = {
@@ -36,6 +40,8 @@ class unit_manipulator:
         self.robot = moveit_commander.RobotCommander()
         self.scene = moveit_commander.PlanningSceneInterface()
         self.group = moveit_commander.MoveGroupCommander('arm')
+        self.group.set_max_velocity_scaling_factor(0.01)      
+        self.group.set_max_acceleration_scaling_factor(0.02)
 
         self.display_trajectory_publisher = rospy.Publisher(
             '/move_group/display_planned_path',
@@ -56,6 +62,7 @@ class unit_manipulator:
     def start_manipulator(self, request):  
         feedback = manipulatorFeedback()
         result = manipulatorResult()
+        
         self.transformeren()
 
         # self.gripper_openen()
@@ -78,13 +85,13 @@ class unit_manipulator:
         self.type_tandenborstel = msg.data
 
     def transformeren(self):
-        transform = self.tf_buffer.lookup_transform('tcp_link',self.positie_object_vanuit_camera.header.frame_id,rospy.Time(0),
+        transform = self.tf_buffer.lookup_transform('link_base',self.positie_object_vanuit_camera.header.frame_id,rospy.Time(0),
             rospy.Duration(1.0))
         self.positie_object_vanuit_base = do_transform_pose(self.positie_object_vanuit_camera, transform)
 
     def naar_tandenborstel(self):
         self.group.set_start_state_to_current_state()  # belangrijk!
-        self.group.set_pose_target(self.positie_object_vanuit_base.pose)
+        self.group.set_pose_target(self.positie_object_vanuit_base)
         self.group.go(wait=True)
         self.group.clear_pose_targets()       
 

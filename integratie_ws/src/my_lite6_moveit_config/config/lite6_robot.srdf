@@ -103,7 +103,7 @@
     <disable_collisions link1="Opstelling_frame" link2="link1" reason="Never" />
     <disable_collisions link1="Opstelling_frame" link2="link_base" reason="Never" />
     <disable_collisions link1="Opstelling_frame" link2="mountingplate_link" reason="Never" />
-    <disable_collisions link1="Opstelling_frame" link2="oak_d_model_origin" reason="Never" />
+    <disable_collisions link1="Opstelling_frame" link2="oak_d_model_origin" reason="Default" />
     <disable_collisions link1="Opstelling_frame" link2="wand_frame" reason="Never" />
     <disable_collisions link1="baseplate_link" link2="link1" reason="Never" />
     <disable_collisions link1="baseplate_link" link2="link2" reason="Never" />
@@ -120,9 +120,11 @@
     <disable_collisions link1="link2" link2="link5" reason="Never" />
     <disable_collisions link1="link2" link2="link6" reason="Never" />
     <disable_collisions link1="link2" link2="mountingplate_link" reason="Never" />
+    <disable_collisions link1="link2" link2="oak_d_model_origin" reason="Never" />
     <disable_collisions link1="link3" link2="link4" reason="Adjacent" />
     <disable_collisions link1="link3" link2="link5" reason="Never" />
     <disable_collisions link1="link3" link2="link6" reason="Never" />
+    <disable_collisions link1="link3" link2="oak_d_model_origin" reason="Never" />
     <disable_collisions link1="link3" link2="uflite_gripper_link" reason="Never" />
     <disable_collisions link1="link4" link2="link5" reason="Adjacent" />
     <disable_collisions link1="link4" link2="link6" reason="Never" />
