@@ -1,0 +1,8 @@
+prefix=/home/student/Git-projects/robot_project/ruben_werk_ws/install
+
+Name: package
+Description: Description of package
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 
