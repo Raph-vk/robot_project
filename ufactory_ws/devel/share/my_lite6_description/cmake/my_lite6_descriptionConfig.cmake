@@ -1,1 +1,0 @@
-/home/student/ufactory_ws/devel/.private/my_lite6_description/share/my_lite6_description/cmake/my_lite6_descriptionConfig.cmake

@@ -1,1 +1,0 @@
-/home/student/ufactory_ws/devel/.private/my_depthai/share/my_depthai/cmake/my_depthaiConfig-version.cmake

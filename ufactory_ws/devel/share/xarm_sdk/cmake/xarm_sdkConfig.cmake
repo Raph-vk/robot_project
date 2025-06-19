@@ -1,1 +1,0 @@
-/home/student/ufactory_ws/devel/.private/xarm_sdk/share/xarm_sdk/cmake/xarm_sdkConfig.cmake

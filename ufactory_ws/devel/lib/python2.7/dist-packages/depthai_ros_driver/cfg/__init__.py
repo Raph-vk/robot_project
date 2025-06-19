@@ -1,1 +1,0 @@
-/home/student/ufactory_ws/devel/.private/depthai_ros_driver/lib/python2.7/dist-packages/depthai_ros_driver/cfg/__init__.py

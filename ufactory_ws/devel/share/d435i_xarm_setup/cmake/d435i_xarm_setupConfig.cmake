@@ -1,1 +1,0 @@
-/home/student/ufactory_ws/devel/.private/d435i_xarm_setup/share/d435i_xarm_setup/cmake/d435i_xarm_setupConfig.cmake
