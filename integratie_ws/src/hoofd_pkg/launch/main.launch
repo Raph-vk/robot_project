@@ -1,21 +1,30 @@
 <launch>
   <!-- 
     Alle systeem Launches:
-      1) HMI-webserver
-      2) rosserial_python serial_node.py for Arduino ↔ ROS communication
-      3) controller_transportsystem.py for IR‐sensor → motor logic
-      4) MoveIt! planning execution launch
-      5) Start manipulator_node.py
-
+      1) Noodstop script
+      2) hoofdprogramma script
+      10) HMI-webserver
+      11) rosserial_python serial_node.py for Arduino ↔ ROS communication
+      12) controller_transportsystem.py for IR‐sensor → motor logic
+      13) MoveIt! planning execution launch
+      14) Start manipulator_node.py
+      15) Launch vision application
   -->
 
   <!-- 1) Start de Flask-HMI (open on the web: http://localhost:5000/) -->
-  <node pkg="hmi_interface"
-        type="hmi_control_panel.py"
-        name="hmi_node"
+  <node pkg="hoofd_pkg"
+        type="hoofdprogramma.py"
+        name="hoofdprogram_node"
         output="screen"/>
 
-  <!-- 2) Start rosserial to connect to the Arduino -->
+
+  <!-- 2) Start de Flask-HMI (open on the web: http://localhost:5000/) -->
+  <node pkg="hoofd_pkg"
+        type="emergency.py"
+        name="emergency_node"
+        output="screen"/>
+
+  <!-- 11) Start rosserial to connect to the Arduino -->
   <node
     name="arduino_node"
     pkg="rosserial_python"
@@ -27,7 +36,7 @@
     <param name="baud" value="57600" />
   </node>
 
-  <!-- 3) Launch your IR‐motor controller node -->
+  <!-- 12) Launch your IR‐motor controller node -->
   <node
     name="system_control_node"
     pkg="transportsysteem_pkg"
@@ -39,14 +48,15 @@
     -->
   </node>
 
-  <!-- 4) Start de MoveIt! Planning Execution met de robot description -->
+  <!-- 13) Start de MoveIt! Planning Execution met de robot description -->
   <include file="$(find my_lite6_moveit_config)/launch/demo.launch"/>
 
-  <!-- 5) Start manipulator_node.py -->
+  <!-- 14) Start manipulator_node.py -->
   <node name="manipulator_node" pkg="robotarm" type="manipulator.py" output="screen" />
 
-  <!-- 6) Launch vision_appplicatie-->
-  <node name="daw" pkg="my_depthai" type="bla" output="screen" />
-  
+  <!-- 15) Launch vision_appplicatie-->
+  <include file="$(find my_depthai)/launch/nn_detector.launch">
+    <arg name="enableRviz" value="true" />
+  </include>  
 
 </launch>
