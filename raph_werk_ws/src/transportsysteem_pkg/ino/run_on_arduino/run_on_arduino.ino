@@ -10,7 +10,7 @@ const int IN1 = 8;
 const int IN2 = 7;
 
 // Motor speed (0–255)
-int speed = 128;
+int speed = 255;
 
 // ROS node handle
 ros::NodeHandle nh;

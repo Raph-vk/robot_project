@@ -1,0 +1,52 @@
+<launch>
+  <!-- 
+    Alle systeem Launches:
+      1) HMI-webserver
+      2) rosserial_python serial_node.py for Arduino ↔ ROS communication
+      3) controller_transportsystem.py for IR‐sensor → motor logic
+      4) MoveIt! planning execution launch
+      5) Start manipulator_node.py
+
+  -->
+
+  <!-- 1) Start de Flask-HMI (open on the web: http://localhost:5000/) -->
+  <node pkg="hmi_interface"
+        type="hmi_control_panel.py"
+        name="hmi_node"
+        output="screen"/>
+
+  <!-- 2) Start rosserial to connect to the Arduino -->
+  <node
+    name="arduino_node"
+    pkg="rosserial_python"
+    type="serial_node.py"
+    output="screen">
+    <!-- Serial port to which the Arduino is connected -->
+    <param name="port" value="/dev/ttyACM0" />
+    <!-- Must match the baudrate in your Arduino sketch -->
+    <param name="baud" value="57600" />
+  </node>
+
+  <!-- 3) Launch your IR‐motor controller node -->
+  <node
+    name="system_control_node"
+    pkg="transportsysteem_pkg"
+    type="controller_transportsystem.py"
+    output="screen">
+    <!-- If you want to remap topics or add params, do it here. Example:
+    <remap from="/motor_command" to="/my_motor_topic"/>
+    <param name="some_param" value="123"/>
+    -->
+  </node>
+
+  <!-- 4) Start de MoveIt! Planning Execution met de robot description -->
+  <include file="$(find my_lite6_moveit_config)/launch/demo.launch"/>
+
+  <!-- 5) Start manipulator_node.py -->
+  <node name="manipulator_node" pkg="robotarm" type="manipulator.py" output="screen" />
+
+  <!-- 6) Launch vision_appplicatie-->
+  <node name="daw" pkg="my_depthai" type="bla" output="screen" />
+  
+
+</launch>
