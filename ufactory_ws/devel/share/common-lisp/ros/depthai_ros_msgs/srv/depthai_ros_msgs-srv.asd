@@ -1,1 +1,0 @@
-/home/student/ufactory_ws/devel/.private/depthai_ros_msgs/share/common-lisp/ros/depthai_ros_msgs/srv/depthai_ros_msgs-srv.asd

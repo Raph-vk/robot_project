@@ -1,1 +1,0 @@
-/home/student/ufactory_ws/devel/.private/robotarm/include/robotarm/manipulatorGoal.h

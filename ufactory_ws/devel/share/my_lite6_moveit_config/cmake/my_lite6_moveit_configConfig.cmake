@@ -1,1 +1,0 @@
-/home/student/ufactory_ws/devel/.private/my_lite6_moveit_config/share/my_lite6_moveit_config/cmake/my_lite6_moveit_configConfig.cmake

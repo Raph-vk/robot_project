@@ -1,1 +1,0 @@
-/home/student/ufactory_ws/devel/.private/xarm_msgs/include/xarm_msgs/GetFloat32ListResponse.h

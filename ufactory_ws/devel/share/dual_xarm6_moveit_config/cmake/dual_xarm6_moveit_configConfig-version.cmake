@@ -1,1 +1,0 @@
-/home/student/ufactory_ws/devel/.private/dual_xarm6_moveit_config/share/dual_xarm6_moveit_config/cmake/dual_xarm6_moveit_configConfig-version.cmake

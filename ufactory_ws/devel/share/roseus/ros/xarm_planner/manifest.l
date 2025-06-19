@@ -1,1 +1,0 @@
-/home/student/ufactory_ws/devel/.private/xarm_planner/share/roseus/ros/xarm_planner/manifest.l

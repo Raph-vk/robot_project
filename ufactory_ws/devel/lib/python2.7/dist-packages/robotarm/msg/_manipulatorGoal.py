@@ -1,1 +1,0 @@
-/home/student/ufactory_ws/devel/.private/robotarm/lib/python2.7/dist-packages/robotarm/msg/_manipulatorGoal.py

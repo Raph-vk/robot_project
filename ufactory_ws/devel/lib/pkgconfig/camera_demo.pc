@@ -1,1 +1,0 @@
-/home/student/ufactory_ws/devel/.private/camera_demo/lib/pkgconfig/camera_demo.pc

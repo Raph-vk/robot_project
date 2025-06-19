@@ -1,1 +1,0 @@
-/home/student/ufactory_ws/devel/.private/xarm_controller/lib/pkgconfig/xarm_controller.pc

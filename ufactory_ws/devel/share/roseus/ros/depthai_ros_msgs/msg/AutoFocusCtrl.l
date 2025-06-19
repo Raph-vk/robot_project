@@ -1,1 +1,0 @@
-/home/student/ufactory_ws/devel/.private/depthai_ros_msgs/share/roseus/ros/depthai_ros_msgs/msg/AutoFocusCtrl.l

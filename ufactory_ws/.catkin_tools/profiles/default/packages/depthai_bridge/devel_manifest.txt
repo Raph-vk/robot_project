@@ -1,6 +1,0 @@
-depth-ai-avans/depthai_bridge
-/home/student/ufactory_ws/devel/.private/depthai_bridge/cmake.lock /home/student/ufactory_ws/devel/./cmake.lock
-/home/student/ufactory_ws/devel/.private/depthai_bridge/lib/libdepthai_bridge.so /home/student/ufactory_ws/devel/lib/libdepthai_bridge.so
-/home/student/ufactory_ws/devel/.private/depthai_bridge/lib/pkgconfig/depthai_bridge.pc /home/student/ufactory_ws/devel/lib/pkgconfig/depthai_bridge.pc
-/home/student/ufactory_ws/devel/.private/depthai_bridge/share/depthai_bridge/cmake/depthai_bridgeConfig-version.cmake /home/student/ufactory_ws/devel/share/depthai_bridge/cmake/depthai_bridgeConfig-version.cmake
-/home/student/ufactory_ws/devel/.private/depthai_bridge/share/depthai_bridge/cmake/depthai_bridgeConfig.cmake /home/student/ufactory_ws/devel/share/depthai_bridge/cmake/depthai_bridgeConfig.cmake
