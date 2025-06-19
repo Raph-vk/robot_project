@@ -4,13 +4,13 @@
 import rospy                                      # ROS Python client library
 import actionlib
 from std_msgs.msg import Bool                     # For publishing motor on/off
-from transportsysteem_pkg.msg import SystemControlAction, SystemControlFeedback, SystemControlResult
+from transportsysteem_pkg.msg import TransportControlAction, TransportControlFeedback, SystemControlResult
 
-class SystemController:
+class TransportController:
 
     # Initialize the controller
     def __init__(self):
-        rospy.init_node('system_control_node')       # Initialize the ROS node.
+        rospy.init_node('transport_control_node')       # Initialize the ROS node.
         # Publisher to send True/False to /motor_command
         self.motor_pub = rospy.Publisher('/motor_command', Bool, queue_size=1)
         # Subscribers for the two IR beam topics
@@ -24,13 +24,13 @@ class SystemController:
 
         # Create action server
         self._as = actionlib.SimpleActionServer(
-            'system_control',
-            SystemControlAction,
+            'transport_control',
+            TransportControlAction,
             execute_cb=self._handle_control,
             auto_start=False
         )
         self._as.start()
-        rospy.loginfo("SystemControlAction server started.")
+        rospy.loginfo("TransportControlAction server started.")
 
     def _ir_begin_cb(self, msg):
         self.ir_begin = msg.data                     # Update begin‐sensor flag
@@ -40,8 +40,8 @@ class SystemController:
     
     # Handle the instructions
     def _handle_control(self, req):
-        feedback = SystemControlFeedback()
-        result   = SystemControlResult()
+        feedback = TransportControlFeedback()
+        result   = TransportControlResult()
         instru = req.instruction.strip().lower()
         rate = rospy.Rate(10)
 
@@ -122,5 +122,5 @@ class SystemController:
             self._as.set_aborted(result)
 
 if __name__ == '__main__':
-    node = SystemController()
+    node = TransportController()
     rospy.spin()
