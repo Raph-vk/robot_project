@@ -33,14 +33,20 @@
   <include file="$(find transportsysteem_pkg)/launch/transportsystem_control.launch"/>  
 
   <!-- 13) Start de MoveIt! Planning Execution met de robot description -->
+  <!--
   <include file="$(find my_lite6_moveit_config)/launch/demo.launch"/>
+  -->
 
   <!-- 14) Start manipulator_node.py -->
+  <!-- 
   <include file="$(find robotarm)/launch/robotcel.launch"/>  
+  -->
 
   <!-- 15) Launch vision_appplicatie--> 
+  <!--
   <include file="$(find my_depthai)/launch/nn_detector.launch">
     <arg name="enableRviz" value="false" />
   </include>
+  -->
 
 </launch>
