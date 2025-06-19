@@ -56,7 +56,7 @@
 
   <!-- 15) Launch vision_appplicatie-->
   <include file="$(find my_depthai)/launch/nn_detector.launch">
-    <arg name="enableRviz" value="true" />
+    <arg name="enableRviz" value="false" />
   </include>  
 
 </launch>
