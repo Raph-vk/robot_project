@@ -20,7 +20,7 @@
 
   <!-- 2) Launch your IR‐motor controller node -->
   <node
-    name="system_control_node"
+    name="transport_control_node"
     pkg="transportsysteem_pkg"
     type="controller_transportsystem.py"
     output="screen">
