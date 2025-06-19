@@ -25,7 +25,7 @@ import actionlib
 
 # Custom action messages
 from robotarm.msg import manipulatorAction, manipulatorGoal, manipulatorFeedback, manipulatorResult
-from transportsystem_pkg.msg import TransportControlAction, TransportControlGoal, TransportControlFeedback, TransportControlResult
+from transportsysteem_pkg.msg import TransportControlAction, TransportControlGoal, TransportControlFeedback, TransportControlResult
 
 class hoofdprogramma:
 
@@ -40,10 +40,10 @@ class hoofdprogramma:
         self.reset_pressed = False
 
         # Subscribers for buttons
-        self.start = rospy.Subscriber('/start', Bool, lambda msg: rospy.loginfo("Start: %s", msg.data))
-        self.start_continue   = rospy.Subscriber('/start_continue', Bool, lambda msg: rospy.loginfo("Start: %s", msg.data))
-        self.stop = rospy.Subscriber('/stop', Bool, self.<fill_in>)
-        self.reset   = rospy.Subscriber('/stop',   Bool, self.<fill_in>)
+        self.start = rospy.Subscriber('/start', Bool, self.start_callback)
+        self.start_continue   = rospy.Subscriber('/start_continue', Bool, self.start_continue_callback)
+        self.stop = rospy.Subscriber('/stop', Bool, self.stop_callback)
+        self.reset   = rospy.Subscriber('/reset',   Bool, self.reset_callback)
             # emergency is done in seperate script.
 
         # Publisher to send True/False to lamps
