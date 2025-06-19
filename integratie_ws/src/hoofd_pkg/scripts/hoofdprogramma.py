@@ -79,7 +79,7 @@ class hoofdprogramma:
         if self.start_pressed:
             goal = TransportControlGoal()
             goal.command = "start"
-            #rospy.loginfo("Sending goal: start")
+            rospy.loginfo("Sending goal: start")
             self.transport_client.send_goal(goal)
             self.start_pressed = False  # Reset to prevent resending
 
