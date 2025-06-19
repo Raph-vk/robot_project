@@ -1,0 +1,8 @@
+prefix=/home/student/Git-projects/robot_project/integratie_ws/install
+
+Name: hoofd_pkg
+Description: Description of hoofd_pkg
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

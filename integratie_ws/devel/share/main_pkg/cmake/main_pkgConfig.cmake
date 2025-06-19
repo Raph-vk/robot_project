@@ -67,7 +67,7 @@ set(main_pkg_CONFIG_INCLUDED TRUE)
 
 # set variables for source/devel/install prefixes
 if("TRUE" STREQUAL "TRUE")
-  set(main_pkg_SOURCE_PREFIX /home/student/Git-projects/robot_project/integratie_ws/src/main_pkg)
+  set(main_pkg_SOURCE_PREFIX /home/student/Git-projects/robot_project/integratie_ws/src/hoofd_pkg)
   set(main_pkg_DEVEL_PREFIX /home/student/Git-projects/robot_project/integratie_ws/devel)
   set(main_pkg_INSTALL_PREFIX "")
   set(main_pkg_PREFIX ${main_pkg_DEVEL_PREFIX})
@@ -110,7 +110,7 @@ if(NOT " " STREQUAL " ")
         message(FATAL_ERROR "Project 'main_pkg' specifies '${idir}' as an include dir, which is not found.  It does not exist in '${include}'.  ${_report}")
       endif()
     else()
-      message(FATAL_ERROR "Project 'main_pkg' specifies '${idir}' as an include dir, which is not found.  It does neither exist as an absolute directory nor in '/home/student/Git-projects/robot_project/integratie_ws/src/main_pkg/${idir}'.  ${_report}")
+      message(FATAL_ERROR "Project 'main_pkg' specifies '${idir}' as an include dir, which is not found.  It does neither exist as an absolute directory nor in '/home/student/Git-projects/robot_project/integratie_ws/src/hoofd_pkg/${idir}'.  ${_report}")
     endif()
     _list_append_unique(main_pkg_INCLUDE_DIRS ${include})
   endforeach()
@@ -154,7 +154,7 @@ foreach(library ${libraries})
     set(lib_path "")
     set(lib "${library}-NOTFOUND")
     # since the path where the library is found is returned we have to iterate over the paths manually
-    foreach(path /home/student/Git-projects/robot_project/integratie_ws/devel/lib;/home/student/Git-projects/robot_project/integratie_ws/devel/lib;/home/student/ufactory_ws/devel/lib;/home/student/rospackages_ws/devel/lib;/opt/ros/melodic/lib)
+    foreach(path /home/student/Git-projects/robot_project/integratie_ws/devel/lib;/home/student/ufactory_ws/devel/lib;/home/student/rospackages_ws/devel/lib;/opt/ros/melodic/lib)
       find_library(lib ${library}
         PATHS ${path}
         NO_DEFAULT_PATH NO_CMAKE_FIND_ROOT_PATH)

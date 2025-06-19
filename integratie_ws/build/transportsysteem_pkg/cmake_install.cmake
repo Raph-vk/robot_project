@@ -38,18 +38,18 @@ if(NOT DEFINED CMAKE_CROSSCOMPILING)
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/transportsysteem_pkg/action" TYPE FILE FILES "/home/student/Git-projects/robot_project/integratie_ws/src/transportsysteem_pkg/action/SystemControl.action")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/transportsysteem_pkg/action" TYPE FILE FILES "/home/student/Git-projects/robot_project/integratie_ws/src/transportsysteem_pkg/action/TransportControl.action")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/transportsysteem_pkg/msg" TYPE FILE FILES
-    "/home/student/Git-projects/robot_project/integratie_ws/devel/share/transportsysteem_pkg/msg/SystemControlAction.msg"
-    "/home/student/Git-projects/robot_project/integratie_ws/devel/share/transportsysteem_pkg/msg/SystemControlActionGoal.msg"
-    "/home/student/Git-projects/robot_project/integratie_ws/devel/share/transportsysteem_pkg/msg/SystemControlActionResult.msg"
-    "/home/student/Git-projects/robot_project/integratie_ws/devel/share/transportsysteem_pkg/msg/SystemControlActionFeedback.msg"
-    "/home/student/Git-projects/robot_project/integratie_ws/devel/share/transportsysteem_pkg/msg/SystemControlGoal.msg"
-    "/home/student/Git-projects/robot_project/integratie_ws/devel/share/transportsysteem_pkg/msg/SystemControlResult.msg"
-    "/home/student/Git-projects/robot_project/integratie_ws/devel/share/transportsysteem_pkg/msg/SystemControlFeedback.msg"
+    "/home/student/Git-projects/robot_project/integratie_ws/devel/share/transportsysteem_pkg/msg/TransportControlAction.msg"
+    "/home/student/Git-projects/robot_project/integratie_ws/devel/share/transportsysteem_pkg/msg/TransportControlActionGoal.msg"
+    "/home/student/Git-projects/robot_project/integratie_ws/devel/share/transportsysteem_pkg/msg/TransportControlActionResult.msg"
+    "/home/student/Git-projects/robot_project/integratie_ws/devel/share/transportsysteem_pkg/msg/TransportControlActionFeedback.msg"
+    "/home/student/Git-projects/robot_project/integratie_ws/devel/share/transportsysteem_pkg/msg/TransportControlGoal.msg"
+    "/home/student/Git-projects/robot_project/integratie_ws/devel/share/transportsysteem_pkg/msg/TransportControlResult.msg"
+    "/home/student/Git-projects/robot_project/integratie_ws/devel/share/transportsysteem_pkg/msg/TransportControlFeedback.msg"
     )
 endif()
 

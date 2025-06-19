@@ -15,15 +15,15 @@ rospy.init_node('hmi_node', anonymous=True)
 print("[DEBUG] ROS-node 'hmi_node' is geïnitialiseerd")
 
 # ROS publishers
-start_pub = rospy.Publisher('/start', Bool, queue_size=10)
-start_continue_pub = rospy.Publisher('/start_continue', Bool, queue_size=10)
-stop_pub = rospy.Publisher('/stop', Bool, queue_size=10)
-reset_pub = rospy.Publisher('/reset', Bool, queue_size=10)
-emergency_pub = rospy.Publisher('/emergency_stop', Bool, queue_size=10)
+start_pub = rospy.Publisher('/start', Bool, queue_size=1)
+start_continue_pub = rospy.Publisher('/start_continue', Bool, queue_size=1)
+stop_pub = rospy.Publisher('/stop', Bool, queue_size=1)
+reset_pub = rospy.Publisher('/reset', Bool, queue_size=1)
+emergency_pub = rospy.Publisher('/emergency_stop', Bool, queue_size=1)
 
-led_rood_pub   = rospy.Publisher('/led_rood', Bool, queue_size=10)
-led_oranje_pub = rospy.Publisher('/led_oranje', Bool, queue_size=10)
-led_groen_pub  = rospy.Publisher('/led_groen', Bool, queue_size=10)
+led_rood_pub   = rospy.Publisher('/led_rood', Bool, queue_size=1)
+led_oranje_pub = rospy.Publisher('/led_oranje', Bool, queue_size=1)
+led_groen_pub  = rospy.Publisher('/led_groen', Bool, queue_size=1)
 
 # Interne status
 machine_state   = "WachtOpStart"
