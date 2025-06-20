@@ -4,11 +4,11 @@
       1) Noodstop script
       2) hoofdprogramma script
       10) HMI-webserver
-      11) rosserial_python serial_node.py for Arduino ↔ ROS communication
-      12) controller_transportsystem.py for IR‐sensor → motor logic
+      11) Transportsysteem launchfile launchen
+      12) Launch vision application
       13) MoveIt! planning execution launch
       14) Start manipulator_node.py
-      15) Launch vision application
+
   -->
 
   <!-- 1) Start hoofdprogramma script -->
@@ -32,6 +32,11 @@
   <!-- 11) Start rosserial to connect to the Arduino -->
   <include file="$(find transportsysteem_pkg)/launch/transportsystem_control.launch"/>  
 
+  <!-- 12) Launch vision_appplicatie--> 
+  <include file="$(find my_depthai)/launch/nn_detector.launch">
+    <arg name="enableRviz" value="false" />
+  </include>
+
   <!-- 13) Start de MoveIt! Planning Execution met de robot description -->
   <!--
   <include file="$(find my_lite6_moveit_config)/launch/demo.launch"/>
@@ -41,10 +46,5 @@
   <!-- 
   <include file="$(find robotarm)/launch/robotcel.launch"/>  
   -->
-
-  <!-- 15) Launch vision_appplicatie--> 
-  <include file="$(find my_depthai)/launch/nn_detector.launch">
-    <arg name="enableRviz" value="false" />
-  </include>
 
 </launch>
