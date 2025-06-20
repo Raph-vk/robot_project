@@ -103,7 +103,7 @@
     <disable_collisions link1="Opstelling_frame" link2="link1" reason="Never" />
     <disable_collisions link1="Opstelling_frame" link2="link_base" reason="Never" />
     <disable_collisions link1="Opstelling_frame" link2="mountingplate_link" reason="Never" />
-    <disable_collisions link1="Opstelling_frame" link2="oak_d_model_origin" reason="Never" />
+    <disable_collisions link1="Opstelling_frame" link2="oak_d_model_origin" reason="Default" />
     <disable_collisions link1="Opstelling_frame" link2="wand_frame" reason="Never" />
     <disable_collisions link1="baseplate_link" link2="link1" reason="Never" />
     <disable_collisions link1="baseplate_link" link2="link2" reason="Never" />
@@ -120,20 +120,25 @@
     <disable_collisions link1="link2" link2="link5" reason="Never" />
     <disable_collisions link1="link2" link2="link6" reason="Never" />
     <disable_collisions link1="link2" link2="mountingplate_link" reason="Never" />
+    <disable_collisions link1="link2" link2="oak_d_model_origin" reason="Never" />
     <disable_collisions link1="link3" link2="link4" reason="Adjacent" />
     <disable_collisions link1="link3" link2="link5" reason="Never" />
     <disable_collisions link1="link3" link2="link6" reason="Never" />
+    <disable_collisions link1="link3" link2="oak_d_model_origin" reason="Never" />
     <disable_collisions link1="link3" link2="uflite_gripper_link" reason="Never" />
+    <disable_collisions link1="link3" link2="vacuumpomp_frame" reason="Never" />
     <disable_collisions link1="link4" link2="link5" reason="Adjacent" />
     <disable_collisions link1="link4" link2="link6" reason="Never" />
     <disable_collisions link1="link4" link2="uflite_gripper_link" reason="Never" />
     <disable_collisions link1="link5" link2="link6" reason="Adjacent" />
     <disable_collisions link1="link5" link2="uflite_gripper_link" reason="Never" />
     <disable_collisions link1="link6" link2="uflite_gripper_link" reason="Adjacent" />
+    <disable_collisions link1="link6" link2="vacuumpomp_frame" reason="Adjacent" />
     <disable_collisions link1="link_base" link2="mountingplate_link" reason="Adjacent" />
     <disable_collisions link1="link_base" link2="oak_d_model_origin" reason="Never" />
     <disable_collisions link1="link_base" link2="wand_frame" reason="Never" />
     <disable_collisions link1="mountingplate_link" link2="oak_d_model_origin" reason="Never" />
     <disable_collisions link1="mountingplate_link" link2="wand_frame" reason="Never" />
     <disable_collisions link1="oak_d_model_origin" link2="wand_frame" reason="Never" />
+    <disable_collisions link1="uflite_gripper_link" link2="vacuumpomp_frame" reason="Never" />
 </robot>

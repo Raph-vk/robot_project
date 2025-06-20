@@ -68,6 +68,28 @@ install/strip/fast: preinstall/fast
 	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
 .PHONY : install/strip/fast
 
+# Special rule for the target install
+install: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
+	/usr/bin/cmake -P cmake_install.cmake
+.PHONY : install
+
+# Special rule for the target install
+install/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
+	/usr/bin/cmake -P cmake_install.cmake
+.PHONY : install/fast
+
+# Special rule for the target list_install_components
+list_install_components:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Available install components are: \"Unspecified\""
+.PHONY : list_install_components
+
+# Special rule for the target list_install_components
+list_install_components/fast: list_install_components
+
+.PHONY : list_install_components/fast
+
 # Special rule for the target install/local
 install/local: preinstall
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
@@ -80,17 +102,6 @@ install/local/fast: preinstall/fast
 	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
 .PHONY : install/local/fast
 
-# Special rule for the target rebuild_cache
-rebuild_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/usr/bin/cmake -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
-.PHONY : rebuild_cache
-
-# Special rule for the target rebuild_cache
-rebuild_cache/fast: rebuild_cache
-
-.PHONY : rebuild_cache/fast
-
 # Special rule for the target test
 test:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running tests..."
@@ -102,27 +113,16 @@ test/fast: test
 
 .PHONY : test/fast
 
-# Special rule for the target list_install_components
-list_install_components:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Available install components are: \"Unspecified\""
-.PHONY : list_install_components
+# Special rule for the target rebuild_cache
+rebuild_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
+	/usr/bin/cmake -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+.PHONY : rebuild_cache
 
-# Special rule for the target list_install_components
-list_install_components/fast: list_install_components
+# Special rule for the target rebuild_cache
+rebuild_cache/fast: rebuild_cache
 
-.PHONY : list_install_components/fast
-
-# Special rule for the target install
-install: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
-	/usr/bin/cmake -P cmake_install.cmake
-.PHONY : install
-
-# Special rule for the target install
-install/fast: preinstall/fast
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
-	/usr/bin/cmake -P cmake_install.cmake
-.PHONY : install/fast
+.PHONY : rebuild_cache/fast
 
 # Special rule for the target edit_cache
 edit_cache:
@@ -168,36 +168,6 @@ depend:
 .PHONY : depend
 
 # Convenience name for target.
-depth-ai-avans/depthai_bridge/CMakeFiles/roscpp_generate_messages_py.dir/rule:
-	cd /home/student/Git-projects/robot_project/integratie_ws/build && $(MAKE) -f CMakeFiles/Makefile2 depth-ai-avans/depthai_bridge/CMakeFiles/roscpp_generate_messages_py.dir/rule
-.PHONY : depth-ai-avans/depthai_bridge/CMakeFiles/roscpp_generate_messages_py.dir/rule
-
-# Convenience name for target.
-roscpp_generate_messages_py: depth-ai-avans/depthai_bridge/CMakeFiles/roscpp_generate_messages_py.dir/rule
-
-.PHONY : roscpp_generate_messages_py
-
-# fast build rule for target.
-roscpp_generate_messages_py/fast:
-	cd /home/student/Git-projects/robot_project/integratie_ws/build && $(MAKE) -f depth-ai-avans/depthai_bridge/CMakeFiles/roscpp_generate_messages_py.dir/build.make depth-ai-avans/depthai_bridge/CMakeFiles/roscpp_generate_messages_py.dir/build
-.PHONY : roscpp_generate_messages_py/fast
-
-# Convenience name for target.
-depth-ai-avans/depthai_bridge/CMakeFiles/roscpp_generate_messages_nodejs.dir/rule:
-	cd /home/student/Git-projects/robot_project/integratie_ws/build && $(MAKE) -f CMakeFiles/Makefile2 depth-ai-avans/depthai_bridge/CMakeFiles/roscpp_generate_messages_nodejs.dir/rule
-.PHONY : depth-ai-avans/depthai_bridge/CMakeFiles/roscpp_generate_messages_nodejs.dir/rule
-
-# Convenience name for target.
-roscpp_generate_messages_nodejs: depth-ai-avans/depthai_bridge/CMakeFiles/roscpp_generate_messages_nodejs.dir/rule
-
-.PHONY : roscpp_generate_messages_nodejs
-
-# fast build rule for target.
-roscpp_generate_messages_nodejs/fast:
-	cd /home/student/Git-projects/robot_project/integratie_ws/build && $(MAKE) -f depth-ai-avans/depthai_bridge/CMakeFiles/roscpp_generate_messages_nodejs.dir/build.make depth-ai-avans/depthai_bridge/CMakeFiles/roscpp_generate_messages_nodejs.dir/build
-.PHONY : roscpp_generate_messages_nodejs/fast
-
-# Convenience name for target.
 depth-ai-avans/depthai_bridge/CMakeFiles/stereo_msgs_generate_messages_eus.dir/rule:
 	cd /home/student/Git-projects/robot_project/integratie_ws/build && $(MAKE) -f CMakeFiles/Makefile2 depth-ai-avans/depthai_bridge/CMakeFiles/stereo_msgs_generate_messages_eus.dir/rule
 .PHONY : depth-ai-avans/depthai_bridge/CMakeFiles/stereo_msgs_generate_messages_eus.dir/rule
@@ -211,66 +181,6 @@ stereo_msgs_generate_messages_eus: depth-ai-avans/depthai_bridge/CMakeFiles/ster
 stereo_msgs_generate_messages_eus/fast:
 	cd /home/student/Git-projects/robot_project/integratie_ws/build && $(MAKE) -f depth-ai-avans/depthai_bridge/CMakeFiles/stereo_msgs_generate_messages_eus.dir/build.make depth-ai-avans/depthai_bridge/CMakeFiles/stereo_msgs_generate_messages_eus.dir/build
 .PHONY : stereo_msgs_generate_messages_eus/fast
-
-# Convenience name for target.
-depth-ai-avans/depthai_bridge/CMakeFiles/roscpp_generate_messages_eus.dir/rule:
-	cd /home/student/Git-projects/robot_project/integratie_ws/build && $(MAKE) -f CMakeFiles/Makefile2 depth-ai-avans/depthai_bridge/CMakeFiles/roscpp_generate_messages_eus.dir/rule
-.PHONY : depth-ai-avans/depthai_bridge/CMakeFiles/roscpp_generate_messages_eus.dir/rule
-
-# Convenience name for target.
-roscpp_generate_messages_eus: depth-ai-avans/depthai_bridge/CMakeFiles/roscpp_generate_messages_eus.dir/rule
-
-.PHONY : roscpp_generate_messages_eus
-
-# fast build rule for target.
-roscpp_generate_messages_eus/fast:
-	cd /home/student/Git-projects/robot_project/integratie_ws/build && $(MAKE) -f depth-ai-avans/depthai_bridge/CMakeFiles/roscpp_generate_messages_eus.dir/build.make depth-ai-avans/depthai_bridge/CMakeFiles/roscpp_generate_messages_eus.dir/build
-.PHONY : roscpp_generate_messages_eus/fast
-
-# Convenience name for target.
-depth-ai-avans/depthai_bridge/CMakeFiles/depthai_bridge.dir/rule:
-	cd /home/student/Git-projects/robot_project/integratie_ws/build && $(MAKE) -f CMakeFiles/Makefile2 depth-ai-avans/depthai_bridge/CMakeFiles/depthai_bridge.dir/rule
-.PHONY : depth-ai-avans/depthai_bridge/CMakeFiles/depthai_bridge.dir/rule
-
-# Convenience name for target.
-depthai_bridge: depth-ai-avans/depthai_bridge/CMakeFiles/depthai_bridge.dir/rule
-
-.PHONY : depthai_bridge
-
-# fast build rule for target.
-depthai_bridge/fast:
-	cd /home/student/Git-projects/robot_project/integratie_ws/build && $(MAKE) -f depth-ai-avans/depthai_bridge/CMakeFiles/depthai_bridge.dir/build.make depth-ai-avans/depthai_bridge/CMakeFiles/depthai_bridge.dir/build
-.PHONY : depthai_bridge/fast
-
-# Convenience name for target.
-depth-ai-avans/depthai_bridge/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/rule:
-	cd /home/student/Git-projects/robot_project/integratie_ws/build && $(MAKE) -f CMakeFiles/Makefile2 depth-ai-avans/depthai_bridge/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/rule
-.PHONY : depth-ai-avans/depthai_bridge/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/rule
-
-# Convenience name for target.
-rosgraph_msgs_generate_messages_cpp: depth-ai-avans/depthai_bridge/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/rule
-
-.PHONY : rosgraph_msgs_generate_messages_cpp
-
-# fast build rule for target.
-rosgraph_msgs_generate_messages_cpp/fast:
-	cd /home/student/Git-projects/robot_project/integratie_ws/build && $(MAKE) -f depth-ai-avans/depthai_bridge/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/build.make depth-ai-avans/depthai_bridge/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/build
-.PHONY : rosgraph_msgs_generate_messages_cpp/fast
-
-# Convenience name for target.
-depth-ai-avans/depthai_bridge/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/rule:
-	cd /home/student/Git-projects/robot_project/integratie_ws/build && $(MAKE) -f CMakeFiles/Makefile2 depth-ai-avans/depthai_bridge/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/rule
-.PHONY : depth-ai-avans/depthai_bridge/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/rule
-
-# Convenience name for target.
-rosgraph_msgs_generate_messages_eus: depth-ai-avans/depthai_bridge/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/rule
-
-.PHONY : rosgraph_msgs_generate_messages_eus
-
-# fast build rule for target.
-rosgraph_msgs_generate_messages_eus/fast:
-	cd /home/student/Git-projects/robot_project/integratie_ws/build && $(MAKE) -f depth-ai-avans/depthai_bridge/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/build.make depth-ai-avans/depthai_bridge/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/build
-.PHONY : rosgraph_msgs_generate_messages_eus/fast
 
 # Convenience name for target.
 depth-ai-avans/depthai_bridge/CMakeFiles/stereo_msgs_generate_messages_lisp.dir/rule:
@@ -288,94 +198,19 @@ stereo_msgs_generate_messages_lisp/fast:
 .PHONY : stereo_msgs_generate_messages_lisp/fast
 
 # Convenience name for target.
-depth-ai-avans/depthai_bridge/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/rule:
-	cd /home/student/Git-projects/robot_project/integratie_ws/build && $(MAKE) -f CMakeFiles/Makefile2 depth-ai-avans/depthai_bridge/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/rule
-.PHONY : depth-ai-avans/depthai_bridge/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/rule
+depth-ai-avans/depthai_bridge/CMakeFiles/stereo_msgs_generate_messages_py.dir/rule:
+	cd /home/student/Git-projects/robot_project/integratie_ws/build && $(MAKE) -f CMakeFiles/Makefile2 depth-ai-avans/depthai_bridge/CMakeFiles/stereo_msgs_generate_messages_py.dir/rule
+.PHONY : depth-ai-avans/depthai_bridge/CMakeFiles/stereo_msgs_generate_messages_py.dir/rule
 
 # Convenience name for target.
-rosgraph_msgs_generate_messages_lisp: depth-ai-avans/depthai_bridge/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/rule
+stereo_msgs_generate_messages_py: depth-ai-avans/depthai_bridge/CMakeFiles/stereo_msgs_generate_messages_py.dir/rule
 
-.PHONY : rosgraph_msgs_generate_messages_lisp
+.PHONY : stereo_msgs_generate_messages_py
 
 # fast build rule for target.
-rosgraph_msgs_generate_messages_lisp/fast:
-	cd /home/student/Git-projects/robot_project/integratie_ws/build && $(MAKE) -f depth-ai-avans/depthai_bridge/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/build.make depth-ai-avans/depthai_bridge/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/build
-.PHONY : rosgraph_msgs_generate_messages_lisp/fast
-
-# Convenience name for target.
-depth-ai-avans/depthai_bridge/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/rule:
-	cd /home/student/Git-projects/robot_project/integratie_ws/build && $(MAKE) -f CMakeFiles/Makefile2 depth-ai-avans/depthai_bridge/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/rule
-.PHONY : depth-ai-avans/depthai_bridge/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/rule
-
-# Convenience name for target.
-rosgraph_msgs_generate_messages_nodejs: depth-ai-avans/depthai_bridge/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/rule
-
-.PHONY : rosgraph_msgs_generate_messages_nodejs
-
-# fast build rule for target.
-rosgraph_msgs_generate_messages_nodejs/fast:
-	cd /home/student/Git-projects/robot_project/integratie_ws/build && $(MAKE) -f depth-ai-avans/depthai_bridge/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/build.make depth-ai-avans/depthai_bridge/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/build
-.PHONY : rosgraph_msgs_generate_messages_nodejs/fast
-
-# Convenience name for target.
-depth-ai-avans/depthai_bridge/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/rule:
-	cd /home/student/Git-projects/robot_project/integratie_ws/build && $(MAKE) -f CMakeFiles/Makefile2 depth-ai-avans/depthai_bridge/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/rule
-.PHONY : depth-ai-avans/depthai_bridge/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/rule
-
-# Convenience name for target.
-rosgraph_msgs_generate_messages_py: depth-ai-avans/depthai_bridge/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/rule
-
-.PHONY : rosgraph_msgs_generate_messages_py
-
-# fast build rule for target.
-rosgraph_msgs_generate_messages_py/fast:
-	cd /home/student/Git-projects/robot_project/integratie_ws/build && $(MAKE) -f depth-ai-avans/depthai_bridge/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/build.make depth-ai-avans/depthai_bridge/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/build
-.PHONY : rosgraph_msgs_generate_messages_py/fast
-
-# Convenience name for target.
-depth-ai-avans/depthai_bridge/CMakeFiles/roscpp_generate_messages_lisp.dir/rule:
-	cd /home/student/Git-projects/robot_project/integratie_ws/build && $(MAKE) -f CMakeFiles/Makefile2 depth-ai-avans/depthai_bridge/CMakeFiles/roscpp_generate_messages_lisp.dir/rule
-.PHONY : depth-ai-avans/depthai_bridge/CMakeFiles/roscpp_generate_messages_lisp.dir/rule
-
-# Convenience name for target.
-roscpp_generate_messages_lisp: depth-ai-avans/depthai_bridge/CMakeFiles/roscpp_generate_messages_lisp.dir/rule
-
-.PHONY : roscpp_generate_messages_lisp
-
-# fast build rule for target.
-roscpp_generate_messages_lisp/fast:
-	cd /home/student/Git-projects/robot_project/integratie_ws/build && $(MAKE) -f depth-ai-avans/depthai_bridge/CMakeFiles/roscpp_generate_messages_lisp.dir/build.make depth-ai-avans/depthai_bridge/CMakeFiles/roscpp_generate_messages_lisp.dir/build
-.PHONY : roscpp_generate_messages_lisp/fast
-
-# Convenience name for target.
-depth-ai-avans/depthai_bridge/CMakeFiles/stereo_msgs_generate_messages_nodejs.dir/rule:
-	cd /home/student/Git-projects/robot_project/integratie_ws/build && $(MAKE) -f CMakeFiles/Makefile2 depth-ai-avans/depthai_bridge/CMakeFiles/stereo_msgs_generate_messages_nodejs.dir/rule
-.PHONY : depth-ai-avans/depthai_bridge/CMakeFiles/stereo_msgs_generate_messages_nodejs.dir/rule
-
-# Convenience name for target.
-stereo_msgs_generate_messages_nodejs: depth-ai-avans/depthai_bridge/CMakeFiles/stereo_msgs_generate_messages_nodejs.dir/rule
-
-.PHONY : stereo_msgs_generate_messages_nodejs
-
-# fast build rule for target.
-stereo_msgs_generate_messages_nodejs/fast:
-	cd /home/student/Git-projects/robot_project/integratie_ws/build && $(MAKE) -f depth-ai-avans/depthai_bridge/CMakeFiles/stereo_msgs_generate_messages_nodejs.dir/build.make depth-ai-avans/depthai_bridge/CMakeFiles/stereo_msgs_generate_messages_nodejs.dir/build
-.PHONY : stereo_msgs_generate_messages_nodejs/fast
-
-# Convenience name for target.
-depth-ai-avans/depthai_bridge/CMakeFiles/roscpp_generate_messages_cpp.dir/rule:
-	cd /home/student/Git-projects/robot_project/integratie_ws/build && $(MAKE) -f CMakeFiles/Makefile2 depth-ai-avans/depthai_bridge/CMakeFiles/roscpp_generate_messages_cpp.dir/rule
-.PHONY : depth-ai-avans/depthai_bridge/CMakeFiles/roscpp_generate_messages_cpp.dir/rule
-
-# Convenience name for target.
-roscpp_generate_messages_cpp: depth-ai-avans/depthai_bridge/CMakeFiles/roscpp_generate_messages_cpp.dir/rule
-
-.PHONY : roscpp_generate_messages_cpp
-
-# fast build rule for target.
-roscpp_generate_messages_cpp/fast:
-	cd /home/student/Git-projects/robot_project/integratie_ws/build && $(MAKE) -f depth-ai-avans/depthai_bridge/CMakeFiles/roscpp_generate_messages_cpp.dir/build.make depth-ai-avans/depthai_bridge/CMakeFiles/roscpp_generate_messages_cpp.dir/build
-.PHONY : roscpp_generate_messages_cpp/fast
+stereo_msgs_generate_messages_py/fast:
+	cd /home/student/Git-projects/robot_project/integratie_ws/build && $(MAKE) -f depth-ai-avans/depthai_bridge/CMakeFiles/stereo_msgs_generate_messages_py.dir/build.make depth-ai-avans/depthai_bridge/CMakeFiles/stereo_msgs_generate_messages_py.dir/build
+.PHONY : stereo_msgs_generate_messages_py/fast
 
 # Convenience name for target.
 depth-ai-avans/depthai_bridge/CMakeFiles/stereo_msgs_generate_messages_cpp.dir/rule:
@@ -393,19 +228,34 @@ stereo_msgs_generate_messages_cpp/fast:
 .PHONY : stereo_msgs_generate_messages_cpp/fast
 
 # Convenience name for target.
-depth-ai-avans/depthai_bridge/CMakeFiles/stereo_msgs_generate_messages_py.dir/rule:
-	cd /home/student/Git-projects/robot_project/integratie_ws/build && $(MAKE) -f CMakeFiles/Makefile2 depth-ai-avans/depthai_bridge/CMakeFiles/stereo_msgs_generate_messages_py.dir/rule
-.PHONY : depth-ai-avans/depthai_bridge/CMakeFiles/stereo_msgs_generate_messages_py.dir/rule
+depth-ai-avans/depthai_bridge/CMakeFiles/stereo_msgs_generate_messages_nodejs.dir/rule:
+	cd /home/student/Git-projects/robot_project/integratie_ws/build && $(MAKE) -f CMakeFiles/Makefile2 depth-ai-avans/depthai_bridge/CMakeFiles/stereo_msgs_generate_messages_nodejs.dir/rule
+.PHONY : depth-ai-avans/depthai_bridge/CMakeFiles/stereo_msgs_generate_messages_nodejs.dir/rule
 
 # Convenience name for target.
-stereo_msgs_generate_messages_py: depth-ai-avans/depthai_bridge/CMakeFiles/stereo_msgs_generate_messages_py.dir/rule
+stereo_msgs_generate_messages_nodejs: depth-ai-avans/depthai_bridge/CMakeFiles/stereo_msgs_generate_messages_nodejs.dir/rule
 
-.PHONY : stereo_msgs_generate_messages_py
+.PHONY : stereo_msgs_generate_messages_nodejs
 
 # fast build rule for target.
-stereo_msgs_generate_messages_py/fast:
-	cd /home/student/Git-projects/robot_project/integratie_ws/build && $(MAKE) -f depth-ai-avans/depthai_bridge/CMakeFiles/stereo_msgs_generate_messages_py.dir/build.make depth-ai-avans/depthai_bridge/CMakeFiles/stereo_msgs_generate_messages_py.dir/build
-.PHONY : stereo_msgs_generate_messages_py/fast
+stereo_msgs_generate_messages_nodejs/fast:
+	cd /home/student/Git-projects/robot_project/integratie_ws/build && $(MAKE) -f depth-ai-avans/depthai_bridge/CMakeFiles/stereo_msgs_generate_messages_nodejs.dir/build.make depth-ai-avans/depthai_bridge/CMakeFiles/stereo_msgs_generate_messages_nodejs.dir/build
+.PHONY : stereo_msgs_generate_messages_nodejs/fast
+
+# Convenience name for target.
+depth-ai-avans/depthai_bridge/CMakeFiles/depthai_bridge.dir/rule:
+	cd /home/student/Git-projects/robot_project/integratie_ws/build && $(MAKE) -f CMakeFiles/Makefile2 depth-ai-avans/depthai_bridge/CMakeFiles/depthai_bridge.dir/rule
+.PHONY : depth-ai-avans/depthai_bridge/CMakeFiles/depthai_bridge.dir/rule
+
+# Convenience name for target.
+depthai_bridge: depth-ai-avans/depthai_bridge/CMakeFiles/depthai_bridge.dir/rule
+
+.PHONY : depthai_bridge
+
+# fast build rule for target.
+depthai_bridge/fast:
+	cd /home/student/Git-projects/robot_project/integratie_ws/build && $(MAKE) -f depth-ai-avans/depthai_bridge/CMakeFiles/depthai_bridge.dir/build.make depth-ai-avans/depthai_bridge/CMakeFiles/depthai_bridge.dir/build
+.PHONY : depthai_bridge/fast
 
 src/DisparityConverter.o: src/DisparityConverter.cpp.o
 
@@ -549,28 +399,18 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... install/strip"
-	@echo "... install/local"
-	@echo "... rebuild_cache"
-	@echo "... test"
-	@echo "... list_install_components"
-	@echo "... roscpp_generate_messages_py"
-	@echo "... roscpp_generate_messages_nodejs"
-	@echo "... stereo_msgs_generate_messages_eus"
-	@echo "... roscpp_generate_messages_eus"
-	@echo "... depthai_bridge"
-	@echo "... rosgraph_msgs_generate_messages_cpp"
 	@echo "... install"
-	@echo "... rosgraph_msgs_generate_messages_eus"
+	@echo "... list_install_components"
+	@echo "... install/local"
+	@echo "... test"
+	@echo "... stereo_msgs_generate_messages_eus"
 	@echo "... stereo_msgs_generate_messages_lisp"
-	@echo "... rosgraph_msgs_generate_messages_lisp"
-	@echo "... rosgraph_msgs_generate_messages_nodejs"
-	@echo "... rosgraph_msgs_generate_messages_py"
-	@echo "... edit_cache"
-	@echo "... roscpp_generate_messages_lisp"
-	@echo "... stereo_msgs_generate_messages_nodejs"
-	@echo "... roscpp_generate_messages_cpp"
-	@echo "... stereo_msgs_generate_messages_cpp"
+	@echo "... rebuild_cache"
 	@echo "... stereo_msgs_generate_messages_py"
+	@echo "... stereo_msgs_generate_messages_cpp"
+	@echo "... edit_cache"
+	@echo "... stereo_msgs_generate_messages_nodejs"
+	@echo "... depthai_bridge"
 	@echo "... src/DisparityConverter.o"
 	@echo "... src/DisparityConverter.i"
 	@echo "... src/DisparityConverter.s"

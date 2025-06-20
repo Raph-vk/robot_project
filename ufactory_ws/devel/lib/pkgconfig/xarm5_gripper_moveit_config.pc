@@ -1,1 +1,0 @@
-/home/student/ufactory_ws/devel/.private/xarm5_gripper_moveit_config/lib/pkgconfig/xarm5_gripper_moveit_config.pc

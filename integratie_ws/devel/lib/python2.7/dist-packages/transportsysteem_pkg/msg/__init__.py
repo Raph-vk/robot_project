@@ -5,3 +5,10 @@ from ._SystemControlActionResult import *
 from ._SystemControlFeedback import *
 from ._SystemControlGoal import *
 from ._SystemControlResult import *
+from ._TransportControlAction import *
+from ._TransportControlActionFeedback import *
+from ._TransportControlActionGoal import *
+from ._TransportControlActionResult import *
+from ._TransportControlFeedback import *
+from ._TransportControlGoal import *
+from ._TransportControlResult import *

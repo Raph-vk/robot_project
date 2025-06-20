@@ -1,1 +1,0 @@
-/home/student/ufactory_ws/devel/.private/my_depthai/lib/pkgconfig/my_depthai.pc

@@ -1,1 +1,0 @@
-/home/student/ufactory_ws/devel/.private/my_lite6_moveit_config/lib/pkgconfig/my_lite6_moveit_config.pc

@@ -1,12 +1,12 @@
 file(REMOVE_RECURSE
   "CMakeFiles/transportsysteem_pkg_generate_messages_nodejs"
-  "/home/student/Git-projects/robot_project/integratie_ws/devel/share/gennodejs/ros/transportsysteem_pkg/msg/SystemControlFeedback.js"
-  "/home/student/Git-projects/robot_project/integratie_ws/devel/share/gennodejs/ros/transportsysteem_pkg/msg/SystemControlActionFeedback.js"
-  "/home/student/Git-projects/robot_project/integratie_ws/devel/share/gennodejs/ros/transportsysteem_pkg/msg/SystemControlGoal.js"
-  "/home/student/Git-projects/robot_project/integratie_ws/devel/share/gennodejs/ros/transportsysteem_pkg/msg/SystemControlAction.js"
-  "/home/student/Git-projects/robot_project/integratie_ws/devel/share/gennodejs/ros/transportsysteem_pkg/msg/SystemControlResult.js"
-  "/home/student/Git-projects/robot_project/integratie_ws/devel/share/gennodejs/ros/transportsysteem_pkg/msg/SystemControlActionResult.js"
-  "/home/student/Git-projects/robot_project/integratie_ws/devel/share/gennodejs/ros/transportsysteem_pkg/msg/SystemControlActionGoal.js"
+  "/home/student/Git-projects/robot_project/integratie_ws/devel/share/gennodejs/ros/transportsysteem_pkg/msg/TransportControlActionResult.js"
+  "/home/student/Git-projects/robot_project/integratie_ws/devel/share/gennodejs/ros/transportsysteem_pkg/msg/TransportControlAction.js"
+  "/home/student/Git-projects/robot_project/integratie_ws/devel/share/gennodejs/ros/transportsysteem_pkg/msg/TransportControlGoal.js"
+  "/home/student/Git-projects/robot_project/integratie_ws/devel/share/gennodejs/ros/transportsysteem_pkg/msg/TransportControlActionGoal.js"
+  "/home/student/Git-projects/robot_project/integratie_ws/devel/share/gennodejs/ros/transportsysteem_pkg/msg/TransportControlFeedback.js"
+  "/home/student/Git-projects/robot_project/integratie_ws/devel/share/gennodejs/ros/transportsysteem_pkg/msg/TransportControlResult.js"
+  "/home/student/Git-projects/robot_project/integratie_ws/devel/share/gennodejs/ros/transportsysteem_pkg/msg/TransportControlActionFeedback.js"
 )
 
 # Per-language clean rules from dependency scanning.
