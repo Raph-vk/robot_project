@@ -243,7 +243,9 @@
 /home/student/Git-projects/robot_project/integratie_ws/build/hmi_interface/CMakeFiles/edit_cache.dir
 /home/student/Git-projects/robot_project/integratie_ws/build/hmi_interface/CMakeFiles/list_install_components.dir
 /home/student/Git-projects/robot_project/integratie_ws/build/hmi_interface/CMakeFiles/test.dir
-<<<<<<< Updated upstream
+/home/student/Git-projects/robot_project/integratie_ws/build/hmi_interface/CMakeFiles/install/local.dir
+/home/student/Git-projects/robot_project/integratie_ws/build/hmi_interface/CMakeFiles/rebuild_cache.dir
+/home/student/Git-projects/robot_project/integratie_ws/build/hmi_interface/CMakeFiles/install.dir
 /home/student/Git-projects/robot_project/integratie_ws/build/hoofd_pkg/CMakeFiles/install/strip.dir
 /home/student/Git-projects/robot_project/integratie_ws/build/hoofd_pkg/CMakeFiles/edit_cache.dir
 /home/student/Git-projects/robot_project/integratie_ws/build/hoofd_pkg/CMakeFiles/list_install_components.dir
@@ -251,18 +253,6 @@
 /home/student/Git-projects/robot_project/integratie_ws/build/hoofd_pkg/CMakeFiles/install/local.dir
 /home/student/Git-projects/robot_project/integratie_ws/build/hoofd_pkg/CMakeFiles/rebuild_cache.dir
 /home/student/Git-projects/robot_project/integratie_ws/build/hoofd_pkg/CMakeFiles/install.dir
-=======
-/home/student/Git-projects/robot_project/integratie_ws/build/hmi_interface/CMakeFiles/install/local.dir
-/home/student/Git-projects/robot_project/integratie_ws/build/hmi_interface/CMakeFiles/rebuild_cache.dir
-/home/student/Git-projects/robot_project/integratie_ws/build/hmi_interface/CMakeFiles/install.dir
-/home/student/Git-projects/robot_project/integratie_ws/build/main_pkg/CMakeFiles/install/strip.dir
-/home/student/Git-projects/robot_project/integratie_ws/build/main_pkg/CMakeFiles/edit_cache.dir
-/home/student/Git-projects/robot_project/integratie_ws/build/main_pkg/CMakeFiles/list_install_components.dir
-/home/student/Git-projects/robot_project/integratie_ws/build/main_pkg/CMakeFiles/test.dir
-/home/student/Git-projects/robot_project/integratie_ws/build/main_pkg/CMakeFiles/install/local.dir
-/home/student/Git-projects/robot_project/integratie_ws/build/main_pkg/CMakeFiles/rebuild_cache.dir
-/home/student/Git-projects/robot_project/integratie_ws/build/main_pkg/CMakeFiles/install.dir
->>>>>>> Stashed changes
 /home/student/Git-projects/robot_project/integratie_ws/build/my_lite6_description/CMakeFiles/install/strip.dir
 /home/student/Git-projects/robot_project/integratie_ws/build/my_lite6_description/CMakeFiles/edit_cache.dir
 /home/student/Git-projects/robot_project/integratie_ws/build/my_lite6_description/CMakeFiles/list_install_components.dir

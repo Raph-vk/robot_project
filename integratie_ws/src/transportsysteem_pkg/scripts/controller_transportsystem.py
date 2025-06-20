@@ -73,11 +73,11 @@ class TransportController:
                     self.motor_pub.publish(Bool(data=False))
                     result.result = False
                     self._as.publish_feedback(
-                        SystemControlFeedback(feedback="No object getting to the end"))
+                        TransportControlFeedback(feedback="No object getting to the end"))
                     return self._as.set_succeeded(result)
                 rate.sleep()
 
-            rospy.sleep(1.5)
+            rospy.sleep(1.0)
             self.motor_pub.publish(Bool(data=False))
             feedback.feedback = "Reached end, stopping motor"
             self._as.publish_feedback(feedback)
@@ -85,7 +85,7 @@ class TransportController:
 
             result.result = True
             self._as.publish_feedback(   # send one last feedback
-                SystemControlFeedback(feedback="Start sequence complete"))
+                TransportControlFeedback(feedback="Start sequence complete"))
             self._as.set_succeeded(result)
 
         elif instru == 'dump':
@@ -96,7 +96,7 @@ class TransportController:
             if not self.ir_end:
                 result.result = False
                 self._as.publish_feedback(   # send one last feedback
-                    SystemControlFeedback(feedback="No object in area"))
+                    TransportControlFeedback(feedback="No object in area"))
                 self._as.set_succeeded(result)
                 return
 
@@ -111,7 +111,7 @@ class TransportController:
 
             result.result = True
             self._as.publish_feedback(   # send one last feedback
-                SystemControlFeedback(feedback="Dump sequence complete"))
+                TransportControlFeedback(feedback="Dump sequence complete"))
             self._as.set_succeeded(result)
 
         else:

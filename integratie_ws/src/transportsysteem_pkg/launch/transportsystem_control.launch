@@ -24,9 +24,5 @@
     pkg="transportsysteem_pkg"
     type="controller_transportsystem.py"
     output="screen">
-    <!-- If you want to remap topics or add params, do it here. Example:
-    <remap from="/motor_command" to="/my_motor_topic"/>
-    <param name="some_param" value="123"/>
-    -->
   </node>
 </launch>

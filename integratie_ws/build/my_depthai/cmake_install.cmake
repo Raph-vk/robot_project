@@ -53,21 +53,21 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/my_depthai/stereo_inertial_nn_node" AND
-     NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/my_depthai/stereo_inertial_nn_node")
+  if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/my_depthai/======stereo_inertial_nn_node" AND
+     NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/my_depthai/======stereo_inertial_nn_node")
     file(RPATH_CHECK
-         FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/my_depthai/stereo_inertial_nn_node"
+         FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/my_depthai/======stereo_inertial_nn_node"
          RPATH "/home/student/Git-projects/robot_project/integratie_ws/devel/lib:/opt/ros/melodic/lib:/usr/local/lib")
   endif()
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/my_depthai" TYPE EXECUTABLE FILES "/home/student/Git-projects/robot_project/integratie_ws/devel/lib/my_depthai/stereo_inertial_nn_node")
-  if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/my_depthai/stereo_inertial_nn_node" AND
-     NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/my_depthai/stereo_inertial_nn_node")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/my_depthai" TYPE EXECUTABLE FILES "/home/student/Git-projects/robot_project/integratie_ws/devel/lib/my_depthai/======stereo_inertial_nn_node")
+  if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/my_depthai/======stereo_inertial_nn_node" AND
+     NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/my_depthai/======stereo_inertial_nn_node")
     file(RPATH_CHANGE
-         FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/my_depthai/stereo_inertial_nn_node"
+         FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/my_depthai/======stereo_inertial_nn_node"
          OLD_RPATH "/home/student/Git-projects/robot_project/integratie_ws/devel/lib:/opt/ros/melodic/lib:/usr/local/lib:"
          NEW_RPATH "/home/student/Git-projects/robot_project/integratie_ws/devel/lib:/opt/ros/melodic/lib:/usr/local/lib")
     if(CMAKE_INSTALL_DO_STRIP)
-      execute_process(COMMAND "/usr/bin/strip" "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/my_depthai/stereo_inertial_nn_node")
+      execute_process(COMMAND "/usr/bin/strip" "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/my_depthai/======stereo_inertial_nn_node")
     endif()
   endif()
 endif()

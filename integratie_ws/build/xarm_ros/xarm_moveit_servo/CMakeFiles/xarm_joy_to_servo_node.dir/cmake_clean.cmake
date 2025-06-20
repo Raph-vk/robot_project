@@ -1,7 +1,7 @@
 file(REMOVE_RECURSE
   "CMakeFiles/xarm_joy_to_servo_node.dir/src/xarm_joystick_input.cpp.o"
-  "/home/student/Git-projects/robot_project/integratie_ws/devel/lib/xarm_moveit_servo/xarm_joy_to_servo_node.pdb"
-  "/home/student/Git-projects/robot_project/integratie_ws/devel/lib/xarm_moveit_servo/xarm_joy_to_servo_node"
+  "/home/student/Git-projects/robot_project/integratie_ws/devel/lib/xarm_moveit_servo/======xarm_joy_to_servo_node.pdb"
+  "/home/student/Git-projects/robot_project/integratie_ws/devel/lib/xarm_moveit_servo/======xarm_joy_to_servo_node"
 )
 
 # Per-language clean rules from dependency scanning.

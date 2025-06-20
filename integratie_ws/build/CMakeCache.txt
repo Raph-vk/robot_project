@@ -14,6 +14,8 @@
 # EXTERNAL cache entries
 ########################
 
+:UNINITIALIZED=======
+
 //Builds the googlemock subproject
 BUILD_GMOCK:BOOL=ON
 
@@ -532,9 +534,6 @@ lib:FILEPATH=/opt/ros/melodic/lib/libtf2.so
 libnop_DIR:PATH=/usr/local/lib/cmake/depthai/dependencies/lib/cmake/libnop
 
 //Value Computed by CMake
-<<<<<<< Updated upstream
-main_pkg_BINARY_DIR:STATIC=/home/student/Git-projects/robot_project/integratie_ws/build/hoofd_pkg
-=======
 lite6_moveit_config_BINARY_DIR:STATIC=/home/student/Git-projects/robot_project/integratie_ws/build/xarm_ros/lite6_moveit_config
 
 //Value Computed by CMake
@@ -542,7 +541,6 @@ lite6_moveit_config_SOURCE_DIR:STATIC=/home/student/Git-projects/robot_project/i
 
 //Value Computed by CMake
 main_pkg_BINARY_DIR:STATIC=/home/student/Git-projects/robot_project/integratie_ws/build/main_pkg
->>>>>>> Stashed changes
 
 //Value Computed by CMake
 main_pkg_SOURCE_DIR:STATIC=/home/student/Git-projects/robot_project/integratie_ws/src/hoofd_pkg

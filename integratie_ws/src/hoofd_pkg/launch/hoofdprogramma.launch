@@ -18,12 +18,10 @@
         output="screen"/>
 
   <!-- 2) Start emergency scripts -->
-  <!-- 
   <node pkg="hoofd_pkg"
         type="emergency.py"
         name="emergency_node"
         output="screen"/> 
-  -->
 
   <!-- ============= subsystems launchen ==============================-->
   <!-- 10) Start de Flask-HMI (open on the web: http://localhost:5000/) -->
@@ -43,8 +41,12 @@
   -->
 
   <!-- 14) Start manipulator_node.py -->
-  <!-- 
+  <!--
   <include file="$(find robotarm)/launch/robotcel.launch"/>  
   -->
+
+  <include file="$(find my_lite6_moveit_config)/launch/realMove_exec.launch">
+    <arg name="robot_ip" value="192.168.1.163"/>
+  </include>
 
 </launch>

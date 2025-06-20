@@ -45,7 +45,7 @@ def status_callback(msg, action_name):
 
 def cancel_actions():
     actions = [
-        '/manipulator_action',
+        #'/manipulator_action',
         '/transport_control',
     ]
 

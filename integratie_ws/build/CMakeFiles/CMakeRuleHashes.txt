@@ -21,7 +21,6 @@ e7c7e6aa1c304735469c33159777c3f5 /home/student/Git-projects/robot_project/integr
 3430c1bbdb79251482f5cf84157cfebf /home/student/Git-projects/robot_project/integratie_ws/devel/include/transportsysteem_pkg/SystemControlFeedback.h
 21a1f92cee0348635ff9465c6530cf87 /home/student/Git-projects/robot_project/integratie_ws/devel/include/transportsysteem_pkg/SystemControlGoal.h
 67babb1422f0f12b1370b659e3e4238d /home/student/Git-projects/robot_project/integratie_ws/devel/include/transportsysteem_pkg/SystemControlResult.h
-<<<<<<< Updated upstream
 2295395ffc79acbf115cfb07b8b3185f /home/student/Git-projects/robot_project/integratie_ws/devel/include/transportsysteem_pkg/TransportControlAction.h
 ad05073a4409fe28da109f2f562d1f0b /home/student/Git-projects/robot_project/integratie_ws/devel/include/transportsysteem_pkg/TransportControlActionFeedback.h
 3e20ca8604f06642963f20e54409e680 /home/student/Git-projects/robot_project/integratie_ws/devel/include/transportsysteem_pkg/TransportControlActionGoal.h
@@ -29,7 +28,6 @@ f6d221ebff7cad215c512052c8dafd0b /home/student/Git-projects/robot_project/integr
 bcc3b16b7cf4e1f9fe4c4870e740b681 /home/student/Git-projects/robot_project/integratie_ws/devel/include/transportsysteem_pkg/TransportControlFeedback.h
 917a709db128a392fa9650f93b04c088 /home/student/Git-projects/robot_project/integratie_ws/devel/include/transportsysteem_pkg/TransportControlGoal.h
 b539375a7fab0cc78a9b0e8fae81c81e /home/student/Git-projects/robot_project/integratie_ws/devel/include/transportsysteem_pkg/TransportControlResult.h
-=======
 3d642830dd7cac625021c2344805c0be /home/student/Git-projects/robot_project/integratie_ws/devel/include/xarm_gripper/MoveAction.h
 6cf50bf1481968cfa1d830d7b16f013a /home/student/Git-projects/robot_project/integratie_ws/devel/include/xarm_gripper/MoveActionFeedback.h
 1f81aa3c8ef8a35a1d9054b44e530f5a /home/student/Git-projects/robot_project/integratie_ws/devel/include/xarm_gripper/MoveActionGoal.h
@@ -77,7 +75,6 @@ f38d641715f3f62bb68f2fa7b0a8152c /home/student/Git-projects/robot_project/integr
 3b9736418fe714055eef7b932a61df99 /home/student/Git-projects/robot_project/integratie_ws/devel/include/xarm_planner/joint_plan.h
 ebf9aa900b90d1ce18fbc2965196128a /home/student/Git-projects/robot_project/integratie_ws/devel/include/xarm_planner/pose_plan.h
 e768aee7f5b2bdebc7135183c3acf30e /home/student/Git-projects/robot_project/integratie_ws/devel/include/xarm_planner/single_straight_plan.h
->>>>>>> Stashed changes
 35d790cdeb8cc4fbf567ba10e09dea27 /home/student/Git-projects/robot_project/integratie_ws/devel/lib/python2.7/dist-packages/depthai_ros_msgs/msg/_AutoFocusCtrl.py
 af4c5c047ec1ac107dd0bf0601e20564 /home/student/Git-projects/robot_project/integratie_ws/devel/lib/python2.7/dist-packages/depthai_ros_msgs/msg/_HandLandmark.py
 ce1fca2afb27b9b8bde217ca7b60b23e /home/student/Git-projects/robot_project/integratie_ws/devel/lib/python2.7/dist-packages/depthai_ros_msgs/msg/_HandLandmarkArray.py
@@ -182,7 +179,6 @@ c58144a02dd53f1f10e74c51e1b12fac /home/student/Git-projects/robot_project/integr
 a0aa086bb525f7d4c3a48ac16598a2f2 /home/student/Git-projects/robot_project/integratie_ws/devel/share/common-lisp/ros/transportsysteem_pkg/msg/SystemControlFeedback.lisp
 3b3169adae7048734102969d32b836ec /home/student/Git-projects/robot_project/integratie_ws/devel/share/common-lisp/ros/transportsysteem_pkg/msg/SystemControlGoal.lisp
 1f812747900d6cd44ed60f4a36ecf656 /home/student/Git-projects/robot_project/integratie_ws/devel/share/common-lisp/ros/transportsysteem_pkg/msg/SystemControlResult.lisp
-<<<<<<< Updated upstream
 c2f61000f3cc50526bf29e8ca916c9a1 /home/student/Git-projects/robot_project/integratie_ws/devel/share/common-lisp/ros/transportsysteem_pkg/msg/TransportControlAction.lisp
 6248dce33eeb70af6003a08e9a597ee1 /home/student/Git-projects/robot_project/integratie_ws/devel/share/common-lisp/ros/transportsysteem_pkg/msg/TransportControlActionFeedback.lisp
 e7652492f38532eee660fbb02397e4df /home/student/Git-projects/robot_project/integratie_ws/devel/share/common-lisp/ros/transportsysteem_pkg/msg/TransportControlActionGoal.lisp
@@ -190,7 +186,6 @@ e7652492f38532eee660fbb02397e4df /home/student/Git-projects/robot_project/integr
 6fdf02faddec0da2396cc94e4e391413 /home/student/Git-projects/robot_project/integratie_ws/devel/share/common-lisp/ros/transportsysteem_pkg/msg/TransportControlFeedback.lisp
 f494408244bd49c40ace75b55c616a1a /home/student/Git-projects/robot_project/integratie_ws/devel/share/common-lisp/ros/transportsysteem_pkg/msg/TransportControlGoal.lisp
 7fae96b98dbc8db288fcdb0bed44238f /home/student/Git-projects/robot_project/integratie_ws/devel/share/common-lisp/ros/transportsysteem_pkg/msg/TransportControlResult.lisp
-=======
 d38c96ce1e74853807da6628a326713b /home/student/Git-projects/robot_project/integratie_ws/devel/share/common-lisp/ros/xarm_gripper/msg/MoveAction.lisp
 eca377cb52a5b678fe9ca9c2b95f271f /home/student/Git-projects/robot_project/integratie_ws/devel/share/common-lisp/ros/xarm_gripper/msg/MoveActionFeedback.lisp
 c3d3ac9889e5fb3b61481eff64b74675 /home/student/Git-projects/robot_project/integratie_ws/devel/share/common-lisp/ros/xarm_gripper/msg/MoveActionGoal.lisp
@@ -238,7 +233,6 @@ e6ebe2a77560d0f5bd3fd98c9b037602 /home/student/Git-projects/robot_project/integr
 ad660385ae31f9003b81a0f3fa7fc85a /home/student/Git-projects/robot_project/integratie_ws/devel/share/common-lisp/ros/xarm_planner/srv/joint_plan.lisp
 69434af30b8f2bde6717f0451293702e /home/student/Git-projects/robot_project/integratie_ws/devel/share/common-lisp/ros/xarm_planner/srv/pose_plan.lisp
 94ef1571cd21da4f8bc11b46666aeb7e /home/student/Git-projects/robot_project/integratie_ws/devel/share/common-lisp/ros/xarm_planner/srv/single_straight_plan.lisp
->>>>>>> Stashed changes
 4104b536bb7698d2043de94a457967ba /home/student/Git-projects/robot_project/integratie_ws/devel/share/gennodejs/ros/depthai_ros_msgs/msg/AutoFocusCtrl.js
 5c1e03593782228d32acee87ab8d0823 /home/student/Git-projects/robot_project/integratie_ws/devel/share/gennodejs/ros/depthai_ros_msgs/msg/HandLandmark.js
 6676d25e3975648c8fc08f171ecd8988 /home/student/Git-projects/robot_project/integratie_ws/devel/share/gennodejs/ros/depthai_ros_msgs/msg/HandLandmarkArray.js
@@ -260,7 +254,6 @@ fb813cc1b16e13fe6e63c559d8fe0dc7 /home/student/Git-projects/robot_project/integr
 1365117b3a7fdf1c4d9f72f108341c0b /home/student/Git-projects/robot_project/integratie_ws/devel/share/gennodejs/ros/transportsysteem_pkg/msg/SystemControlFeedback.js
 accbc9fd673e38f50505198b5f97a503 /home/student/Git-projects/robot_project/integratie_ws/devel/share/gennodejs/ros/transportsysteem_pkg/msg/SystemControlGoal.js
 18789043623d8e43d8d79cb5a7601412 /home/student/Git-projects/robot_project/integratie_ws/devel/share/gennodejs/ros/transportsysteem_pkg/msg/SystemControlResult.js
-<<<<<<< Updated upstream
 aef7caa1cdb8ba09dbc341f55615e3f1 /home/student/Git-projects/robot_project/integratie_ws/devel/share/gennodejs/ros/transportsysteem_pkg/msg/TransportControlAction.js
 9d7312281eebe81bb775faa4e4e043b0 /home/student/Git-projects/robot_project/integratie_ws/devel/share/gennodejs/ros/transportsysteem_pkg/msg/TransportControlActionFeedback.js
 7f484882f06f46d74bf8ae628da3ca64 /home/student/Git-projects/robot_project/integratie_ws/devel/share/gennodejs/ros/transportsysteem_pkg/msg/TransportControlActionGoal.js
@@ -268,7 +261,6 @@ aef7caa1cdb8ba09dbc341f55615e3f1 /home/student/Git-projects/robot_project/integr
 cab2f22f16aae54295ba1d89e4573034 /home/student/Git-projects/robot_project/integratie_ws/devel/share/gennodejs/ros/transportsysteem_pkg/msg/TransportControlFeedback.js
 ebdb33051067815dfdd2cfb7d8e77bde /home/student/Git-projects/robot_project/integratie_ws/devel/share/gennodejs/ros/transportsysteem_pkg/msg/TransportControlGoal.js
 de9aa95195ed57140613ae8280d0685d /home/student/Git-projects/robot_project/integratie_ws/devel/share/gennodejs/ros/transportsysteem_pkg/msg/TransportControlResult.js
-=======
 876d75b24824e0d2057c6f32b99ef0a5 /home/student/Git-projects/robot_project/integratie_ws/devel/share/gennodejs/ros/xarm_gripper/msg/MoveAction.js
 a92343d358bea04ab58f4e285b3ef9a5 /home/student/Git-projects/robot_project/integratie_ws/devel/share/gennodejs/ros/xarm_gripper/msg/MoveActionFeedback.js
 90cf888dfebde521609c2a6c542de838 /home/student/Git-projects/robot_project/integratie_ws/devel/share/gennodejs/ros/xarm_gripper/msg/MoveActionGoal.js
@@ -316,7 +308,6 @@ f742407c1bed1959238892d8cc5814a6 /home/student/Git-projects/robot_project/integr
 85db1836cf8ed7cd2514a446d03b8d53 /home/student/Git-projects/robot_project/integratie_ws/devel/share/gennodejs/ros/xarm_planner/srv/joint_plan.js
 019080b9b32290540f41bffeacaa53ef /home/student/Git-projects/robot_project/integratie_ws/devel/share/gennodejs/ros/xarm_planner/srv/pose_plan.js
 0a1dc6b9c2e0e3978e07a5b823ba235e /home/student/Git-projects/robot_project/integratie_ws/devel/share/gennodejs/ros/xarm_planner/srv/single_straight_plan.js
->>>>>>> Stashed changes
 0fbb9191c9d1ae9f9a3b5053add907a5 /home/student/Git-projects/robot_project/integratie_ws/devel/share/roseus/ros/depthai_ros_msgs/manifest.l
 62bc34608fd83e0e88d0d2d5080a1969 /home/student/Git-projects/robot_project/integratie_ws/devel/share/roseus/ros/depthai_ros_msgs/msg/AutoFocusCtrl.l
 edb0d26725b56abe1614a3213a565bba /home/student/Git-projects/robot_project/integratie_ws/devel/share/roseus/ros/depthai_ros_msgs/msg/HandLandmark.l
@@ -341,7 +332,6 @@ c1b6932acd9246e4cb45c5687fbdbcfb /home/student/Git-projects/robot_project/integr
 523162a573ce789c884e1ff7dd543ff5 /home/student/Git-projects/robot_project/integratie_ws/devel/share/roseus/ros/transportsysteem_pkg/msg/SystemControlFeedback.l
 39f872f357ab042bcd5b799a932deecc /home/student/Git-projects/robot_project/integratie_ws/devel/share/roseus/ros/transportsysteem_pkg/msg/SystemControlGoal.l
 16df66c6312a029c30ab75dfcabcd91f /home/student/Git-projects/robot_project/integratie_ws/devel/share/roseus/ros/transportsysteem_pkg/msg/SystemControlResult.l
-<<<<<<< Updated upstream
 4b128c5fa1e49ca65267e0b54d8f714c /home/student/Git-projects/robot_project/integratie_ws/devel/share/roseus/ros/transportsysteem_pkg/msg/TransportControlAction.l
 d0dbb854458a56cc35388f9f22101528 /home/student/Git-projects/robot_project/integratie_ws/devel/share/roseus/ros/transportsysteem_pkg/msg/TransportControlActionFeedback.l
 ed78d1e470d1ddd453100cb8a91bcdf9 /home/student/Git-projects/robot_project/integratie_ws/devel/share/roseus/ros/transportsysteem_pkg/msg/TransportControlActionGoal.l
@@ -349,7 +339,6 @@ a56c826f19796851beafc9d96623b3c6 /home/student/Git-projects/robot_project/integr
 3e638e63fb44ee7f1ecb617a1041e21d /home/student/Git-projects/robot_project/integratie_ws/devel/share/roseus/ros/transportsysteem_pkg/msg/TransportControlFeedback.l
 a0e2aa7b6b81dce57d271d7671220f84 /home/student/Git-projects/robot_project/integratie_ws/devel/share/roseus/ros/transportsysteem_pkg/msg/TransportControlGoal.l
 1c6eb03583d73aaf3c45589e47923c5d /home/student/Git-projects/robot_project/integratie_ws/devel/share/roseus/ros/transportsysteem_pkg/msg/TransportControlResult.l
-=======
 899caa6cc07742550d5764109236bd0d /home/student/Git-projects/robot_project/integratie_ws/devel/share/roseus/ros/xarm_gripper/manifest.l
 1c8e32f17b901afc8a9027c0bd69f06f /home/student/Git-projects/robot_project/integratie_ws/devel/share/roseus/ros/xarm_gripper/msg/MoveAction.l
 9497aca56512223611d8b191984c9c29 /home/student/Git-projects/robot_project/integratie_ws/devel/share/roseus/ros/xarm_gripper/msg/MoveActionFeedback.l
@@ -400,7 +389,6 @@ efec78527d7a627ed9320f47d33dfcb1 /home/student/Git-projects/robot_project/integr
 4b59953e1e2d31dc90c1dc5d43d9e664 /home/student/Git-projects/robot_project/integratie_ws/devel/share/roseus/ros/xarm_planner/srv/joint_plan.l
 af84f46047f968b88376767875b2ff26 /home/student/Git-projects/robot_project/integratie_ws/devel/share/roseus/ros/xarm_planner/srv/pose_plan.l
 6c2e87311832e9e602ea855c035faae9 /home/student/Git-projects/robot_project/integratie_ws/devel/share/roseus/ros/xarm_planner/srv/single_straight_plan.l
->>>>>>> Stashed changes
 cc925c57304596fbab2744e2ff7a1d89 CMakeFiles/clean_test_results
 fd910e57e57c5d8d93f2261f15640298 depth-ai-avans/depthai_ros_driver/CMakeFiles/depthai_ros_driver_gencfg
 41bdf79305aca29a24b1789bfd476130 depth-ai-avans/depthai_ros_msgs/CMakeFiles/_depthai_ros_msgs_generate_messages_check_deps_AutoFocusCtrl

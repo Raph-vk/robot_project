@@ -3085,171 +3085,7 @@ hmi_interface/preinstall:
 .PHONY : hmi_interface/preinstall
 
 #=============================================================================
-<<<<<<< Updated upstream
-# Target rules for target hmi_interface/CMakeFiles/std_msgs_generate_messages_eus.dir
-
-# All Build rule for target.
-hmi_interface/CMakeFiles/std_msgs_generate_messages_eus.dir/all:
-	$(MAKE) -f hmi_interface/CMakeFiles/std_msgs_generate_messages_eus.dir/build.make hmi_interface/CMakeFiles/std_msgs_generate_messages_eus.dir/depend
-	$(MAKE) -f hmi_interface/CMakeFiles/std_msgs_generate_messages_eus.dir/build.make hmi_interface/CMakeFiles/std_msgs_generate_messages_eus.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/student/Git-projects/robot_project/integratie_ws/build/CMakeFiles --progress-num= "Built target std_msgs_generate_messages_eus"
-.PHONY : hmi_interface/CMakeFiles/std_msgs_generate_messages_eus.dir/all
-
-# Build rule for subdir invocation for target.
-hmi_interface/CMakeFiles/std_msgs_generate_messages_eus.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/student/Git-projects/robot_project/integratie_ws/build/CMakeFiles 0
-	$(MAKE) -f CMakeFiles/Makefile2 hmi_interface/CMakeFiles/std_msgs_generate_messages_eus.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/student/Git-projects/robot_project/integratie_ws/build/CMakeFiles 0
-.PHONY : hmi_interface/CMakeFiles/std_msgs_generate_messages_eus.dir/rule
-
-# Convenience name for target.
-std_msgs_generate_messages_eus: hmi_interface/CMakeFiles/std_msgs_generate_messages_eus.dir/rule
-
-.PHONY : std_msgs_generate_messages_eus
-
-# clean rule for target.
-hmi_interface/CMakeFiles/std_msgs_generate_messages_eus.dir/clean:
-	$(MAKE) -f hmi_interface/CMakeFiles/std_msgs_generate_messages_eus.dir/build.make hmi_interface/CMakeFiles/std_msgs_generate_messages_eus.dir/clean
-.PHONY : hmi_interface/CMakeFiles/std_msgs_generate_messages_eus.dir/clean
-
-# clean rule for target.
-clean: hmi_interface/CMakeFiles/std_msgs_generate_messages_eus.dir/clean
-
-.PHONY : clean
-
-#=============================================================================
-# Target rules for target hmi_interface/CMakeFiles/std_msgs_generate_messages_cpp.dir
-
-# All Build rule for target.
-hmi_interface/CMakeFiles/std_msgs_generate_messages_cpp.dir/all:
-	$(MAKE) -f hmi_interface/CMakeFiles/std_msgs_generate_messages_cpp.dir/build.make hmi_interface/CMakeFiles/std_msgs_generate_messages_cpp.dir/depend
-	$(MAKE) -f hmi_interface/CMakeFiles/std_msgs_generate_messages_cpp.dir/build.make hmi_interface/CMakeFiles/std_msgs_generate_messages_cpp.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/student/Git-projects/robot_project/integratie_ws/build/CMakeFiles --progress-num= "Built target std_msgs_generate_messages_cpp"
-.PHONY : hmi_interface/CMakeFiles/std_msgs_generate_messages_cpp.dir/all
-
-# Build rule for subdir invocation for target.
-hmi_interface/CMakeFiles/std_msgs_generate_messages_cpp.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/student/Git-projects/robot_project/integratie_ws/build/CMakeFiles 0
-	$(MAKE) -f CMakeFiles/Makefile2 hmi_interface/CMakeFiles/std_msgs_generate_messages_cpp.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/student/Git-projects/robot_project/integratie_ws/build/CMakeFiles 0
-.PHONY : hmi_interface/CMakeFiles/std_msgs_generate_messages_cpp.dir/rule
-
-# Convenience name for target.
-std_msgs_generate_messages_cpp: hmi_interface/CMakeFiles/std_msgs_generate_messages_cpp.dir/rule
-
-.PHONY : std_msgs_generate_messages_cpp
-
-# clean rule for target.
-hmi_interface/CMakeFiles/std_msgs_generate_messages_cpp.dir/clean:
-	$(MAKE) -f hmi_interface/CMakeFiles/std_msgs_generate_messages_cpp.dir/build.make hmi_interface/CMakeFiles/std_msgs_generate_messages_cpp.dir/clean
-.PHONY : hmi_interface/CMakeFiles/std_msgs_generate_messages_cpp.dir/clean
-
-# clean rule for target.
-clean: hmi_interface/CMakeFiles/std_msgs_generate_messages_cpp.dir/clean
-
-.PHONY : clean
-
-#=============================================================================
-# Target rules for target hmi_interface/CMakeFiles/std_msgs_generate_messages_lisp.dir
-
-# All Build rule for target.
-hmi_interface/CMakeFiles/std_msgs_generate_messages_lisp.dir/all:
-	$(MAKE) -f hmi_interface/CMakeFiles/std_msgs_generate_messages_lisp.dir/build.make hmi_interface/CMakeFiles/std_msgs_generate_messages_lisp.dir/depend
-	$(MAKE) -f hmi_interface/CMakeFiles/std_msgs_generate_messages_lisp.dir/build.make hmi_interface/CMakeFiles/std_msgs_generate_messages_lisp.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/student/Git-projects/robot_project/integratie_ws/build/CMakeFiles --progress-num= "Built target std_msgs_generate_messages_lisp"
-.PHONY : hmi_interface/CMakeFiles/std_msgs_generate_messages_lisp.dir/all
-
-# Build rule for subdir invocation for target.
-hmi_interface/CMakeFiles/std_msgs_generate_messages_lisp.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/student/Git-projects/robot_project/integratie_ws/build/CMakeFiles 0
-	$(MAKE) -f CMakeFiles/Makefile2 hmi_interface/CMakeFiles/std_msgs_generate_messages_lisp.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/student/Git-projects/robot_project/integratie_ws/build/CMakeFiles 0
-.PHONY : hmi_interface/CMakeFiles/std_msgs_generate_messages_lisp.dir/rule
-
-# Convenience name for target.
-std_msgs_generate_messages_lisp: hmi_interface/CMakeFiles/std_msgs_generate_messages_lisp.dir/rule
-
-.PHONY : std_msgs_generate_messages_lisp
-
-# clean rule for target.
-hmi_interface/CMakeFiles/std_msgs_generate_messages_lisp.dir/clean:
-	$(MAKE) -f hmi_interface/CMakeFiles/std_msgs_generate_messages_lisp.dir/build.make hmi_interface/CMakeFiles/std_msgs_generate_messages_lisp.dir/clean
-.PHONY : hmi_interface/CMakeFiles/std_msgs_generate_messages_lisp.dir/clean
-
-# clean rule for target.
-clean: hmi_interface/CMakeFiles/std_msgs_generate_messages_lisp.dir/clean
-
-.PHONY : clean
-
-#=============================================================================
-# Target rules for target hmi_interface/CMakeFiles/std_msgs_generate_messages_nodejs.dir
-
-# All Build rule for target.
-hmi_interface/CMakeFiles/std_msgs_generate_messages_nodejs.dir/all:
-	$(MAKE) -f hmi_interface/CMakeFiles/std_msgs_generate_messages_nodejs.dir/build.make hmi_interface/CMakeFiles/std_msgs_generate_messages_nodejs.dir/depend
-	$(MAKE) -f hmi_interface/CMakeFiles/std_msgs_generate_messages_nodejs.dir/build.make hmi_interface/CMakeFiles/std_msgs_generate_messages_nodejs.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/student/Git-projects/robot_project/integratie_ws/build/CMakeFiles --progress-num= "Built target std_msgs_generate_messages_nodejs"
-.PHONY : hmi_interface/CMakeFiles/std_msgs_generate_messages_nodejs.dir/all
-
-# Build rule for subdir invocation for target.
-hmi_interface/CMakeFiles/std_msgs_generate_messages_nodejs.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/student/Git-projects/robot_project/integratie_ws/build/CMakeFiles 0
-	$(MAKE) -f CMakeFiles/Makefile2 hmi_interface/CMakeFiles/std_msgs_generate_messages_nodejs.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/student/Git-projects/robot_project/integratie_ws/build/CMakeFiles 0
-.PHONY : hmi_interface/CMakeFiles/std_msgs_generate_messages_nodejs.dir/rule
-
-# Convenience name for target.
-std_msgs_generate_messages_nodejs: hmi_interface/CMakeFiles/std_msgs_generate_messages_nodejs.dir/rule
-
-.PHONY : std_msgs_generate_messages_nodejs
-
-# clean rule for target.
-hmi_interface/CMakeFiles/std_msgs_generate_messages_nodejs.dir/clean:
-	$(MAKE) -f hmi_interface/CMakeFiles/std_msgs_generate_messages_nodejs.dir/build.make hmi_interface/CMakeFiles/std_msgs_generate_messages_nodejs.dir/clean
-.PHONY : hmi_interface/CMakeFiles/std_msgs_generate_messages_nodejs.dir/clean
-
-# clean rule for target.
-clean: hmi_interface/CMakeFiles/std_msgs_generate_messages_nodejs.dir/clean
-
-.PHONY : clean
-
-#=============================================================================
-# Target rules for target hmi_interface/CMakeFiles/std_msgs_generate_messages_py.dir
-
-# All Build rule for target.
-hmi_interface/CMakeFiles/std_msgs_generate_messages_py.dir/all:
-	$(MAKE) -f hmi_interface/CMakeFiles/std_msgs_generate_messages_py.dir/build.make hmi_interface/CMakeFiles/std_msgs_generate_messages_py.dir/depend
-	$(MAKE) -f hmi_interface/CMakeFiles/std_msgs_generate_messages_py.dir/build.make hmi_interface/CMakeFiles/std_msgs_generate_messages_py.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/student/Git-projects/robot_project/integratie_ws/build/CMakeFiles --progress-num= "Built target std_msgs_generate_messages_py"
-.PHONY : hmi_interface/CMakeFiles/std_msgs_generate_messages_py.dir/all
-
-# Build rule for subdir invocation for target.
-hmi_interface/CMakeFiles/std_msgs_generate_messages_py.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/student/Git-projects/robot_project/integratie_ws/build/CMakeFiles 0
-	$(MAKE) -f CMakeFiles/Makefile2 hmi_interface/CMakeFiles/std_msgs_generate_messages_py.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/student/Git-projects/robot_project/integratie_ws/build/CMakeFiles 0
-.PHONY : hmi_interface/CMakeFiles/std_msgs_generate_messages_py.dir/rule
-
-# Convenience name for target.
-std_msgs_generate_messages_py: hmi_interface/CMakeFiles/std_msgs_generate_messages_py.dir/rule
-
-.PHONY : std_msgs_generate_messages_py
-
-# clean rule for target.
-hmi_interface/CMakeFiles/std_msgs_generate_messages_py.dir/clean:
-	$(MAKE) -f hmi_interface/CMakeFiles/std_msgs_generate_messages_py.dir/build.make hmi_interface/CMakeFiles/std_msgs_generate_messages_py.dir/clean
-.PHONY : hmi_interface/CMakeFiles/std_msgs_generate_messages_py.dir/clean
-
-# clean rule for target.
-clean: hmi_interface/CMakeFiles/std_msgs_generate_messages_py.dir/clean
-
-.PHONY : clean
-
-#=============================================================================
 # Directory level rules for directory hoofd_pkg
-=======
-# Directory level rules for directory main_pkg
->>>>>>> Stashed changes
 
 # Convenience name for "all" pass in the directory.
 hoofd_pkg/all:
@@ -3360,13 +3196,8 @@ clean: transportsysteem_pkg/CMakeFiles/transportsysteem_pkg_genpy.dir/clean
 # Target rules for target transportsysteem_pkg/CMakeFiles/transportsysteem_pkg_generate_messages_lisp.dir
 
 # All Build rule for target.
-<<<<<<< Updated upstream
-transportsysteem_pkg/CMakeFiles/transportsysteem_pkg_generate_messages_lisp.dir/all: hmi_interface/CMakeFiles/std_msgs_generate_messages_lisp.dir/all
-transportsysteem_pkg/CMakeFiles/transportsysteem_pkg_generate_messages_lisp.dir/all: transportsysteem_pkg/CMakeFiles/_transportsysteem_pkg_generate_messages_check_deps_TransportControlActionFeedback.dir/all
-=======
 transportsysteem_pkg/CMakeFiles/transportsysteem_pkg_generate_messages_lisp.dir/all: xarm_ros/xarm_msgs/CMakeFiles/std_msgs_generate_messages_lisp.dir/all
-transportsysteem_pkg/CMakeFiles/transportsysteem_pkg_generate_messages_lisp.dir/all: transportsysteem_pkg/CMakeFiles/_transportsysteem_pkg_generate_messages_check_deps_SystemControlActionResult.dir/all
->>>>>>> Stashed changes
+transportsysteem_pkg/CMakeFiles/transportsysteem_pkg_generate_messages_lisp.dir/all: transportsysteem_pkg/CMakeFiles/_transportsysteem_pkg_generate_messages_check_deps_TransportControlActionFeedback.dir/all
 transportsysteem_pkg/CMakeFiles/transportsysteem_pkg_generate_messages_lisp.dir/all: transportsysteem_pkg/CMakeFiles/actionlib_msgs_generate_messages_lisp.dir/all
 transportsysteem_pkg/CMakeFiles/transportsysteem_pkg_generate_messages_lisp.dir/all: transportsysteem_pkg/CMakeFiles/_transportsysteem_pkg_generate_messages_check_deps_TransportControlResult.dir/all
 transportsysteem_pkg/CMakeFiles/transportsysteem_pkg_generate_messages_lisp.dir/all: transportsysteem_pkg/CMakeFiles/_transportsysteem_pkg_generate_messages_check_deps_TransportControlActionGoal.dir/all
@@ -3405,15 +3236,10 @@ clean: transportsysteem_pkg/CMakeFiles/transportsysteem_pkg_generate_messages_li
 # Target rules for target transportsysteem_pkg/CMakeFiles/transportsysteem_pkg_generate_messages_nodejs.dir
 
 # All Build rule for target.
-<<<<<<< Updated upstream
-transportsysteem_pkg/CMakeFiles/transportsysteem_pkg_generate_messages_nodejs.dir/all: hmi_interface/CMakeFiles/std_msgs_generate_messages_nodejs.dir/all
+transportsysteem_pkg/CMakeFiles/transportsysteem_pkg_generate_messages_nodejs.dir/all: xarm_ros/xarm_msgs/CMakeFiles/std_msgs_generate_messages_nodejs.dir/all
 transportsysteem_pkg/CMakeFiles/transportsysteem_pkg_generate_messages_nodejs.dir/all: transportsysteem_pkg/CMakeFiles/_transportsysteem_pkg_generate_messages_check_deps_TransportControlActionFeedback.dir/all
 transportsysteem_pkg/CMakeFiles/transportsysteem_pkg_generate_messages_nodejs.dir/all: transportsysteem_pkg/CMakeFiles/_transportsysteem_pkg_generate_messages_check_deps_TransportControlResult.dir/all
 transportsysteem_pkg/CMakeFiles/transportsysteem_pkg_generate_messages_nodejs.dir/all: transportsysteem_pkg/CMakeFiles/_transportsysteem_pkg_generate_messages_check_deps_TransportControlActionGoal.dir/all
-=======
-transportsysteem_pkg/CMakeFiles/transportsysteem_pkg_generate_messages_nodejs.dir/all: xarm_ros/xarm_msgs/CMakeFiles/std_msgs_generate_messages_nodejs.dir/all
-transportsysteem_pkg/CMakeFiles/transportsysteem_pkg_generate_messages_nodejs.dir/all: transportsysteem_pkg/CMakeFiles/_transportsysteem_pkg_generate_messages_check_deps_SystemControlActionResult.dir/all
->>>>>>> Stashed changes
 transportsysteem_pkg/CMakeFiles/transportsysteem_pkg_generate_messages_nodejs.dir/all: transportsysteem_pkg/CMakeFiles/actionlib_msgs_generate_messages_nodejs.dir/all
 transportsysteem_pkg/CMakeFiles/transportsysteem_pkg_generate_messages_nodejs.dir/all: transportsysteem_pkg/CMakeFiles/_transportsysteem_pkg_generate_messages_check_deps_TransportControlActionResult.dir/all
 transportsysteem_pkg/CMakeFiles/transportsysteem_pkg_generate_messages_nodejs.dir/all: transportsysteem_pkg/CMakeFiles/_transportsysteem_pkg_generate_messages_check_deps_TransportControlAction.dir/all
@@ -3499,7 +3325,7 @@ transportsysteem_pkg/CMakeFiles/transportsysteem_pkg_gennodejs.dir/all: transpor
 
 # Build rule for subdir invocation for target.
 transportsysteem_pkg/CMakeFiles/transportsysteem_pkg_gennodejs.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/student/Git-projects/robot_project/integratie_ws/build/CMakeFiles 4
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/student/Git-projects/robot_project/integratie_ws/build/CMakeFiles 1
 	$(MAKE) -f CMakeFiles/Makefile2 transportsysteem_pkg/CMakeFiles/transportsysteem_pkg_gennodejs.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/student/Git-projects/robot_project/integratie_ws/build/CMakeFiles 0
 .PHONY : transportsysteem_pkg/CMakeFiles/transportsysteem_pkg_gennodejs.dir/rule
@@ -3531,7 +3357,7 @@ transportsysteem_pkg/CMakeFiles/transportsysteem_pkg_genlisp.dir/all: transports
 
 # Build rule for subdir invocation for target.
 transportsysteem_pkg/CMakeFiles/transportsysteem_pkg_genlisp.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/student/Git-projects/robot_project/integratie_ws/build/CMakeFiles 4
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/student/Git-projects/robot_project/integratie_ws/build/CMakeFiles 2
 	$(MAKE) -f CMakeFiles/Makefile2 transportsysteem_pkg/CMakeFiles/transportsysteem_pkg_genlisp.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/student/Git-projects/robot_project/integratie_ws/build/CMakeFiles 0
 .PHONY : transportsysteem_pkg/CMakeFiles/transportsysteem_pkg_genlisp.dir/rule
@@ -3619,13 +3445,8 @@ clean: transportsysteem_pkg/CMakeFiles/actionlib_msgs_generate_messages_py.dir/c
 # Target rules for target transportsysteem_pkg/CMakeFiles/transportsysteem_pkg_generate_messages_py.dir
 
 # All Build rule for target.
-<<<<<<< Updated upstream
-transportsysteem_pkg/CMakeFiles/transportsysteem_pkg_generate_messages_py.dir/all: hmi_interface/CMakeFiles/std_msgs_generate_messages_py.dir/all
-transportsysteem_pkg/CMakeFiles/transportsysteem_pkg_generate_messages_py.dir/all: transportsysteem_pkg/CMakeFiles/_transportsysteem_pkg_generate_messages_check_deps_TransportControlActionFeedback.dir/all
-=======
 transportsysteem_pkg/CMakeFiles/transportsysteem_pkg_generate_messages_py.dir/all: xarm_ros/xarm_msgs/CMakeFiles/std_msgs_generate_messages_py.dir/all
-transportsysteem_pkg/CMakeFiles/transportsysteem_pkg_generate_messages_py.dir/all: transportsysteem_pkg/CMakeFiles/_transportsysteem_pkg_generate_messages_check_deps_SystemControlActionResult.dir/all
->>>>>>> Stashed changes
+transportsysteem_pkg/CMakeFiles/transportsysteem_pkg_generate_messages_py.dir/all: transportsysteem_pkg/CMakeFiles/_transportsysteem_pkg_generate_messages_check_deps_TransportControlActionFeedback.dir/all
 transportsysteem_pkg/CMakeFiles/transportsysteem_pkg_generate_messages_py.dir/all: transportsysteem_pkg/CMakeFiles/actionlib_msgs_generate_messages_py.dir/all
 transportsysteem_pkg/CMakeFiles/transportsysteem_pkg_generate_messages_py.dir/all: transportsysteem_pkg/CMakeFiles/_transportsysteem_pkg_generate_messages_check_deps_TransportControlResult.dir/all
 transportsysteem_pkg/CMakeFiles/transportsysteem_pkg_generate_messages_py.dir/all: transportsysteem_pkg/CMakeFiles/_transportsysteem_pkg_generate_messages_check_deps_TransportControlActionGoal.dir/all
@@ -3767,13 +3588,7 @@ transportsysteem_pkg/CMakeFiles/actionlib_msgs_generate_messages_eus.dir/all:
 .PHONY : transportsysteem_pkg/CMakeFiles/actionlib_msgs_generate_messages_eus.dir/all
 
 # Build rule for subdir invocation for target.
-<<<<<<< Updated upstream
 transportsysteem_pkg/CMakeFiles/actionlib_msgs_generate_messages_eus.dir/rule: cmake_check_build_system
-=======
-transportsysteem_pkg/CMakeFiles/transportsysteem_pkg_gennodejs.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/student/Git-projects/robot_project/integratie_ws/build/CMakeFiles 1
-	$(MAKE) -f CMakeFiles/Makefile2 transportsysteem_pkg/CMakeFiles/transportsysteem_pkg_gennodejs.dir/all
->>>>>>> Stashed changes
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/student/Git-projects/robot_project/integratie_ws/build/CMakeFiles 0
 	$(MAKE) -f CMakeFiles/Makefile2 transportsysteem_pkg/CMakeFiles/actionlib_msgs_generate_messages_eus.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/student/Git-projects/robot_project/integratie_ws/build/CMakeFiles 0
@@ -3805,13 +3620,7 @@ transportsysteem_pkg/CMakeFiles/_transportsysteem_pkg_generate_messages_check_de
 .PHONY : transportsysteem_pkg/CMakeFiles/_transportsysteem_pkg_generate_messages_check_deps_TransportControlResult.dir/all
 
 # Build rule for subdir invocation for target.
-<<<<<<< Updated upstream
 transportsysteem_pkg/CMakeFiles/_transportsysteem_pkg_generate_messages_check_deps_TransportControlResult.dir/rule: cmake_check_build_system
-=======
-transportsysteem_pkg/CMakeFiles/transportsysteem_pkg_genlisp.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/student/Git-projects/robot_project/integratie_ws/build/CMakeFiles 2
-	$(MAKE) -f CMakeFiles/Makefile2 transportsysteem_pkg/CMakeFiles/transportsysteem_pkg_genlisp.dir/all
->>>>>>> Stashed changes
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/student/Git-projects/robot_project/integratie_ws/build/CMakeFiles 0
 	$(MAKE) -f CMakeFiles/Makefile2 transportsysteem_pkg/CMakeFiles/_transportsysteem_pkg_generate_messages_check_deps_TransportControlResult.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/student/Git-projects/robot_project/integratie_ws/build/CMakeFiles 0
@@ -3964,16 +3773,9 @@ clean: transportsysteem_pkg/CMakeFiles/_transportsysteem_pkg_generate_messages_c
 # Target rules for target transportsysteem_pkg/CMakeFiles/transportsysteem_pkg_generate_messages_cpp.dir
 
 # All Build rule for target.
-<<<<<<< Updated upstream
-transportsysteem_pkg/CMakeFiles/transportsysteem_pkg_generate_messages_cpp.dir/all: hmi_interface/CMakeFiles/std_msgs_generate_messages_cpp.dir/all
+transportsysteem_pkg/CMakeFiles/transportsysteem_pkg_generate_messages_cpp.dir/all: xarm_ros/xarm_msgs/CMakeFiles/std_msgs_generate_messages_cpp.dir/all
 transportsysteem_pkg/CMakeFiles/transportsysteem_pkg_generate_messages_cpp.dir/all: transportsysteem_pkg/CMakeFiles/_transportsysteem_pkg_generate_messages_check_deps_TransportControlActionFeedback.dir/all
 transportsysteem_pkg/CMakeFiles/transportsysteem_pkg_generate_messages_cpp.dir/all: transportsysteem_pkg/CMakeFiles/_transportsysteem_pkg_generate_messages_check_deps_TransportControlResult.dir/all
-=======
-transportsysteem_pkg/CMakeFiles/transportsysteem_pkg_generate_messages_cpp.dir/all: xarm_ros/xarm_msgs/CMakeFiles/std_msgs_generate_messages_cpp.dir/all
-transportsysteem_pkg/CMakeFiles/transportsysteem_pkg_generate_messages_cpp.dir/all: transportsysteem_pkg/CMakeFiles/_transportsysteem_pkg_generate_messages_check_deps_SystemControlActionResult.dir/all
-transportsysteem_pkg/CMakeFiles/transportsysteem_pkg_generate_messages_cpp.dir/all: transportsysteem_pkg/CMakeFiles/_transportsysteem_pkg_generate_messages_check_deps_SystemControlActionGoal.dir/all
-transportsysteem_pkg/CMakeFiles/transportsysteem_pkg_generate_messages_cpp.dir/all: transportsysteem_pkg/CMakeFiles/_transportsysteem_pkg_generate_messages_check_deps_SystemControlFeedback.dir/all
->>>>>>> Stashed changes
 transportsysteem_pkg/CMakeFiles/transportsysteem_pkg_generate_messages_cpp.dir/all: transportsysteem_pkg/CMakeFiles/actionlib_msgs_generate_messages_cpp.dir/all
 transportsysteem_pkg/CMakeFiles/transportsysteem_pkg_generate_messages_cpp.dir/all: transportsysteem_pkg/CMakeFiles/_transportsysteem_pkg_generate_messages_check_deps_TransportControlActionGoal.dir/all
 transportsysteem_pkg/CMakeFiles/transportsysteem_pkg_generate_messages_cpp.dir/all: transportsysteem_pkg/CMakeFiles/_transportsysteem_pkg_generate_messages_check_deps_TransportControlActionResult.dir/all
@@ -4107,17 +3909,8 @@ clean: transportsysteem_pkg/CMakeFiles/_transportsysteem_pkg_generate_messages_c
 # Target rules for target transportsysteem_pkg/CMakeFiles/transportsysteem_pkg_generate_messages_eus.dir
 
 # All Build rule for target.
-<<<<<<< Updated upstream
-transportsysteem_pkg/CMakeFiles/transportsysteem_pkg_generate_messages_eus.dir/all: hmi_interface/CMakeFiles/std_msgs_generate_messages_eus.dir/all
-transportsysteem_pkg/CMakeFiles/transportsysteem_pkg_generate_messages_eus.dir/all: transportsysteem_pkg/CMakeFiles/_transportsysteem_pkg_generate_messages_check_deps_TransportControlActionFeedback.dir/all
-=======
 transportsysteem_pkg/CMakeFiles/transportsysteem_pkg_generate_messages_eus.dir/all: xarm_ros/xarm_msgs/CMakeFiles/std_msgs_generate_messages_eus.dir/all
-transportsysteem_pkg/CMakeFiles/transportsysteem_pkg_generate_messages_eus.dir/all: transportsysteem_pkg/CMakeFiles/_transportsysteem_pkg_generate_messages_check_deps_SystemControlActionResult.dir/all
-transportsysteem_pkg/CMakeFiles/transportsysteem_pkg_generate_messages_eus.dir/all: transportsysteem_pkg/CMakeFiles/_transportsysteem_pkg_generate_messages_check_deps_SystemControlActionGoal.dir/all
-transportsysteem_pkg/CMakeFiles/transportsysteem_pkg_generate_messages_eus.dir/all: transportsysteem_pkg/CMakeFiles/_transportsysteem_pkg_generate_messages_check_deps_SystemControlFeedback.dir/all
-transportsysteem_pkg/CMakeFiles/transportsysteem_pkg_generate_messages_eus.dir/all: transportsysteem_pkg/CMakeFiles/_transportsysteem_pkg_generate_messages_check_deps_SystemControlGoal.dir/all
-transportsysteem_pkg/CMakeFiles/transportsysteem_pkg_generate_messages_eus.dir/all: transportsysteem_pkg/CMakeFiles/_transportsysteem_pkg_generate_messages_check_deps_SystemControlAction.dir/all
->>>>>>> Stashed changes
+transportsysteem_pkg/CMakeFiles/transportsysteem_pkg_generate_messages_eus.dir/all: transportsysteem_pkg/CMakeFiles/_transportsysteem_pkg_generate_messages_check_deps_TransportControlActionFeedback.dir/all
 transportsysteem_pkg/CMakeFiles/transportsysteem_pkg_generate_messages_eus.dir/all: transportsysteem_pkg/CMakeFiles/actionlib_msgs_generate_messages_eus.dir/all
 transportsysteem_pkg/CMakeFiles/transportsysteem_pkg_generate_messages_eus.dir/all: transportsysteem_pkg/CMakeFiles/_transportsysteem_pkg_generate_messages_check_deps_TransportControlResult.dir/all
 transportsysteem_pkg/CMakeFiles/transportsysteem_pkg_generate_messages_eus.dir/all: transportsysteem_pkg/CMakeFiles/_transportsysteem_pkg_generate_messages_check_deps_TransportControlActionGoal.dir/all
@@ -9580,10 +9373,10 @@ xarm_ros/xarm_controller/CMakeFiles/xarm_hw.dir/all: xarm_ros/xarm_vision/camera
 xarm_ros/xarm_controller/CMakeFiles/xarm_hw.dir/all: xarm_ros/xarm_vision/camera_demo/CMakeFiles/roscpp_generate_messages_lisp.dir/all
 xarm_ros/xarm_controller/CMakeFiles/xarm_hw.dir/all: xarm_ros/xarm_vision/camera_demo/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/all
 xarm_ros/xarm_controller/CMakeFiles/xarm_hw.dir/all: transportsysteem_pkg/CMakeFiles/actionlib_msgs_generate_messages_py.dir/all
-xarm_ros/xarm_controller/CMakeFiles/xarm_hw.dir/all: transportsysteem_pkg/CMakeFiles/actionlib_msgs_generate_messages_nodejs.dir/all
 xarm_ros/xarm_controller/CMakeFiles/xarm_hw.dir/all: transportsysteem_pkg/CMakeFiles/actionlib_msgs_generate_messages_lisp.dir/all
-xarm_ros/xarm_controller/CMakeFiles/xarm_hw.dir/all: transportsysteem_pkg/CMakeFiles/actionlib_msgs_generate_messages_cpp.dir/all
 xarm_ros/xarm_controller/CMakeFiles/xarm_hw.dir/all: transportsysteem_pkg/CMakeFiles/actionlib_msgs_generate_messages_eus.dir/all
+xarm_ros/xarm_controller/CMakeFiles/xarm_hw.dir/all: transportsysteem_pkg/CMakeFiles/actionlib_msgs_generate_messages_cpp.dir/all
+xarm_ros/xarm_controller/CMakeFiles/xarm_hw.dir/all: transportsysteem_pkg/CMakeFiles/actionlib_msgs_generate_messages_nodejs.dir/all
 xarm_ros/xarm_controller/CMakeFiles/xarm_hw.dir/all: depth-ai-avans/depthai_ros_msgs/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/all
 xarm_ros/xarm_controller/CMakeFiles/xarm_hw.dir/all: depth-ai-avans/depthai_ros_msgs/CMakeFiles/sensor_msgs_generate_messages_eus.dir/all
 xarm_ros/xarm_controller/CMakeFiles/xarm_hw.dir/all: depth-ai-avans/depthai_ros_msgs/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/all
@@ -9983,10 +9776,10 @@ xarm_ros/xarm_controller/CMakeFiles/xarm_combined_hw.dir/all: xarm_ros/xarm_visi
 xarm_ros/xarm_controller/CMakeFiles/xarm_combined_hw.dir/all: xarm_ros/xarm_vision/camera_demo/CMakeFiles/roscpp_generate_messages_lisp.dir/all
 xarm_ros/xarm_controller/CMakeFiles/xarm_combined_hw.dir/all: xarm_ros/xarm_vision/camera_demo/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/all
 xarm_ros/xarm_controller/CMakeFiles/xarm_combined_hw.dir/all: transportsysteem_pkg/CMakeFiles/actionlib_msgs_generate_messages_py.dir/all
-xarm_ros/xarm_controller/CMakeFiles/xarm_combined_hw.dir/all: transportsysteem_pkg/CMakeFiles/actionlib_msgs_generate_messages_nodejs.dir/all
 xarm_ros/xarm_controller/CMakeFiles/xarm_combined_hw.dir/all: transportsysteem_pkg/CMakeFiles/actionlib_msgs_generate_messages_lisp.dir/all
-xarm_ros/xarm_controller/CMakeFiles/xarm_combined_hw.dir/all: transportsysteem_pkg/CMakeFiles/actionlib_msgs_generate_messages_cpp.dir/all
 xarm_ros/xarm_controller/CMakeFiles/xarm_combined_hw.dir/all: transportsysteem_pkg/CMakeFiles/actionlib_msgs_generate_messages_eus.dir/all
+xarm_ros/xarm_controller/CMakeFiles/xarm_combined_hw.dir/all: transportsysteem_pkg/CMakeFiles/actionlib_msgs_generate_messages_cpp.dir/all
+xarm_ros/xarm_controller/CMakeFiles/xarm_combined_hw.dir/all: transportsysteem_pkg/CMakeFiles/actionlib_msgs_generate_messages_nodejs.dir/all
 xarm_ros/xarm_controller/CMakeFiles/xarm_combined_hw.dir/all: depth-ai-avans/depthai_ros_msgs/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/all
 xarm_ros/xarm_controller/CMakeFiles/xarm_combined_hw.dir/all: depth-ai-avans/depthai_ros_msgs/CMakeFiles/sensor_msgs_generate_messages_eus.dir/all
 xarm_ros/xarm_controller/CMakeFiles/xarm_combined_hw.dir/all: depth-ai-avans/depthai_ros_msgs/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/all
@@ -10290,10 +10083,10 @@ xarm_ros/xarm_gripper/CMakeFiles/gripper_client.dir/all: xarm_ros/xarm_vision/ca
 xarm_ros/xarm_gripper/CMakeFiles/gripper_client.dir/all: xarm_ros/xarm_vision/camera_demo/CMakeFiles/roscpp_generate_messages_lisp.dir/all
 xarm_ros/xarm_gripper/CMakeFiles/gripper_client.dir/all: xarm_ros/xarm_vision/camera_demo/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/all
 xarm_ros/xarm_gripper/CMakeFiles/gripper_client.dir/all: transportsysteem_pkg/CMakeFiles/actionlib_msgs_generate_messages_py.dir/all
-xarm_ros/xarm_gripper/CMakeFiles/gripper_client.dir/all: transportsysteem_pkg/CMakeFiles/actionlib_msgs_generate_messages_nodejs.dir/all
 xarm_ros/xarm_gripper/CMakeFiles/gripper_client.dir/all: transportsysteem_pkg/CMakeFiles/actionlib_msgs_generate_messages_lisp.dir/all
-xarm_ros/xarm_gripper/CMakeFiles/gripper_client.dir/all: transportsysteem_pkg/CMakeFiles/actionlib_msgs_generate_messages_cpp.dir/all
 xarm_ros/xarm_gripper/CMakeFiles/gripper_client.dir/all: transportsysteem_pkg/CMakeFiles/actionlib_msgs_generate_messages_eus.dir/all
+xarm_ros/xarm_gripper/CMakeFiles/gripper_client.dir/all: transportsysteem_pkg/CMakeFiles/actionlib_msgs_generate_messages_cpp.dir/all
+xarm_ros/xarm_gripper/CMakeFiles/gripper_client.dir/all: transportsysteem_pkg/CMakeFiles/actionlib_msgs_generate_messages_nodejs.dir/all
 xarm_ros/xarm_gripper/CMakeFiles/gripper_client.dir/all: depth-ai-avans/depthai_ros_msgs/CMakeFiles/geometry_msgs_generate_messages_eus.dir/all
 xarm_ros/xarm_gripper/CMakeFiles/gripper_client.dir/all: depth-ai-avans/depthai_ros_msgs/CMakeFiles/geometry_msgs_generate_messages_py.dir/all
 xarm_ros/xarm_gripper/CMakeFiles/gripper_client.dir/all: depth-ai-avans/depthai_ros_msgs/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/all
@@ -10375,10 +10168,10 @@ xarm_ros/xarm_gripper/CMakeFiles/gripper_action_server.dir/all: xarm_ros/xarm_vi
 xarm_ros/xarm_gripper/CMakeFiles/gripper_action_server.dir/all: xarm_ros/xarm_vision/camera_demo/CMakeFiles/roscpp_generate_messages_lisp.dir/all
 xarm_ros/xarm_gripper/CMakeFiles/gripper_action_server.dir/all: xarm_ros/xarm_vision/camera_demo/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/all
 xarm_ros/xarm_gripper/CMakeFiles/gripper_action_server.dir/all: transportsysteem_pkg/CMakeFiles/actionlib_msgs_generate_messages_py.dir/all
-xarm_ros/xarm_gripper/CMakeFiles/gripper_action_server.dir/all: transportsysteem_pkg/CMakeFiles/actionlib_msgs_generate_messages_nodejs.dir/all
 xarm_ros/xarm_gripper/CMakeFiles/gripper_action_server.dir/all: transportsysteem_pkg/CMakeFiles/actionlib_msgs_generate_messages_lisp.dir/all
-xarm_ros/xarm_gripper/CMakeFiles/gripper_action_server.dir/all: transportsysteem_pkg/CMakeFiles/actionlib_msgs_generate_messages_cpp.dir/all
 xarm_ros/xarm_gripper/CMakeFiles/gripper_action_server.dir/all: transportsysteem_pkg/CMakeFiles/actionlib_msgs_generate_messages_eus.dir/all
+xarm_ros/xarm_gripper/CMakeFiles/gripper_action_server.dir/all: transportsysteem_pkg/CMakeFiles/actionlib_msgs_generate_messages_cpp.dir/all
+xarm_ros/xarm_gripper/CMakeFiles/gripper_action_server.dir/all: transportsysteem_pkg/CMakeFiles/actionlib_msgs_generate_messages_nodejs.dir/all
 xarm_ros/xarm_gripper/CMakeFiles/gripper_action_server.dir/all: depth-ai-avans/depthai_ros_msgs/CMakeFiles/geometry_msgs_generate_messages_eus.dir/all
 xarm_ros/xarm_gripper/CMakeFiles/gripper_action_server.dir/all: depth-ai-avans/depthai_ros_msgs/CMakeFiles/geometry_msgs_generate_messages_py.dir/all
 xarm_ros/xarm_gripper/CMakeFiles/gripper_action_server.dir/all: depth-ai-avans/depthai_ros_msgs/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/all

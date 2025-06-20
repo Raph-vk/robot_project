@@ -77,21 +77,21 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/xarm_api/xarm_driver_node" AND
-     NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/xarm_api/xarm_driver_node")
+  if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/xarm_api/======xarm_driver_node" AND
+     NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/xarm_api/======xarm_driver_node")
     file(RPATH_CHECK
-         FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/xarm_api/xarm_driver_node"
+         FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/xarm_api/======xarm_driver_node"
          RPATH "")
   endif()
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/xarm_api" TYPE EXECUTABLE FILES "/home/student/Git-projects/robot_project/integratie_ws/devel/lib/xarm_api/xarm_driver_node")
-  if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/xarm_api/xarm_driver_node" AND
-     NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/xarm_api/xarm_driver_node")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/xarm_api" TYPE EXECUTABLE FILES "/home/student/Git-projects/robot_project/integratie_ws/devel/lib/xarm_api/======xarm_driver_node")
+  if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/xarm_api/======xarm_driver_node" AND
+     NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/xarm_api/======xarm_driver_node")
     file(RPATH_CHANGE
-         FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/xarm_api/xarm_driver_node"
+         FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/xarm_api/======xarm_driver_node"
          OLD_RPATH "/home/student/Git-projects/robot_project/integratie_ws/devel/lib:/opt/ros/melodic/lib:"
          NEW_RPATH "")
     if(CMAKE_INSTALL_DO_STRIP)
-      execute_process(COMMAND "/usr/bin/strip" "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/xarm_api/xarm_driver_node")
+      execute_process(COMMAND "/usr/bin/strip" "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/xarm_api/======xarm_driver_node")
     endif()
   endif()
 endif()
@@ -113,141 +113,141 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/xarm_api/example1_report_norm" AND
-     NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/xarm_api/example1_report_norm")
+  if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/xarm_api/======example1_report_norm" AND
+     NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/xarm_api/======example1_report_norm")
     file(RPATH_CHECK
-         FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/xarm_api/example1_report_norm"
+         FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/xarm_api/======example1_report_norm"
          RPATH "")
   endif()
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/xarm_api" TYPE EXECUTABLE FILES "/home/student/Git-projects/robot_project/integratie_ws/devel/lib/xarm_api/example1_report_norm")
-  if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/xarm_api/example1_report_norm" AND
-     NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/xarm_api/example1_report_norm")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/xarm_api" TYPE EXECUTABLE FILES "/home/student/Git-projects/robot_project/integratie_ws/devel/lib/xarm_api/======example1_report_norm")
+  if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/xarm_api/======example1_report_norm" AND
+     NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/xarm_api/======example1_report_norm")
     file(RPATH_CHANGE
-         FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/xarm_api/example1_report_norm"
+         FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/xarm_api/======example1_report_norm"
          OLD_RPATH "/opt/ros/melodic/lib:/home/student/Git-projects/robot_project/integratie_ws/devel/lib:"
          NEW_RPATH "")
     if(CMAKE_INSTALL_DO_STRIP)
-      execute_process(COMMAND "/usr/bin/strip" "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/xarm_api/example1_report_norm")
+      execute_process(COMMAND "/usr/bin/strip" "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/xarm_api/======example1_report_norm")
     endif()
   endif()
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/xarm_api/move_test" AND
-     NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/xarm_api/move_test")
+  if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/xarm_api/======move_test" AND
+     NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/xarm_api/======move_test")
     file(RPATH_CHECK
-         FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/xarm_api/move_test"
+         FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/xarm_api/======move_test"
          RPATH "")
   endif()
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/xarm_api" TYPE EXECUTABLE FILES "/home/student/Git-projects/robot_project/integratie_ws/devel/lib/xarm_api/move_test")
-  if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/xarm_api/move_test" AND
-     NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/xarm_api/move_test")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/xarm_api" TYPE EXECUTABLE FILES "/home/student/Git-projects/robot_project/integratie_ws/devel/lib/xarm_api/======move_test")
+  if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/xarm_api/======move_test" AND
+     NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/xarm_api/======move_test")
     file(RPATH_CHANGE
-         FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/xarm_api/move_test"
+         FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/xarm_api/======move_test"
          OLD_RPATH "/opt/ros/melodic/lib:/home/student/Git-projects/robot_project/integratie_ws/devel/lib:"
          NEW_RPATH "")
     if(CMAKE_INSTALL_DO_STRIP)
-      execute_process(COMMAND "/usr/bin/strip" "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/xarm_api/move_test")
+      execute_process(COMMAND "/usr/bin/strip" "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/xarm_api/======move_test")
     endif()
   endif()
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/xarm_api/servo_cartesian_test" AND
-     NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/xarm_api/servo_cartesian_test")
+  if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/xarm_api/======servo_cartesian_test" AND
+     NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/xarm_api/======servo_cartesian_test")
     file(RPATH_CHECK
-         FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/xarm_api/servo_cartesian_test"
+         FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/xarm_api/======servo_cartesian_test"
          RPATH "")
   endif()
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/xarm_api" TYPE EXECUTABLE FILES "/home/student/Git-projects/robot_project/integratie_ws/devel/lib/xarm_api/servo_cartesian_test")
-  if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/xarm_api/servo_cartesian_test" AND
-     NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/xarm_api/servo_cartesian_test")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/xarm_api" TYPE EXECUTABLE FILES "/home/student/Git-projects/robot_project/integratie_ws/devel/lib/xarm_api/======servo_cartesian_test")
+  if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/xarm_api/======servo_cartesian_test" AND
+     NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/xarm_api/======servo_cartesian_test")
     file(RPATH_CHANGE
-         FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/xarm_api/servo_cartesian_test"
+         FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/xarm_api/======servo_cartesian_test"
          OLD_RPATH "/opt/ros/melodic/lib:/home/student/Git-projects/robot_project/integratie_ws/devel/lib:"
          NEW_RPATH "")
     if(CMAKE_INSTALL_DO_STRIP)
-      execute_process(COMMAND "/usr/bin/strip" "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/xarm_api/servo_cartesian_test")
+      execute_process(COMMAND "/usr/bin/strip" "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/xarm_api/======servo_cartesian_test")
     endif()
   endif()
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/xarm_api/test_tool_modbus" AND
-     NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/xarm_api/test_tool_modbus")
+  if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/xarm_api/======test_tool_modbus" AND
+     NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/xarm_api/======test_tool_modbus")
     file(RPATH_CHECK
-         FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/xarm_api/test_tool_modbus"
+         FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/xarm_api/======test_tool_modbus"
          RPATH "")
   endif()
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/xarm_api" TYPE EXECUTABLE FILES "/home/student/Git-projects/robot_project/integratie_ws/devel/lib/xarm_api/test_tool_modbus")
-  if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/xarm_api/test_tool_modbus" AND
-     NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/xarm_api/test_tool_modbus")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/xarm_api" TYPE EXECUTABLE FILES "/home/student/Git-projects/robot_project/integratie_ws/devel/lib/xarm_api/======test_tool_modbus")
+  if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/xarm_api/======test_tool_modbus" AND
+     NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/xarm_api/======test_tool_modbus")
     file(RPATH_CHANGE
-         FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/xarm_api/test_tool_modbus"
+         FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/xarm_api/======test_tool_modbus"
          OLD_RPATH "/home/student/Git-projects/robot_project/integratie_ws/devel/lib:/opt/ros/melodic/lib:"
          NEW_RPATH "")
     if(CMAKE_INSTALL_DO_STRIP)
-      execute_process(COMMAND "/usr/bin/strip" "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/xarm_api/test_tool_modbus")
+      execute_process(COMMAND "/usr/bin/strip" "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/xarm_api/======test_tool_modbus")
     endif()
   endif()
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/xarm_api/test_xarm_ros_client" AND
-     NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/xarm_api/test_xarm_ros_client")
+  if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/xarm_api/======test_xarm_ros_client" AND
+     NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/xarm_api/======test_xarm_ros_client")
     file(RPATH_CHECK
-         FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/xarm_api/test_xarm_ros_client"
+         FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/xarm_api/======test_xarm_ros_client"
          RPATH "")
   endif()
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/xarm_api" TYPE EXECUTABLE FILES "/home/student/Git-projects/robot_project/integratie_ws/devel/lib/xarm_api/test_xarm_ros_client")
-  if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/xarm_api/test_xarm_ros_client" AND
-     NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/xarm_api/test_xarm_ros_client")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/xarm_api" TYPE EXECUTABLE FILES "/home/student/Git-projects/robot_project/integratie_ws/devel/lib/xarm_api/======test_xarm_ros_client")
+  if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/xarm_api/======test_xarm_ros_client" AND
+     NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/xarm_api/======test_xarm_ros_client")
     file(RPATH_CHANGE
-         FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/xarm_api/test_xarm_ros_client"
+         FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/xarm_api/======test_xarm_ros_client"
          OLD_RPATH "/home/student/Git-projects/robot_project/integratie_ws/devel/lib:/opt/ros/melodic/lib:"
          NEW_RPATH "")
     if(CMAKE_INSTALL_DO_STRIP)
-      execute_process(COMMAND "/usr/bin/strip" "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/xarm_api/test_xarm_ros_client")
+      execute_process(COMMAND "/usr/bin/strip" "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/xarm_api/======test_xarm_ros_client")
     endif()
   endif()
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/xarm_api/test_xarm_velo_move" AND
-     NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/xarm_api/test_xarm_velo_move")
+  if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/xarm_api/======test_xarm_velo_move" AND
+     NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/xarm_api/======test_xarm_velo_move")
     file(RPATH_CHECK
-         FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/xarm_api/test_xarm_velo_move"
+         FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/xarm_api/======test_xarm_velo_move"
          RPATH "")
   endif()
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/xarm_api" TYPE EXECUTABLE FILES "/home/student/Git-projects/robot_project/integratie_ws/devel/lib/xarm_api/test_xarm_velo_move")
-  if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/xarm_api/test_xarm_velo_move" AND
-     NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/xarm_api/test_xarm_velo_move")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/xarm_api" TYPE EXECUTABLE FILES "/home/student/Git-projects/robot_project/integratie_ws/devel/lib/xarm_api/======test_xarm_velo_move")
+  if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/xarm_api/======test_xarm_velo_move" AND
+     NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/xarm_api/======test_xarm_velo_move")
     file(RPATH_CHANGE
-         FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/xarm_api/test_xarm_velo_move"
+         FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/xarm_api/======test_xarm_velo_move"
          OLD_RPATH "/home/student/Git-projects/robot_project/integratie_ws/devel/lib:/opt/ros/melodic/lib:"
          NEW_RPATH "")
     if(CMAKE_INSTALL_DO_STRIP)
-      execute_process(COMMAND "/usr/bin/strip" "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/xarm_api/test_xarm_velo_move")
+      execute_process(COMMAND "/usr/bin/strip" "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/xarm_api/======test_xarm_velo_move")
     endif()
   endif()
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/xarm_api/test_xarm_states" AND
-     NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/xarm_api/test_xarm_states")
+  if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/xarm_api/======test_xarm_states" AND
+     NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/xarm_api/======test_xarm_states")
     file(RPATH_CHECK
-         FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/xarm_api/test_xarm_states"
+         FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/xarm_api/======test_xarm_states"
          RPATH "")
   endif()
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/xarm_api" TYPE EXECUTABLE FILES "/home/student/Git-projects/robot_project/integratie_ws/devel/lib/xarm_api/test_xarm_states")
-  if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/xarm_api/test_xarm_states" AND
-     NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/xarm_api/test_xarm_states")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/xarm_api" TYPE EXECUTABLE FILES "/home/student/Git-projects/robot_project/integratie_ws/devel/lib/xarm_api/======test_xarm_states")
+  if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/xarm_api/======test_xarm_states" AND
+     NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/xarm_api/======test_xarm_states")
     file(RPATH_CHANGE
-         FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/xarm_api/test_xarm_states"
+         FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/xarm_api/======test_xarm_states"
          OLD_RPATH "/home/student/Git-projects/robot_project/integratie_ws/devel/lib:/opt/ros/melodic/lib:"
          NEW_RPATH "")
     if(CMAKE_INSTALL_DO_STRIP)
-      execute_process(COMMAND "/usr/bin/strip" "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/xarm_api/test_xarm_states")
+      execute_process(COMMAND "/usr/bin/strip" "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/xarm_api/======test_xarm_states")
     endif()
   endif()
 endif()

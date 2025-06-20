@@ -1,7 +1,7 @@
 file(REMOVE_RECURSE
   "CMakeFiles/xarm_simple_planner_test.dir/src/xarm_simple_planner_test.cpp.o"
-  "/home/student/Git-projects/robot_project/integratie_ws/devel/lib/xarm_planner/xarm_simple_planner_test.pdb"
-  "/home/student/Git-projects/robot_project/integratie_ws/devel/lib/xarm_planner/xarm_simple_planner_test"
+  "/home/student/Git-projects/robot_project/integratie_ws/devel/lib/xarm_planner/======xarm_simple_planner_test.pdb"
+  "/home/student/Git-projects/robot_project/integratie_ws/devel/lib/xarm_planner/======xarm_simple_planner_test"
 )
 
 # Per-language clean rules from dependency scanning.

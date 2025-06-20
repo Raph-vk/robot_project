@@ -1,7 +1,7 @@
 file(REMOVE_RECURSE
   "CMakeFiles/xarm_combined_traj_controller.dir/src/xarm_combined_control_node.cpp.o"
-  "/home/student/Git-projects/robot_project/integratie_ws/devel/lib/xarm_controller/xarm_combined_traj_controller.pdb"
-  "/home/student/Git-projects/robot_project/integratie_ws/devel/lib/xarm_controller/xarm_combined_traj_controller"
+  "/home/student/Git-projects/robot_project/integratie_ws/devel/lib/xarm_controller/======xarm_combined_traj_controller.pdb"
+  "/home/student/Git-projects/robot_project/integratie_ws/devel/lib/xarm_controller/======xarm_combined_traj_controller"
 )
 
 # Per-language clean rules from dependency scanning.

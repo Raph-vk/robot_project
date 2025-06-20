@@ -88,34 +88,34 @@ move_test_OBJECTS = \
 # External object files for target move_test
 move_test_EXTERNAL_OBJECTS =
 
-/home/student/Git-projects/robot_project/integratie_ws/devel/lib/xarm_api/move_test: xarm_ros/xarm_api/CMakeFiles/move_test.dir/test/move_test.cpp.o
-/home/student/Git-projects/robot_project/integratie_ws/devel/lib/xarm_api/move_test: xarm_ros/xarm_api/CMakeFiles/move_test.dir/build.make
-/home/student/Git-projects/robot_project/integratie_ws/devel/lib/xarm_api/move_test: /opt/ros/melodic/lib/libactionlib.so
-/home/student/Git-projects/robot_project/integratie_ws/devel/lib/xarm_api/move_test: /opt/ros/melodic/lib/libroscpp.so
-/home/student/Git-projects/robot_project/integratie_ws/devel/lib/xarm_api/move_test: /usr/lib/x86_64-linux-gnu/libboost_filesystem.so
-/home/student/Git-projects/robot_project/integratie_ws/devel/lib/xarm_api/move_test: /opt/ros/melodic/lib/librosconsole.so
-/home/student/Git-projects/robot_project/integratie_ws/devel/lib/xarm_api/move_test: /opt/ros/melodic/lib/librosconsole_log4cxx.so
-/home/student/Git-projects/robot_project/integratie_ws/devel/lib/xarm_api/move_test: /opt/ros/melodic/lib/librosconsole_backend_interface.so
-/home/student/Git-projects/robot_project/integratie_ws/devel/lib/xarm_api/move_test: /usr/lib/x86_64-linux-gnu/liblog4cxx.so
-/home/student/Git-projects/robot_project/integratie_ws/devel/lib/xarm_api/move_test: /usr/lib/x86_64-linux-gnu/libboost_regex.so
-/home/student/Git-projects/robot_project/integratie_ws/devel/lib/xarm_api/move_test: /opt/ros/melodic/lib/libxmlrpcpp.so
-/home/student/Git-projects/robot_project/integratie_ws/devel/lib/xarm_api/move_test: /opt/ros/melodic/lib/libroscpp_serialization.so
-/home/student/Git-projects/robot_project/integratie_ws/devel/lib/xarm_api/move_test: /opt/ros/melodic/lib/librostime.so
-/home/student/Git-projects/robot_project/integratie_ws/devel/lib/xarm_api/move_test: /opt/ros/melodic/lib/libcpp_common.so
-/home/student/Git-projects/robot_project/integratie_ws/devel/lib/xarm_api/move_test: /usr/lib/x86_64-linux-gnu/libboost_system.so
-/home/student/Git-projects/robot_project/integratie_ws/devel/lib/xarm_api/move_test: /usr/lib/x86_64-linux-gnu/libboost_thread.so
-/home/student/Git-projects/robot_project/integratie_ws/devel/lib/xarm_api/move_test: /usr/lib/x86_64-linux-gnu/libboost_chrono.so
-/home/student/Git-projects/robot_project/integratie_ws/devel/lib/xarm_api/move_test: /usr/lib/x86_64-linux-gnu/libboost_date_time.so
-/home/student/Git-projects/robot_project/integratie_ws/devel/lib/xarm_api/move_test: /usr/lib/x86_64-linux-gnu/libboost_atomic.so
-/home/student/Git-projects/robot_project/integratie_ws/devel/lib/xarm_api/move_test: /usr/lib/x86_64-linux-gnu/libpthread.so
-/home/student/Git-projects/robot_project/integratie_ws/devel/lib/xarm_api/move_test: /usr/lib/x86_64-linux-gnu/libconsole_bridge.so.0.4
-/home/student/Git-projects/robot_project/integratie_ws/devel/lib/xarm_api/move_test: /home/student/Git-projects/robot_project/integratie_ws/devel/lib/libxarm_cxx_sdk.so
-/home/student/Git-projects/robot_project/integratie_ws/devel/lib/xarm_api/move_test: xarm_ros/xarm_api/CMakeFiles/move_test.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/student/Git-projects/robot_project/integratie_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable /home/student/Git-projects/robot_project/integratie_ws/devel/lib/xarm_api/move_test"
+/home/student/Git-projects/robot_project/integratie_ws/devel/lib/xarm_api/$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)move_test: xarm_ros/xarm_api/CMakeFiles/move_test.dir/test/move_test.cpp.o
+/home/student/Git-projects/robot_project/integratie_ws/devel/lib/xarm_api/$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)move_test: xarm_ros/xarm_api/CMakeFiles/move_test.dir/build.make
+/home/student/Git-projects/robot_project/integratie_ws/devel/lib/xarm_api/$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)move_test: /opt/ros/melodic/lib/libactionlib.so
+/home/student/Git-projects/robot_project/integratie_ws/devel/lib/xarm_api/$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)move_test: /opt/ros/melodic/lib/libroscpp.so
+/home/student/Git-projects/robot_project/integratie_ws/devel/lib/xarm_api/$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)move_test: /usr/lib/x86_64-linux-gnu/libboost_filesystem.so
+/home/student/Git-projects/robot_project/integratie_ws/devel/lib/xarm_api/$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)move_test: /opt/ros/melodic/lib/librosconsole.so
+/home/student/Git-projects/robot_project/integratie_ws/devel/lib/xarm_api/$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)move_test: /opt/ros/melodic/lib/librosconsole_log4cxx.so
+/home/student/Git-projects/robot_project/integratie_ws/devel/lib/xarm_api/$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)move_test: /opt/ros/melodic/lib/librosconsole_backend_interface.so
+/home/student/Git-projects/robot_project/integratie_ws/devel/lib/xarm_api/$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)move_test: /usr/lib/x86_64-linux-gnu/liblog4cxx.so
+/home/student/Git-projects/robot_project/integratie_ws/devel/lib/xarm_api/$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)move_test: /usr/lib/x86_64-linux-gnu/libboost_regex.so
+/home/student/Git-projects/robot_project/integratie_ws/devel/lib/xarm_api/$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)move_test: /opt/ros/melodic/lib/libxmlrpcpp.so
+/home/student/Git-projects/robot_project/integratie_ws/devel/lib/xarm_api/$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)move_test: /opt/ros/melodic/lib/libroscpp_serialization.so
+/home/student/Git-projects/robot_project/integratie_ws/devel/lib/xarm_api/$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)move_test: /opt/ros/melodic/lib/librostime.so
+/home/student/Git-projects/robot_project/integratie_ws/devel/lib/xarm_api/$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)move_test: /opt/ros/melodic/lib/libcpp_common.so
+/home/student/Git-projects/robot_project/integratie_ws/devel/lib/xarm_api/$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)move_test: /usr/lib/x86_64-linux-gnu/libboost_system.so
+/home/student/Git-projects/robot_project/integratie_ws/devel/lib/xarm_api/$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)move_test: /usr/lib/x86_64-linux-gnu/libboost_thread.so
+/home/student/Git-projects/robot_project/integratie_ws/devel/lib/xarm_api/$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)move_test: /usr/lib/x86_64-linux-gnu/libboost_chrono.so
+/home/student/Git-projects/robot_project/integratie_ws/devel/lib/xarm_api/$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)move_test: /usr/lib/x86_64-linux-gnu/libboost_date_time.so
+/home/student/Git-projects/robot_project/integratie_ws/devel/lib/xarm_api/$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)move_test: /usr/lib/x86_64-linux-gnu/libboost_atomic.so
+/home/student/Git-projects/robot_project/integratie_ws/devel/lib/xarm_api/$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)move_test: /usr/lib/x86_64-linux-gnu/libpthread.so
+/home/student/Git-projects/robot_project/integratie_ws/devel/lib/xarm_api/$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)move_test: /usr/lib/x86_64-linux-gnu/libconsole_bridge.so.0.4
+/home/student/Git-projects/robot_project/integratie_ws/devel/lib/xarm_api/$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)move_test: /home/student/Git-projects/robot_project/integratie_ws/devel/lib/libxarm_cxx_sdk.so
+/home/student/Git-projects/robot_project/integratie_ws/devel/lib/xarm_api/$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)move_test: xarm_ros/xarm_api/CMakeFiles/move_test.dir/link.txt
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/student/Git-projects/robot_project/integratie_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable /home/student/Git-projects/robot_project/integratie_ws/devel/lib/xarm_api/======move_test"
 	cd /home/student/Git-projects/robot_project/integratie_ws/build/xarm_ros/xarm_api && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/move_test.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
-xarm_ros/xarm_api/CMakeFiles/move_test.dir/build: /home/student/Git-projects/robot_project/integratie_ws/devel/lib/xarm_api/move_test
+xarm_ros/xarm_api/CMakeFiles/move_test.dir/build: /home/student/Git-projects/robot_project/integratie_ws/devel/lib/xarm_api/$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)move_test
 
 .PHONY : xarm_ros/xarm_api/CMakeFiles/move_test.dir/build
 

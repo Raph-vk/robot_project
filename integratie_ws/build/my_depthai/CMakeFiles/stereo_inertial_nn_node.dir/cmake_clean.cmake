@@ -3,8 +3,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/stereo_inertial_nn_node.dir/ros1_src/processing.cpp.o"
   "CMakeFiles/stereo_inertial_nn_node.dir/ros1_src/pipe.cpp.o"
   "CMakeFiles/stereo_inertial_nn_node.dir/ros1_src/SpatialDetectionConverterEx.cpp.o"
-  "/home/student/Git-projects/robot_project/integratie_ws/devel/lib/my_depthai/stereo_inertial_nn_node.pdb"
-  "/home/student/Git-projects/robot_project/integratie_ws/devel/lib/my_depthai/stereo_inertial_nn_node"
+  "/home/student/Git-projects/robot_project/integratie_ws/devel/lib/my_depthai/======stereo_inertial_nn_node.pdb"
+  "/home/student/Git-projects/robot_project/integratie_ws/devel/lib/my_depthai/======stereo_inertial_nn_node"
 )
 
 # Per-language clean rules from dependency scanning.
