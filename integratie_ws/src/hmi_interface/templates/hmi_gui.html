@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="refresh" content="2">
     <title>HMI Controlepaneel</title>
     <style>
         body {
@@ -75,9 +76,9 @@
     <h1>HMI Controlepaneel</h1>
 
     <div class="lamp-container">
-        <div class="lamp" style="background-color: {{ 'green' if lamp_state == 'green' else 'grey' }}"></div>
-        <div class="lamp" style="background-color: {{ 'orange' if lamp_state == 'orange' else 'grey' }}"></div>
-        <div class="lamp" style="background-color: {{ 'red' if lamp_state == 'red' else 'grey' }}"></div>
+        <div class="lamp" style="background-color: {{ 'green' if 'green' in lamp_state else 'grey' }}"></div>
+        <div class="lamp" style="background-color: {{ 'orange' if 'orange' in lamp_state else 'grey' }}"></div>
+        <div class="lamp" style="background-color: {{ 'red' if 'red' in lamp_state else 'grey' }}"></div>
     </div>
 
     <div class="status">Status: {{ state }}</div>

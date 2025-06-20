@@ -10,143 +10,98 @@ import rospy
 from std_msgs.msg import Bool, String
 import threading
 
-# Initialiseer Flask-applicatie (webserver voor de HMI)
-app = Flask(__name__, template_folder=os.path.join(os.path.dirname(__file__), '../templates'))
+class HMI:
+    def __init__(self):
+        # Init Flask
+        self.app = Flask(__name__, template_folder=os.path.join(os.path.dirname(__file__), '../templates'))
 
-# Initialiseer ROS-node
-rospy.init_node('hmi_node', anonymous=True)
-print("[DEBUG] ROS-node 'hmi_node' is geïnitialiseerd")
+        # Init ROS
+        rospy.init_node('hmi_node')
+        rospy.loginfo("ROS-node 'hmi_node' is geïnitialiseerd")
 
-# ROS publishers voor bedieningsknoppen (HMI → Hoofdprogramma)
-start_pub = rospy.Publisher('/start', Bool, queue_size=10)
-start_continue_pub = rospy.Publisher('/start_continue', Bool, queue_size=10)
-stop_pub = rospy.Publisher('/stop', Bool, queue_size=10)
-reset_pub = rospy.Publisher('/reset', Bool, queue_size=10)
-emergency_pub = rospy.Publisher('/emergency_stop', Bool, queue_size=10)
+        # Publishers
+        self.start_pub = rospy.Publisher('/start', Bool, queue_size=1)
+        self.start_continue_pub = rospy.Publisher('/start_continue', Bool, queue_size=1)
+        self.stop_pub = rospy.Publisher('/stop', Bool, queue_size=1)
+        self.reset_pub = rospy.Publisher('/reset', Bool, queue_size=1)
+        self.emergency_pub = rospy.Publisher('/emergency_stop', Bool, queue_size=1)
+        
+        # LED control publishers
+        self.led_rood_pub = rospy.Publisher('/led_rood', Bool, queue_size=1)
+        self.led_oranje_pub = rospy.Publisher('/led_oranje', Bool, queue_size=1)
+        self.led_groen_pub = rospy.Publisher('/led_groen', Bool, queue_size=1)
 
-# Interne toestand van de HMI
-machine_state = "WachtOpStart"   # statuslabel voor de gebruiker
-lamp_state = "green"             # kleur voor de visuele lamp
-reset_required = False           # reset-knop alleen actief na fout
-in_cyclus = False                # true tijdens een enkele cyclus
-continue_mode = False            # true tijdens een continue cyclus
+        # Interne toestand van de HMI
+        self.machine_state = "WACHTEN_OP_START"   # statuslabel voor de gebruiker
+        self.lamp_state = ["green"]
 
-# Variabelen om LED-status bij te houden op basis van ROS-subscriptions
-_led_red = False
-_led_orange = False
-_led_green = False
-_led_lock = threading.Lock()  # zorgt voor thread-safe updates
+        # Subscribers
+        rospy.Subscriber('/hmi/status', String, self.status_callback)
 
-# Bepaalt lampkleur aan de hand van de drie ROS-LED-booleans
-# Deze functie wordt aangeroepen bij elke LED-wijziging
+        # Webroute
+        self.app.add_url_rule('/', 'index', self.index, methods=['GET', 'POST'])
 
-def _update_lamp_state():
-    global lamp_state
-    with _led_lock:
-        if _led_red:
-            lamp_state = "red"
-        elif _led_green:
-            lamp_state = "green"
-        elif _led_orange:
-            lamp_state = "orange"
+
+    def status_callback(self, msg):
+        status = msg.data.upper()
+
+        # Reset lampen eerst
+        self.led_rood_pub.publish(False)
+        self.led_oranje_pub.publish(False)
+        self.led_groen_pub.publish(False)
+
+        if status == "WACHTEN_OP_START":
+            self.machine_state = "WachtOpStart"
+            self.lamp_state = ["green"]
+            self.led_groen_pub.publish(True)
+
+        elif status == "IN_BEDRIJF":
+            self.machine_state = "In bedrijf"
+            self.lamp_state = ["orange"]
+            self.led_oranje_pub.publish(True)
+
+        elif status == "ERROR":
+            self.machine_state = "Fout opgetreden"
+            self.lamp_state = ["green", "orange"]            
+            self.led_groen_pub.publish(True)
+            self.led_oranje_pub.publish(True)
+
+        elif status == "FOUT":
+            self.machine_state = "Fout opgetreden"
+            self.lamp_state = ["red"]
+            self.led_rood_pub.publish(True)
+
         else:
-            lamp_state = "off"
+            self.machine_state = "FOUT, verkeerd state"
+            self.lamp_state = ["red"]
+            self.led_rood_pub.publish(True)
 
-# Callbackfuncties voor LED-topics uit het hoofdprogramma
+    def index(self):
+        if request.method == 'POST':
+            action = request.form.get('action')
+            #rospy.loginfo(f"[HMI] Knop gedrukt: {action}")
 
-def led_rood_callback(msg):
-    global _led_red
-    _led_red = msg.data
-    _update_lamp_state()
+            if action == 'start_cycle':
+                self.start_pub.publish(True)
+            elif action == 'continue_cycle':
+                self.start_continue_pub.publish(True)
+            elif action == 'stop':
+                self.stop_pub.publish(True)
+            elif action == 'reset':
+                self.reset_pub.publish(True)
+            elif action == 'emergency_stop':
+                self.emergency_pub.publish(True)
 
-def led_oranje_callback(msg):
-    global _led_orange
-    _led_orange = msg.data
-    _update_lamp_state()
+        return render_template('hmi_gui.html', state=self.machine_state, lamp_state=self.lamp_state)
 
-def led_groen_callback(msg):
-    global _led_green
-    _led_green = msg.data
-    _update_lamp_state()
+    def run(self):
+        threading.Thread(target=self.app.run, kwargs={'host': '0.0.0.0', 'port': 5000, 'debug': False}).start()
 
-# ROS-subscriptions voor de LED-status
-rospy.Subscriber('/led_rood', Bool, led_rood_callback)
-rospy.Subscriber('/led_oranje', Bool, led_oranje_callback)
-rospy.Subscriber('/led_groen', Bool, led_groen_callback)
 
-# Callback voor de globale machinestatus, afkomstig van het hoofdprogramma
-# Dit beïnvloedt o.a. of reset mogelijk is en wat de gebruiker in beeld ziet
-
-def status_callback(msg):
-    global machine_state, reset_required, in_cyclus, continue_mode
-    status = msg.data.upper()
-    print("[DEBUG] Ontvangen status: {}".format(status))
-
-    if status == "WACHTEN_OP_START":
-        machine_state = "WachtOpStart"
-        reset_required = in_cyclus = continue_mode = False
-
-    elif status == "IN_BEDRIJF":
-        machine_state = "Continue cyclus actief"
-        continue_mode = True
-        in_cyclus = False
-
-    elif status == "ERROR":
-        machine_state = "Fout opgetreden"
-        reset_required = True
-        continue_mode = in_cyclus = False
-
-    elif status == "STILGESTELD":
-        machine_state = "Cyclus gepauzeerd"
-
-# ROS-subscription op de globale machinestatus
-rospy.Subscriber('/hmi/status', String, status_callback)
-print("[DEBUG] Subscribed op /hmi/status en LED-topics")
-
-# Webroute voor de hoofdpagina van de HMI
-@app.route('/', methods=['GET', 'POST'])
-def index():
-    global machine_state, reset_required, in_cyclus, continue_mode
-
-    # Als een knop wordt ingedrukt
-    if request.method == 'POST':
-        action = request.form.get('action')
-
-        # Noodstop activeert foutstatus
-        if action == 'emergency_stop':
-            machine_state = "Noodstop geactiveerd"
-            reset_required = True
-            in_cyclus = continue_mode = False
-            emergency_pub.publish(True)
-
-        # Stopknop onderbreekt continue modus
-        elif action == 'stop' and continue_mode:
-            machine_state = "Cyclus wordt gestopt"
-            stop_pub.publish(True)
-            continue_mode = in_cyclus = False
-
-        # Reset alleen mogelijk als foutstatus actief is
-        elif action == 'reset' and reset_required:
-            machine_state = "WachtOpStart"
-            reset_required = False
-            reset_pub.publish(True)
-
-        # Enkele cyclus starten als machine idle is
-        elif action == 'start_cycle' and not in_cyclus and not continue_mode and not reset_required:
-            machine_state = "Enkele cyclus actief"
-            in_cyclus = True
-            start_pub.publish(True)
-
-        # Continue cyclus starten als machine idle is
-        elif action == 'continue_cycle' and not in_cyclus and not continue_mode and not reset_required:
-            machine_state = "Continue cyclus actief"
-            continue_mode = True
-            start_continue_pub.publish(True)
-
-    # Toon de HTML-template met huidige status en lampkleur
-    return render_template('hmi_gui.html', state=machine_state, lamp_state=lamp_state)
-
-# Start de Flask webserver
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000, debug=True)
-
+    try:
+        server = HMI()
+        server.run()
+        rospy.spin()
+    except rospy.ROSInterruptException:
+        pass

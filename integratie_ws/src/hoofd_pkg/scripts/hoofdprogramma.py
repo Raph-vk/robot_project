@@ -33,6 +33,11 @@ class hoofdprogramma:
     def __init__(self):
         rospy.init_node('hoofdprogramma_node')       # Initialize the ROS node.
         
+        # Toestanden
+        self.stap = "IDLE"
+        self.state = "IDLE"
+
+
         # Button state
         self.start_pressed = False
         self.start_continue_pressed = False
@@ -57,10 +62,14 @@ class hoofdprogramma:
         self.transport_client.wait_for_server()
         rospy.loginfo("Connected to transportsystem action server.")
 
+        # Timer die elke 0.5 seconden de state-machine draait
+        self.timer = rospy.Timer(rospy.Duration(0.5), self.state_machine)
+
     # ================= Knoppen CALLBACK FUNCTIES ======================
     def start_callback(self, msg):
         rospy.loginfo("Start button pressed: %s", msg.data)
-        start_pressed  = msg.data
+        start_pressed = msg.data
+        self.cyclus(None)
 
     def start_continue_callback(self, msg):
         rospy.loginfo("Start/Continue button pressed: %s", msg.data)
@@ -74,15 +83,51 @@ class hoofdprogramma:
         rospy.loginfo("Reset button pressed: %s", msg.data)    
         reset_pressed = msg.data
 
+ # ================= STATE MACHINE LOOP ======================
+    def state_machine(self, event):
+        if self.state == "IDLE":
+            self.rood.publish(True)
+            self.oranje.publish(False)
+            self.groen.publish(False)
 
-    def cyclus(self, event):
-        if self.start_pressed:
+            if self.start_pressed:
+                rospy.loginfo("Overgang naar STARTEN")
+                self.state = "STARTEN"
+                self.start_pressed = False
+        
+        elif self.state == "STARTEN":
+            rospy.loginfo("Startcommando naar transportsysteem")
             goal = TransportControlGoal()
             goal.command = "start"
-            rospy.loginfo("Sending goal: start")
             self.transport_client.send_goal(goal)
-            self.start_pressed = False  # Reset to prevent resending
+            self.state = "WACHTEN"
+
+        elif self.state == "WACHTEN":
+            self.rood.publish(False)
+            self.oranje.publish(True)
+            self.groen.publish(False)
+
+            # Voorbeeld van conditie om naar RUNNING te gaan
+            if self.start_continue_pressed:
+                rospy.loginfo("Doorgaan met volgende stap")
+                self.state = "RUNNING"
+                self.start_continue_pressed = False
+
+        elif self.state == "RUNNING":
+            self.rood.publish(False)
+            self.oranje.publish(False)
+            self.groen.publish(True)
+
+            rospy.loginfo("Systeem is actief.")
+            # Hier kan extra logica komen voor actieve processen
+
+        if self.reset_pressed:
+            rospy.loginfo("Reset ontvangen, terug naar IDLE")
+            self.state = "IDLE"
+            self.reset_pressed = False
+
 
 if __name__ == '__main__':
+    
     node = hoofdprogramma()
     rospy.spin()
