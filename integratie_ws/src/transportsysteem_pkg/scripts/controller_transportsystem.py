@@ -4,7 +4,7 @@
 import rospy                                      # ROS Python client library
 import actionlib
 from std_msgs.msg import Bool                     # For publishing motor on/off
-from transportsysteem_pkg.msg import TransportControlAction, TransportControlFeedback, SystemControlResult
+from transportsysteem_pkg.msg import TransportControlAction, TransportControlFeedback, TransportControlResult
 
 class TransportController:
 
