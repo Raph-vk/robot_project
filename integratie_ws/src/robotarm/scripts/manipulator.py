@@ -13,6 +13,8 @@ import moveit_msgs.msg
 import time
 
 
+
+
 class unit_manipulator:
     def __init__(self):
         #positie object t.o.v. camera assenstelsel
@@ -25,7 +27,7 @@ class unit_manipulator:
         #getal waarmee gripper kan worden geopend
         self.GRIPPER_OPEN = 1
 
-        self.posities_sorteerbakken = {
+        self.vaste_posities = {
             # bak1
             0: ((-0.2186, 0.2695, 0.1484), (-0.7491, -0.6599, -0.0574,0.0130)), 
             # bak2
@@ -34,6 +36,8 @@ class unit_manipulator:
             2: ((-0.1259 , 0.3191 , 0.1596), (-0.6286 ,-0.7171 ,-0.2482 , 0.1704)),
             # bak4
             3: ((-0.1200 , 0.1957 , 0.0698), (-0.6779 ,-0.7206 ,-0.1454 , 0.0093)),
+            #russtand boven transportband
+            4: ((-0.0346 , -0.2287 , 0.1078), (-0.9436 ,-0.2733 ,0.1623 , 0.0925)),
         }
 
         moveit_commander.roscpp_initialize(sys.argv)
@@ -56,13 +60,13 @@ class unit_manipulator:
 
         self.feedback = manipulatorFeedback()
         self.result = manipulatorResult()
-
+        
         # Action server aanmaken en starten
         self.action_server = actionlib.SimpleActionServer('manipulator_action', manipulatorAction, self.start_manipulator, False)
         self.action_server.start()
         rospy.loginfo("Manipulator action server gestart")
 
-    def start_manipulator(self, request):   
+    def start_manipulator(self, goal):   
         if self.positie_object_vanuit_camera is None or self.type_tandenborstel is None:
             rospy.logerr("Ontbrekende gegevens: positie of type tandenborstel is nog niet ontvangen van visionsysteem.")
             self.foutafhandeling()
@@ -70,32 +74,38 @@ class unit_manipulator:
 
         if not self.transformeren():
             self.foutafhandeling()
-            return  # Stop bij fouten in transformeren
+            return 
 
-        # self.gripper_openen()  # Optioneel gripper openen, nu uitgeschakeld
+        # self.gripper_openen()  # Optioneel gripper openen
 
         if not self.naar_tandenborstel():
             self.foutafhandeling()
-            return  # Stop als bewegen naar tandenborstel mislukt
+            return 
 
-        # self.gripper_sluiten()  # Optioneel gripper sluiten, nu uitgeschakeld
+        # self.gripper_sluiten()  # Optioneel gripper sluiten
 
         self.feedback.tandenborstel_opgepakt = True
         self.action_server.publish_feedback(self.feedback)
 
-        if not self.naar_sorteerbak(self.type_tandenborstel):
+        if not self.naar_vaste_positie(self.type_tandenborstel):
             self.foutafhandeling()
-            return  # Stop als bewegen naar sorteerbak mislukt
+            return  
 
-        # self.gripper_openen()  # Optioneel gripper openen bij sorteerbak, nu uitgeschakeld
+        # self.gripper_openen()  # gripper openen bij sorteerbak
+
 
         self.result.tandenborstel_gesorteerd = True
         self.action_server.set_succeeded(self.result)
 
         # Gripper uitzetten aan het einde
-        # if not self.gripper_uit():
+        # if not self.gripper_uitschakelen():
         #     self.foutafhandeling()
         #     return
+
+        if not self.naar_vaste_positie(4):
+            self.foutafhandeling()
+            return 
+
 
 
 
@@ -107,7 +117,7 @@ class unit_manipulator:
 
     def transformeren(self):
         try:
-            transform = self.tf_buffer.lookup_transform('link_base', self.positie_object_vanuit_camera.header.frame_id, 
+            transform = self.tf_buffer.lookup_transform('world', self.positie_object_vanuit_camera.header.frame_id, 
             rospy.Time(0), rospy.Duration(1.0))
             self.positie_object_vanuit_base = do_transform_pose(self.positie_object_vanuit_camera, transform)
             return True
@@ -132,9 +142,9 @@ class unit_manipulator:
             rospy.logerr("error bij het bewegen richting de tandenborstel: "+ str(e))  
             return False
 
-    def naar_sorteerbak(self, type_tandenborstel):
+    def naar_vaste_positie(self, locatie):
         try: 
-            positie, orientatie = self.posities_sorteerbakken[type_tandenborstel]
+            positie, orientatie = self.vaste_posities[locatie]
             pose_target = Pose()
             pose_target.position.x = positie[0]
             pose_target.position.y = positie[1]
@@ -155,7 +165,7 @@ class unit_manipulator:
 
             return success
         except Exception as e:
-            rospy.logerr("error bij het bewegen richting sorteerbak "+ str(type_tandenborstel+1) + str(e))    
+            rospy.logerr("error bij het bewegen richting vaste positie"+ str(locatie) + str(e))    
             return False  
 
     def gripper_openen(self):
@@ -177,7 +187,8 @@ class unit_manipulator:
         gripper = rospy.ServiceProxy('/ufactory/vacuum_gripper_set', SetInt16)
         resp = gripper(self.GRIPPER_DICHT)
 
-    def gripper_uit(self):
+
+    def gripper_uitschakelen(self):
         try: 
             rospy.wait_for_service('/ufactory/stop_lite6_gripper')
             gripper = rospy.ServiceProxy('/ufactory/stop_lite6_gripper', Call)
@@ -190,6 +201,7 @@ class unit_manipulator:
     def foutafhandeling(self):
         self.result.tandenborstel_gesorteerd = False
         self.action_server.set_aborted(self.result)
+
 
 if __name__ == "__main__":
     rospy.init_node('manipulator_node')
