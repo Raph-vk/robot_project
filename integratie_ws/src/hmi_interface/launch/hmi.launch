@@ -3,6 +3,12 @@
   <node pkg="hmi_interface"
         type="hmi_control_panel.py"
         name="hmi_node"
-        output="screen"/>
-</launch>
+        output="screen" />
 
+  <!-- Open browser -->
+  <node pkg="hmi_interface"
+        type="start_hmi.sh"
+        name="start_hmi_script"
+        output="screen"
+        launch-prefix="bash" />
+</launch>

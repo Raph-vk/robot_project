@@ -57,21 +57,21 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/run_recorded_traj/xarm_traj_test" AND
-     NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/run_recorded_traj/xarm_traj_test")
+  if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/run_recorded_traj/======xarm_traj_test" AND
+     NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/run_recorded_traj/======xarm_traj_test")
     file(RPATH_CHECK
-         FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/run_recorded_traj/xarm_traj_test"
+         FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/run_recorded_traj/======xarm_traj_test"
          RPATH "")
   endif()
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/run_recorded_traj" TYPE EXECUTABLE FILES "/home/student/Git-projects/robot_project/integratie_ws/devel/lib/run_recorded_traj/xarm_traj_test")
-  if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/run_recorded_traj/xarm_traj_test" AND
-     NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/run_recorded_traj/xarm_traj_test")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/run_recorded_traj" TYPE EXECUTABLE FILES "/home/student/Git-projects/robot_project/integratie_ws/devel/lib/run_recorded_traj/======xarm_traj_test")
+  if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/run_recorded_traj/======xarm_traj_test" AND
+     NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/run_recorded_traj/======xarm_traj_test")
     file(RPATH_CHANGE
-         FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/run_recorded_traj/xarm_traj_test"
+         FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/run_recorded_traj/======xarm_traj_test"
          OLD_RPATH "/home/student/Git-projects/robot_project/integratie_ws/devel/lib:/opt/ros/melodic/lib:"
          NEW_RPATH "")
     if(CMAKE_INSTALL_DO_STRIP)
-      execute_process(COMMAND "/usr/bin/strip" "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/run_recorded_traj/xarm_traj_test")
+      execute_process(COMMAND "/usr/bin/strip" "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/run_recorded_traj/======xarm_traj_test")
     endif()
   endif()
 endif()

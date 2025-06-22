@@ -163,59 +163,59 @@ stereo_inertial_nn_node_OBJECTS = \
 # External object files for target stereo_inertial_nn_node
 stereo_inertial_nn_node_EXTERNAL_OBJECTS =
 
-/home/student/Git-projects/robot_project/integratie_ws/devel/lib/my_depthai/stereo_inertial_nn_node: my_depthai/CMakeFiles/stereo_inertial_nn_node.dir/ros1_src/stereo_inertial_nn_publisher.cpp.o
-/home/student/Git-projects/robot_project/integratie_ws/devel/lib/my_depthai/stereo_inertial_nn_node: my_depthai/CMakeFiles/stereo_inertial_nn_node.dir/ros1_src/processing.cpp.o
-/home/student/Git-projects/robot_project/integratie_ws/devel/lib/my_depthai/stereo_inertial_nn_node: my_depthai/CMakeFiles/stereo_inertial_nn_node.dir/ros1_src/pipe.cpp.o
-/home/student/Git-projects/robot_project/integratie_ws/devel/lib/my_depthai/stereo_inertial_nn_node: my_depthai/CMakeFiles/stereo_inertial_nn_node.dir/ros1_src/SpatialDetectionConverterEx.cpp.o
-/home/student/Git-projects/robot_project/integratie_ws/devel/lib/my_depthai/stereo_inertial_nn_node: my_depthai/CMakeFiles/stereo_inertial_nn_node.dir/build.make
-/home/student/Git-projects/robot_project/integratie_ws/devel/lib/my_depthai/stereo_inertial_nn_node: /home/student/Git-projects/robot_project/integratie_ws/devel/lib/libdepthai_bridge.so
-/home/student/Git-projects/robot_project/integratie_ws/devel/lib/my_depthai/stereo_inertial_nn_node: /opt/ros/melodic/lib/libcamera_info_manager.so
-/home/student/Git-projects/robot_project/integratie_ws/devel/lib/my_depthai/stereo_inertial_nn_node: /opt/ros/melodic/lib/libcamera_calibration_parsers.so
-/home/student/Git-projects/robot_project/integratie_ws/devel/lib/my_depthai/stereo_inertial_nn_node: /opt/ros/melodic/lib/libimage_transport.so
-/home/student/Git-projects/robot_project/integratie_ws/devel/lib/my_depthai/stereo_inertial_nn_node: /opt/ros/melodic/lib/libcv_bridge.so
-/home/student/Git-projects/robot_project/integratie_ws/devel/lib/my_depthai/stereo_inertial_nn_node: /usr/lib/x86_64-linux-gnu/libopencv_core.so.3.2.0
-/home/student/Git-projects/robot_project/integratie_ws/devel/lib/my_depthai/stereo_inertial_nn_node: /usr/lib/x86_64-linux-gnu/libopencv_imgproc.so.3.2.0
-/home/student/Git-projects/robot_project/integratie_ws/devel/lib/my_depthai/stereo_inertial_nn_node: /usr/lib/x86_64-linux-gnu/libopencv_imgcodecs.so.3.2.0
-/home/student/Git-projects/robot_project/integratie_ws/devel/lib/my_depthai/stereo_inertial_nn_node: /opt/ros/melodic/lib/libmessage_filters.so
-/home/student/Git-projects/robot_project/integratie_ws/devel/lib/my_depthai/stereo_inertial_nn_node: /opt/ros/melodic/lib/libnodeletlib.so
-/home/student/Git-projects/robot_project/integratie_ws/devel/lib/my_depthai/stereo_inertial_nn_node: /opt/ros/melodic/lib/libbondcpp.so
-/home/student/Git-projects/robot_project/integratie_ws/devel/lib/my_depthai/stereo_inertial_nn_node: /usr/lib/x86_64-linux-gnu/libuuid.so
-/home/student/Git-projects/robot_project/integratie_ws/devel/lib/my_depthai/stereo_inertial_nn_node: /opt/ros/melodic/lib/libclass_loader.so
-/home/student/Git-projects/robot_project/integratie_ws/devel/lib/my_depthai/stereo_inertial_nn_node: /usr/lib/libPocoFoundation.so
-/home/student/Git-projects/robot_project/integratie_ws/devel/lib/my_depthai/stereo_inertial_nn_node: /usr/lib/x86_64-linux-gnu/libdl.so
-/home/student/Git-projects/robot_project/integratie_ws/devel/lib/my_depthai/stereo_inertial_nn_node: /opt/ros/melodic/lib/libroslib.so
-/home/student/Git-projects/robot_project/integratie_ws/devel/lib/my_depthai/stereo_inertial_nn_node: /opt/ros/melodic/lib/librospack.so
-/home/student/Git-projects/robot_project/integratie_ws/devel/lib/my_depthai/stereo_inertial_nn_node: /usr/lib/x86_64-linux-gnu/libpython2.7.so
-/home/student/Git-projects/robot_project/integratie_ws/devel/lib/my_depthai/stereo_inertial_nn_node: /usr/lib/x86_64-linux-gnu/libboost_program_options.so
-/home/student/Git-projects/robot_project/integratie_ws/devel/lib/my_depthai/stereo_inertial_nn_node: /usr/lib/x86_64-linux-gnu/libtinyxml2.so
-/home/student/Git-projects/robot_project/integratie_ws/devel/lib/my_depthai/stereo_inertial_nn_node: /opt/ros/melodic/lib/libroscpp.so
-/home/student/Git-projects/robot_project/integratie_ws/devel/lib/my_depthai/stereo_inertial_nn_node: /usr/lib/x86_64-linux-gnu/libboost_filesystem.so
-/home/student/Git-projects/robot_project/integratie_ws/devel/lib/my_depthai/stereo_inertial_nn_node: /opt/ros/melodic/lib/librosconsole.so
-/home/student/Git-projects/robot_project/integratie_ws/devel/lib/my_depthai/stereo_inertial_nn_node: /opt/ros/melodic/lib/librosconsole_log4cxx.so
-/home/student/Git-projects/robot_project/integratie_ws/devel/lib/my_depthai/stereo_inertial_nn_node: /opt/ros/melodic/lib/librosconsole_backend_interface.so
-/home/student/Git-projects/robot_project/integratie_ws/devel/lib/my_depthai/stereo_inertial_nn_node: /usr/lib/x86_64-linux-gnu/liblog4cxx.so
-/home/student/Git-projects/robot_project/integratie_ws/devel/lib/my_depthai/stereo_inertial_nn_node: /usr/lib/x86_64-linux-gnu/libboost_regex.so
-/home/student/Git-projects/robot_project/integratie_ws/devel/lib/my_depthai/stereo_inertial_nn_node: /opt/ros/melodic/lib/libxmlrpcpp.so
-/home/student/Git-projects/robot_project/integratie_ws/devel/lib/my_depthai/stereo_inertial_nn_node: /opt/ros/melodic/lib/libroscpp_serialization.so
-/home/student/Git-projects/robot_project/integratie_ws/devel/lib/my_depthai/stereo_inertial_nn_node: /opt/ros/melodic/lib/librostime.so
-/home/student/Git-projects/robot_project/integratie_ws/devel/lib/my_depthai/stereo_inertial_nn_node: /opt/ros/melodic/lib/libcpp_common.so
-/home/student/Git-projects/robot_project/integratie_ws/devel/lib/my_depthai/stereo_inertial_nn_node: /usr/lib/x86_64-linux-gnu/libboost_system.so
-/home/student/Git-projects/robot_project/integratie_ws/devel/lib/my_depthai/stereo_inertial_nn_node: /usr/lib/x86_64-linux-gnu/libboost_thread.so
-/home/student/Git-projects/robot_project/integratie_ws/devel/lib/my_depthai/stereo_inertial_nn_node: /usr/lib/x86_64-linux-gnu/libboost_chrono.so
-/home/student/Git-projects/robot_project/integratie_ws/devel/lib/my_depthai/stereo_inertial_nn_node: /usr/lib/x86_64-linux-gnu/libboost_date_time.so
-/home/student/Git-projects/robot_project/integratie_ws/devel/lib/my_depthai/stereo_inertial_nn_node: /usr/lib/x86_64-linux-gnu/libboost_atomic.so
-/home/student/Git-projects/robot_project/integratie_ws/devel/lib/my_depthai/stereo_inertial_nn_node: /usr/lib/x86_64-linux-gnu/libpthread.so
-/home/student/Git-projects/robot_project/integratie_ws/devel/lib/my_depthai/stereo_inertial_nn_node: /usr/lib/x86_64-linux-gnu/libconsole_bridge.so.0.4
-/home/student/Git-projects/robot_project/integratie_ws/devel/lib/my_depthai/stereo_inertial_nn_node: /usr/local/lib/libdepthai-core.so
-/home/student/Git-projects/robot_project/integratie_ws/devel/lib/my_depthai/stereo_inertial_nn_node: /usr/lib/x86_64-linux-gnu/libopencv_highgui.so.3.2.0
-/home/student/Git-projects/robot_project/integratie_ws/devel/lib/my_depthai/stereo_inertial_nn_node: /usr/lib/x86_64-linux-gnu/libopencv_imgproc.so.3.2.0
-/home/student/Git-projects/robot_project/integratie_ws/devel/lib/my_depthai/stereo_inertial_nn_node: /usr/lib/x86_64-linux-gnu/libopencv_core.so.3.2.0
-/home/student/Git-projects/robot_project/integratie_ws/devel/lib/my_depthai/stereo_inertial_nn_node: my_depthai/CMakeFiles/stereo_inertial_nn_node.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/student/Git-projects/robot_project/integratie_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX executable /home/student/Git-projects/robot_project/integratie_ws/devel/lib/my_depthai/stereo_inertial_nn_node"
+/home/student/Git-projects/robot_project/integratie_ws/devel/lib/my_depthai/$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)stereo_inertial_nn_node: my_depthai/CMakeFiles/stereo_inertial_nn_node.dir/ros1_src/stereo_inertial_nn_publisher.cpp.o
+/home/student/Git-projects/robot_project/integratie_ws/devel/lib/my_depthai/$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)stereo_inertial_nn_node: my_depthai/CMakeFiles/stereo_inertial_nn_node.dir/ros1_src/processing.cpp.o
+/home/student/Git-projects/robot_project/integratie_ws/devel/lib/my_depthai/$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)stereo_inertial_nn_node: my_depthai/CMakeFiles/stereo_inertial_nn_node.dir/ros1_src/pipe.cpp.o
+/home/student/Git-projects/robot_project/integratie_ws/devel/lib/my_depthai/$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)stereo_inertial_nn_node: my_depthai/CMakeFiles/stereo_inertial_nn_node.dir/ros1_src/SpatialDetectionConverterEx.cpp.o
+/home/student/Git-projects/robot_project/integratie_ws/devel/lib/my_depthai/$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)stereo_inertial_nn_node: my_depthai/CMakeFiles/stereo_inertial_nn_node.dir/build.make
+/home/student/Git-projects/robot_project/integratie_ws/devel/lib/my_depthai/$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)stereo_inertial_nn_node: /home/student/Git-projects/robot_project/integratie_ws/devel/lib/libdepthai_bridge.so
+/home/student/Git-projects/robot_project/integratie_ws/devel/lib/my_depthai/$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)stereo_inertial_nn_node: /opt/ros/melodic/lib/libcamera_info_manager.so
+/home/student/Git-projects/robot_project/integratie_ws/devel/lib/my_depthai/$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)stereo_inertial_nn_node: /opt/ros/melodic/lib/libcamera_calibration_parsers.so
+/home/student/Git-projects/robot_project/integratie_ws/devel/lib/my_depthai/$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)stereo_inertial_nn_node: /opt/ros/melodic/lib/libimage_transport.so
+/home/student/Git-projects/robot_project/integratie_ws/devel/lib/my_depthai/$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)stereo_inertial_nn_node: /opt/ros/melodic/lib/libcv_bridge.so
+/home/student/Git-projects/robot_project/integratie_ws/devel/lib/my_depthai/$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)stereo_inertial_nn_node: /usr/lib/x86_64-linux-gnu/libopencv_core.so.3.2.0
+/home/student/Git-projects/robot_project/integratie_ws/devel/lib/my_depthai/$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)stereo_inertial_nn_node: /usr/lib/x86_64-linux-gnu/libopencv_imgproc.so.3.2.0
+/home/student/Git-projects/robot_project/integratie_ws/devel/lib/my_depthai/$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)stereo_inertial_nn_node: /usr/lib/x86_64-linux-gnu/libopencv_imgcodecs.so.3.2.0
+/home/student/Git-projects/robot_project/integratie_ws/devel/lib/my_depthai/$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)stereo_inertial_nn_node: /opt/ros/melodic/lib/libmessage_filters.so
+/home/student/Git-projects/robot_project/integratie_ws/devel/lib/my_depthai/$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)stereo_inertial_nn_node: /opt/ros/melodic/lib/libnodeletlib.so
+/home/student/Git-projects/robot_project/integratie_ws/devel/lib/my_depthai/$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)stereo_inertial_nn_node: /opt/ros/melodic/lib/libbondcpp.so
+/home/student/Git-projects/robot_project/integratie_ws/devel/lib/my_depthai/$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)stereo_inertial_nn_node: /usr/lib/x86_64-linux-gnu/libuuid.so
+/home/student/Git-projects/robot_project/integratie_ws/devel/lib/my_depthai/$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)stereo_inertial_nn_node: /opt/ros/melodic/lib/libclass_loader.so
+/home/student/Git-projects/robot_project/integratie_ws/devel/lib/my_depthai/$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)stereo_inertial_nn_node: /usr/lib/libPocoFoundation.so
+/home/student/Git-projects/robot_project/integratie_ws/devel/lib/my_depthai/$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)stereo_inertial_nn_node: /usr/lib/x86_64-linux-gnu/libdl.so
+/home/student/Git-projects/robot_project/integratie_ws/devel/lib/my_depthai/$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)stereo_inertial_nn_node: /opt/ros/melodic/lib/libroslib.so
+/home/student/Git-projects/robot_project/integratie_ws/devel/lib/my_depthai/$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)stereo_inertial_nn_node: /opt/ros/melodic/lib/librospack.so
+/home/student/Git-projects/robot_project/integratie_ws/devel/lib/my_depthai/$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)stereo_inertial_nn_node: /usr/lib/x86_64-linux-gnu/libpython2.7.so
+/home/student/Git-projects/robot_project/integratie_ws/devel/lib/my_depthai/$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)stereo_inertial_nn_node: /usr/lib/x86_64-linux-gnu/libboost_program_options.so
+/home/student/Git-projects/robot_project/integratie_ws/devel/lib/my_depthai/$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)stereo_inertial_nn_node: /usr/lib/x86_64-linux-gnu/libtinyxml2.so
+/home/student/Git-projects/robot_project/integratie_ws/devel/lib/my_depthai/$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)stereo_inertial_nn_node: /opt/ros/melodic/lib/libroscpp.so
+/home/student/Git-projects/robot_project/integratie_ws/devel/lib/my_depthai/$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)stereo_inertial_nn_node: /usr/lib/x86_64-linux-gnu/libboost_filesystem.so
+/home/student/Git-projects/robot_project/integratie_ws/devel/lib/my_depthai/$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)stereo_inertial_nn_node: /opt/ros/melodic/lib/librosconsole.so
+/home/student/Git-projects/robot_project/integratie_ws/devel/lib/my_depthai/$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)stereo_inertial_nn_node: /opt/ros/melodic/lib/librosconsole_log4cxx.so
+/home/student/Git-projects/robot_project/integratie_ws/devel/lib/my_depthai/$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)stereo_inertial_nn_node: /opt/ros/melodic/lib/librosconsole_backend_interface.so
+/home/student/Git-projects/robot_project/integratie_ws/devel/lib/my_depthai/$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)stereo_inertial_nn_node: /usr/lib/x86_64-linux-gnu/liblog4cxx.so
+/home/student/Git-projects/robot_project/integratie_ws/devel/lib/my_depthai/$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)stereo_inertial_nn_node: /usr/lib/x86_64-linux-gnu/libboost_regex.so
+/home/student/Git-projects/robot_project/integratie_ws/devel/lib/my_depthai/$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)stereo_inertial_nn_node: /opt/ros/melodic/lib/libxmlrpcpp.so
+/home/student/Git-projects/robot_project/integratie_ws/devel/lib/my_depthai/$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)stereo_inertial_nn_node: /opt/ros/melodic/lib/libroscpp_serialization.so
+/home/student/Git-projects/robot_project/integratie_ws/devel/lib/my_depthai/$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)stereo_inertial_nn_node: /opt/ros/melodic/lib/librostime.so
+/home/student/Git-projects/robot_project/integratie_ws/devel/lib/my_depthai/$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)stereo_inertial_nn_node: /opt/ros/melodic/lib/libcpp_common.so
+/home/student/Git-projects/robot_project/integratie_ws/devel/lib/my_depthai/$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)stereo_inertial_nn_node: /usr/lib/x86_64-linux-gnu/libboost_system.so
+/home/student/Git-projects/robot_project/integratie_ws/devel/lib/my_depthai/$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)stereo_inertial_nn_node: /usr/lib/x86_64-linux-gnu/libboost_thread.so
+/home/student/Git-projects/robot_project/integratie_ws/devel/lib/my_depthai/$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)stereo_inertial_nn_node: /usr/lib/x86_64-linux-gnu/libboost_chrono.so
+/home/student/Git-projects/robot_project/integratie_ws/devel/lib/my_depthai/$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)stereo_inertial_nn_node: /usr/lib/x86_64-linux-gnu/libboost_date_time.so
+/home/student/Git-projects/robot_project/integratie_ws/devel/lib/my_depthai/$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)stereo_inertial_nn_node: /usr/lib/x86_64-linux-gnu/libboost_atomic.so
+/home/student/Git-projects/robot_project/integratie_ws/devel/lib/my_depthai/$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)stereo_inertial_nn_node: /usr/lib/x86_64-linux-gnu/libpthread.so
+/home/student/Git-projects/robot_project/integratie_ws/devel/lib/my_depthai/$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)stereo_inertial_nn_node: /usr/lib/x86_64-linux-gnu/libconsole_bridge.so.0.4
+/home/student/Git-projects/robot_project/integratie_ws/devel/lib/my_depthai/$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)stereo_inertial_nn_node: /usr/local/lib/libdepthai-core.so
+/home/student/Git-projects/robot_project/integratie_ws/devel/lib/my_depthai/$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)stereo_inertial_nn_node: /usr/lib/x86_64-linux-gnu/libopencv_highgui.so.3.2.0
+/home/student/Git-projects/robot_project/integratie_ws/devel/lib/my_depthai/$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)stereo_inertial_nn_node: /usr/lib/x86_64-linux-gnu/libopencv_imgproc.so.3.2.0
+/home/student/Git-projects/robot_project/integratie_ws/devel/lib/my_depthai/$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)stereo_inertial_nn_node: /usr/lib/x86_64-linux-gnu/libopencv_core.so.3.2.0
+/home/student/Git-projects/robot_project/integratie_ws/devel/lib/my_depthai/$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)stereo_inertial_nn_node: my_depthai/CMakeFiles/stereo_inertial_nn_node.dir/link.txt
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/student/Git-projects/robot_project/integratie_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX executable /home/student/Git-projects/robot_project/integratie_ws/devel/lib/my_depthai/======stereo_inertial_nn_node"
 	cd /home/student/Git-projects/robot_project/integratie_ws/build/my_depthai && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/stereo_inertial_nn_node.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
-my_depthai/CMakeFiles/stereo_inertial_nn_node.dir/build: /home/student/Git-projects/robot_project/integratie_ws/devel/lib/my_depthai/stereo_inertial_nn_node
+my_depthai/CMakeFiles/stereo_inertial_nn_node.dir/build: /home/student/Git-projects/robot_project/integratie_ws/devel/lib/my_depthai/$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)stereo_inertial_nn_node
 
 .PHONY : my_depthai/CMakeFiles/stereo_inertial_nn_node.dir/build
 

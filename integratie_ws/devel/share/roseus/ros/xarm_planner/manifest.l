@@ -10,7 +10,6 @@
 (ros::load-ros-package "bond")
 (ros::load-ros-package "control_msgs")
 (ros::load-ros-package "control_toolbox")
-(ros::load-ros-package "controller_manager_msgs")
 (ros::load-ros-package "dynamic_reconfigure")
 (ros::load-ros-package "geometry_msgs")
 (ros::load-ros-package "graph_msgs")

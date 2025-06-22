@@ -1,7 +1,7 @@
 file(REMOVE_RECURSE
   "CMakeFiles/obj2base.dir/src/tf_object_to_base.cpp.o"
-  "/home/student/Git-projects/robot_project/integratie_ws/devel/lib/d435i_xarm_setup/obj2base.pdb"
-  "/home/student/Git-projects/robot_project/integratie_ws/devel/lib/d435i_xarm_setup/obj2base"
+  "/home/student/Git-projects/robot_project/integratie_ws/devel/lib/d435i_xarm_setup/======obj2base.pdb"
+  "/home/student/Git-projects/robot_project/integratie_ws/devel/lib/d435i_xarm_setup/======obj2base"
 )
 
 # Per-language clean rules from dependency scanning.

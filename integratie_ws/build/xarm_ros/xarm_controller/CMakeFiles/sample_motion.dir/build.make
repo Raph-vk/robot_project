@@ -88,57 +88,57 @@ sample_motion_OBJECTS = \
 # External object files for target sample_motion
 sample_motion_EXTERNAL_OBJECTS =
 
-/home/student/Git-projects/robot_project/integratie_ws/devel/lib/xarm_controller/sample_motion: xarm_ros/xarm_controller/CMakeFiles/sample_motion.dir/src/sample_motion.cpp.o
-/home/student/Git-projects/robot_project/integratie_ws/devel/lib/xarm_controller/sample_motion: xarm_ros/xarm_controller/CMakeFiles/sample_motion.dir/build.make
-/home/student/Git-projects/robot_project/integratie_ws/devel/lib/xarm_controller/sample_motion: /opt/ros/melodic/lib/libcombined_robot_hw.so
-/home/student/Git-projects/robot_project/integratie_ws/devel/lib/xarm_controller/sample_motion: /opt/ros/melodic/lib/libcontroller_manager.so
-/home/student/Git-projects/robot_project/integratie_ws/devel/lib/xarm_controller/sample_motion: /opt/ros/melodic/lib/libjoint_state_controller.so
-/home/student/Git-projects/robot_project/integratie_ws/devel/lib/xarm_controller/sample_motion: /opt/ros/melodic/lib/libcontrol_toolbox.so
-/home/student/Git-projects/robot_project/integratie_ws/devel/lib/xarm_controller/sample_motion: /opt/ros/melodic/lib/libdynamic_reconfigure_config_init_mutex.so
-/home/student/Git-projects/robot_project/integratie_ws/devel/lib/xarm_controller/sample_motion: /opt/ros/melodic/lib/librealtime_tools.so
-/home/student/Git-projects/robot_project/integratie_ws/devel/lib/xarm_controller/sample_motion: /home/student/Git-projects/robot_project/integratie_ws/devel/lib/libxarm_ros_driver.so
-/home/student/Git-projects/robot_project/integratie_ws/devel/lib/xarm_controller/sample_motion: /home/student/Git-projects/robot_project/integratie_ws/devel/lib/libxarm_ros_client.so
-/home/student/Git-projects/robot_project/integratie_ws/devel/lib/xarm_controller/sample_motion: /opt/ros/melodic/lib/libactionlib.so
-/home/student/Git-projects/robot_project/integratie_ws/devel/lib/xarm_controller/sample_motion: /home/student/Git-projects/robot_project/integratie_ws/devel/lib/libxarm_cxx_sdk.so
-/home/student/Git-projects/robot_project/integratie_ws/devel/lib/xarm_controller/sample_motion: /opt/ros/melodic/lib/liburdf.so
-/home/student/Git-projects/robot_project/integratie_ws/devel/lib/xarm_controller/sample_motion: /usr/lib/x86_64-linux-gnu/liburdfdom_sensor.so
-/home/student/Git-projects/robot_project/integratie_ws/devel/lib/xarm_controller/sample_motion: /usr/lib/x86_64-linux-gnu/liburdfdom_model_state.so
-/home/student/Git-projects/robot_project/integratie_ws/devel/lib/xarm_controller/sample_motion: /usr/lib/x86_64-linux-gnu/liburdfdom_model.so
-/home/student/Git-projects/robot_project/integratie_ws/devel/lib/xarm_controller/sample_motion: /usr/lib/x86_64-linux-gnu/liburdfdom_world.so
-/home/student/Git-projects/robot_project/integratie_ws/devel/lib/xarm_controller/sample_motion: /usr/lib/x86_64-linux-gnu/libtinyxml.so
-/home/student/Git-projects/robot_project/integratie_ws/devel/lib/xarm_controller/sample_motion: /opt/ros/melodic/lib/libclass_loader.so
-/home/student/Git-projects/robot_project/integratie_ws/devel/lib/xarm_controller/sample_motion: /usr/lib/libPocoFoundation.so
-/home/student/Git-projects/robot_project/integratie_ws/devel/lib/xarm_controller/sample_motion: /usr/lib/x86_64-linux-gnu/libdl.so
-/home/student/Git-projects/robot_project/integratie_ws/devel/lib/xarm_controller/sample_motion: /opt/ros/melodic/lib/libroslib.so
-/home/student/Git-projects/robot_project/integratie_ws/devel/lib/xarm_controller/sample_motion: /opt/ros/melodic/lib/librospack.so
-/home/student/Git-projects/robot_project/integratie_ws/devel/lib/xarm_controller/sample_motion: /usr/lib/x86_64-linux-gnu/libpython2.7.so
-/home/student/Git-projects/robot_project/integratie_ws/devel/lib/xarm_controller/sample_motion: /usr/lib/x86_64-linux-gnu/libboost_program_options.so
-/home/student/Git-projects/robot_project/integratie_ws/devel/lib/xarm_controller/sample_motion: /usr/lib/x86_64-linux-gnu/libtinyxml2.so
-/home/student/Git-projects/robot_project/integratie_ws/devel/lib/xarm_controller/sample_motion: /opt/ros/melodic/lib/librosconsole_bridge.so
-/home/student/Git-projects/robot_project/integratie_ws/devel/lib/xarm_controller/sample_motion: /opt/ros/melodic/lib/libroscpp.so
-/home/student/Git-projects/robot_project/integratie_ws/devel/lib/xarm_controller/sample_motion: /usr/lib/x86_64-linux-gnu/libboost_filesystem.so
-/home/student/Git-projects/robot_project/integratie_ws/devel/lib/xarm_controller/sample_motion: /opt/ros/melodic/lib/librosconsole.so
-/home/student/Git-projects/robot_project/integratie_ws/devel/lib/xarm_controller/sample_motion: /opt/ros/melodic/lib/librosconsole_log4cxx.so
-/home/student/Git-projects/robot_project/integratie_ws/devel/lib/xarm_controller/sample_motion: /opt/ros/melodic/lib/librosconsole_backend_interface.so
-/home/student/Git-projects/robot_project/integratie_ws/devel/lib/xarm_controller/sample_motion: /usr/lib/x86_64-linux-gnu/liblog4cxx.so
-/home/student/Git-projects/robot_project/integratie_ws/devel/lib/xarm_controller/sample_motion: /usr/lib/x86_64-linux-gnu/libboost_regex.so
-/home/student/Git-projects/robot_project/integratie_ws/devel/lib/xarm_controller/sample_motion: /opt/ros/melodic/lib/libroscpp_serialization.so
-/home/student/Git-projects/robot_project/integratie_ws/devel/lib/xarm_controller/sample_motion: /opt/ros/melodic/lib/libxmlrpcpp.so
-/home/student/Git-projects/robot_project/integratie_ws/devel/lib/xarm_controller/sample_motion: /opt/ros/melodic/lib/librostime.so
-/home/student/Git-projects/robot_project/integratie_ws/devel/lib/xarm_controller/sample_motion: /opt/ros/melodic/lib/libcpp_common.so
-/home/student/Git-projects/robot_project/integratie_ws/devel/lib/xarm_controller/sample_motion: /usr/lib/x86_64-linux-gnu/libboost_system.so
-/home/student/Git-projects/robot_project/integratie_ws/devel/lib/xarm_controller/sample_motion: /usr/lib/x86_64-linux-gnu/libboost_thread.so
-/home/student/Git-projects/robot_project/integratie_ws/devel/lib/xarm_controller/sample_motion: /usr/lib/x86_64-linux-gnu/libboost_chrono.so
-/home/student/Git-projects/robot_project/integratie_ws/devel/lib/xarm_controller/sample_motion: /usr/lib/x86_64-linux-gnu/libboost_date_time.so
-/home/student/Git-projects/robot_project/integratie_ws/devel/lib/xarm_controller/sample_motion: /usr/lib/x86_64-linux-gnu/libboost_atomic.so
-/home/student/Git-projects/robot_project/integratie_ws/devel/lib/xarm_controller/sample_motion: /usr/lib/x86_64-linux-gnu/libpthread.so
-/home/student/Git-projects/robot_project/integratie_ws/devel/lib/xarm_controller/sample_motion: /usr/lib/x86_64-linux-gnu/libconsole_bridge.so.0.4
-/home/student/Git-projects/robot_project/integratie_ws/devel/lib/xarm_controller/sample_motion: xarm_ros/xarm_controller/CMakeFiles/sample_motion.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/student/Git-projects/robot_project/integratie_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable /home/student/Git-projects/robot_project/integratie_ws/devel/lib/xarm_controller/sample_motion"
+/home/student/Git-projects/robot_project/integratie_ws/devel/lib/xarm_controller/$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)sample_motion: xarm_ros/xarm_controller/CMakeFiles/sample_motion.dir/src/sample_motion.cpp.o
+/home/student/Git-projects/robot_project/integratie_ws/devel/lib/xarm_controller/$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)sample_motion: xarm_ros/xarm_controller/CMakeFiles/sample_motion.dir/build.make
+/home/student/Git-projects/robot_project/integratie_ws/devel/lib/xarm_controller/$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)sample_motion: /opt/ros/melodic/lib/libcombined_robot_hw.so
+/home/student/Git-projects/robot_project/integratie_ws/devel/lib/xarm_controller/$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)sample_motion: /opt/ros/melodic/lib/libcontroller_manager.so
+/home/student/Git-projects/robot_project/integratie_ws/devel/lib/xarm_controller/$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)sample_motion: /opt/ros/melodic/lib/libjoint_state_controller.so
+/home/student/Git-projects/robot_project/integratie_ws/devel/lib/xarm_controller/$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)sample_motion: /opt/ros/melodic/lib/libcontrol_toolbox.so
+/home/student/Git-projects/robot_project/integratie_ws/devel/lib/xarm_controller/$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)sample_motion: /opt/ros/melodic/lib/libdynamic_reconfigure_config_init_mutex.so
+/home/student/Git-projects/robot_project/integratie_ws/devel/lib/xarm_controller/$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)sample_motion: /opt/ros/melodic/lib/librealtime_tools.so
+/home/student/Git-projects/robot_project/integratie_ws/devel/lib/xarm_controller/$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)sample_motion: /home/student/Git-projects/robot_project/integratie_ws/devel/lib/libxarm_ros_driver.so
+/home/student/Git-projects/robot_project/integratie_ws/devel/lib/xarm_controller/$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)sample_motion: /home/student/Git-projects/robot_project/integratie_ws/devel/lib/libxarm_ros_client.so
+/home/student/Git-projects/robot_project/integratie_ws/devel/lib/xarm_controller/$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)sample_motion: /opt/ros/melodic/lib/libactionlib.so
+/home/student/Git-projects/robot_project/integratie_ws/devel/lib/xarm_controller/$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)sample_motion: /home/student/Git-projects/robot_project/integratie_ws/devel/lib/libxarm_cxx_sdk.so
+/home/student/Git-projects/robot_project/integratie_ws/devel/lib/xarm_controller/$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)sample_motion: /opt/ros/melodic/lib/liburdf.so
+/home/student/Git-projects/robot_project/integratie_ws/devel/lib/xarm_controller/$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)sample_motion: /usr/lib/x86_64-linux-gnu/liburdfdom_sensor.so
+/home/student/Git-projects/robot_project/integratie_ws/devel/lib/xarm_controller/$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)sample_motion: /usr/lib/x86_64-linux-gnu/liburdfdom_model_state.so
+/home/student/Git-projects/robot_project/integratie_ws/devel/lib/xarm_controller/$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)sample_motion: /usr/lib/x86_64-linux-gnu/liburdfdom_model.so
+/home/student/Git-projects/robot_project/integratie_ws/devel/lib/xarm_controller/$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)sample_motion: /usr/lib/x86_64-linux-gnu/liburdfdom_world.so
+/home/student/Git-projects/robot_project/integratie_ws/devel/lib/xarm_controller/$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)sample_motion: /usr/lib/x86_64-linux-gnu/libtinyxml.so
+/home/student/Git-projects/robot_project/integratie_ws/devel/lib/xarm_controller/$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)sample_motion: /opt/ros/melodic/lib/libclass_loader.so
+/home/student/Git-projects/robot_project/integratie_ws/devel/lib/xarm_controller/$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)sample_motion: /usr/lib/libPocoFoundation.so
+/home/student/Git-projects/robot_project/integratie_ws/devel/lib/xarm_controller/$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)sample_motion: /usr/lib/x86_64-linux-gnu/libdl.so
+/home/student/Git-projects/robot_project/integratie_ws/devel/lib/xarm_controller/$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)sample_motion: /opt/ros/melodic/lib/libroslib.so
+/home/student/Git-projects/robot_project/integratie_ws/devel/lib/xarm_controller/$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)sample_motion: /opt/ros/melodic/lib/librospack.so
+/home/student/Git-projects/robot_project/integratie_ws/devel/lib/xarm_controller/$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)sample_motion: /usr/lib/x86_64-linux-gnu/libpython2.7.so
+/home/student/Git-projects/robot_project/integratie_ws/devel/lib/xarm_controller/$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)sample_motion: /usr/lib/x86_64-linux-gnu/libboost_program_options.so
+/home/student/Git-projects/robot_project/integratie_ws/devel/lib/xarm_controller/$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)sample_motion: /usr/lib/x86_64-linux-gnu/libtinyxml2.so
+/home/student/Git-projects/robot_project/integratie_ws/devel/lib/xarm_controller/$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)sample_motion: /opt/ros/melodic/lib/librosconsole_bridge.so
+/home/student/Git-projects/robot_project/integratie_ws/devel/lib/xarm_controller/$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)sample_motion: /opt/ros/melodic/lib/libroscpp.so
+/home/student/Git-projects/robot_project/integratie_ws/devel/lib/xarm_controller/$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)sample_motion: /usr/lib/x86_64-linux-gnu/libboost_filesystem.so
+/home/student/Git-projects/robot_project/integratie_ws/devel/lib/xarm_controller/$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)sample_motion: /opt/ros/melodic/lib/librosconsole.so
+/home/student/Git-projects/robot_project/integratie_ws/devel/lib/xarm_controller/$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)sample_motion: /opt/ros/melodic/lib/librosconsole_log4cxx.so
+/home/student/Git-projects/robot_project/integratie_ws/devel/lib/xarm_controller/$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)sample_motion: /opt/ros/melodic/lib/librosconsole_backend_interface.so
+/home/student/Git-projects/robot_project/integratie_ws/devel/lib/xarm_controller/$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)sample_motion: /usr/lib/x86_64-linux-gnu/liblog4cxx.so
+/home/student/Git-projects/robot_project/integratie_ws/devel/lib/xarm_controller/$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)sample_motion: /usr/lib/x86_64-linux-gnu/libboost_regex.so
+/home/student/Git-projects/robot_project/integratie_ws/devel/lib/xarm_controller/$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)sample_motion: /opt/ros/melodic/lib/libroscpp_serialization.so
+/home/student/Git-projects/robot_project/integratie_ws/devel/lib/xarm_controller/$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)sample_motion: /opt/ros/melodic/lib/libxmlrpcpp.so
+/home/student/Git-projects/robot_project/integratie_ws/devel/lib/xarm_controller/$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)sample_motion: /opt/ros/melodic/lib/librostime.so
+/home/student/Git-projects/robot_project/integratie_ws/devel/lib/xarm_controller/$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)sample_motion: /opt/ros/melodic/lib/libcpp_common.so
+/home/student/Git-projects/robot_project/integratie_ws/devel/lib/xarm_controller/$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)sample_motion: /usr/lib/x86_64-linux-gnu/libboost_system.so
+/home/student/Git-projects/robot_project/integratie_ws/devel/lib/xarm_controller/$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)sample_motion: /usr/lib/x86_64-linux-gnu/libboost_thread.so
+/home/student/Git-projects/robot_project/integratie_ws/devel/lib/xarm_controller/$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)sample_motion: /usr/lib/x86_64-linux-gnu/libboost_chrono.so
+/home/student/Git-projects/robot_project/integratie_ws/devel/lib/xarm_controller/$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)sample_motion: /usr/lib/x86_64-linux-gnu/libboost_date_time.so
+/home/student/Git-projects/robot_project/integratie_ws/devel/lib/xarm_controller/$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)sample_motion: /usr/lib/x86_64-linux-gnu/libboost_atomic.so
+/home/student/Git-projects/robot_project/integratie_ws/devel/lib/xarm_controller/$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)sample_motion: /usr/lib/x86_64-linux-gnu/libpthread.so
+/home/student/Git-projects/robot_project/integratie_ws/devel/lib/xarm_controller/$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)sample_motion: /usr/lib/x86_64-linux-gnu/libconsole_bridge.so.0.4
+/home/student/Git-projects/robot_project/integratie_ws/devel/lib/xarm_controller/$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)sample_motion: xarm_ros/xarm_controller/CMakeFiles/sample_motion.dir/link.txt
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/student/Git-projects/robot_project/integratie_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable /home/student/Git-projects/robot_project/integratie_ws/devel/lib/xarm_controller/======sample_motion"
 	cd /home/student/Git-projects/robot_project/integratie_ws/build/xarm_ros/xarm_controller && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/sample_motion.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
-xarm_ros/xarm_controller/CMakeFiles/sample_motion.dir/build: /home/student/Git-projects/robot_project/integratie_ws/devel/lib/xarm_controller/sample_motion
+xarm_ros/xarm_controller/CMakeFiles/sample_motion.dir/build: /home/student/Git-projects/robot_project/integratie_ws/devel/lib/xarm_controller/$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)sample_motion
 
 .PHONY : xarm_ros/xarm_controller/CMakeFiles/sample_motion.dir/build
 

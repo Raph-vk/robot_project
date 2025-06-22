@@ -1,7 +1,7 @@
 file(REMOVE_RECURSE
   "CMakeFiles/example1_report_norm.dir/test/example1_report_norm.cpp.o"
-  "/home/student/Git-projects/robot_project/integratie_ws/devel/lib/xarm_api/example1_report_norm.pdb"
-  "/home/student/Git-projects/robot_project/integratie_ws/devel/lib/xarm_api/example1_report_norm"
+  "/home/student/Git-projects/robot_project/integratie_ws/devel/lib/xarm_api/======example1_report_norm.pdb"
+  "/home/student/Git-projects/robot_project/integratie_ws/devel/lib/xarm_api/======example1_report_norm"
 )
 
 # Per-language clean rules from dependency scanning.
