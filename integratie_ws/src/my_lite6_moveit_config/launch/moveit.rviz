@@ -178,6 +178,11 @@ Visualization Manager:
             Show Axes: false
             Show Trail: false
             Value: true
+          vacuumpomp_frame:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
           wand_frame:
             Alpha: 1
             Show Axes: false
@@ -340,6 +345,11 @@ Visualization Manager:
             Show Axes: false
             Show Trail: false
             Value: true
+          vacuumpomp_frame:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
           wand_frame:
             Alpha: 1
             Show Axes: false
@@ -472,6 +482,11 @@ Visualization Manager:
           Show Axes: false
           Show Trail: false
           Value: true
+        vacuumpomp_frame:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
         wand_frame:
           Alpha: 1
           Show Axes: false
@@ -499,7 +514,7 @@ Visualization Manager:
       Frames:
         All Enabled: false
         Opstelling_frame:
-          Value: true
+          Value: false
         baseplate_link:
           Value: false
         link1:
@@ -513,13 +528,13 @@ Visualization Manager:
         link5:
           Value: false
         link6:
-          Value: false
+          Value: true
         link_base:
           Value: false
         link_eef:
-          Value: true
+          Value: false
         link_tcp:
-          Value: true
+          Value: false
         mountingplate_link:
           Value: false
         oak_d_base_link:
@@ -535,7 +550,7 @@ Visualization Manager:
         oak_d_rgb_camera_frame:
           Value: false
         oak_d_rgb_camera_optical_frame:
-          Value: true
+          Value: false
         oak_d_right_camera_frame:
           Value: false
         oak_d_right_camera_optical_frame:
@@ -543,13 +558,15 @@ Visualization Manager:
         tcp_link:
           Value: false
         uflite_gripper_link:
-          Value: true
+          Value: false
+        vacuumpomp_frame:
+          Value: false
         wand_frame:
-          Value: true
+          Value: false
         world:
           Value: false
         xarm_link:
-          Value: true
+          Value: false
       Marker Scale: 1
       Name: TF
       Show Arrows: false
@@ -575,6 +592,8 @@ Visualization Manager:
                                 uflite_gripper_link:
                                   link_tcp:
                                     {}
+                              vacuumpomp_frame:
+                                {}
             oak_d_base_link:
               oak_d_imu_frame:
                 {}
@@ -624,10 +643,10 @@ Visualization Manager:
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.8147962689399719
+      Pitch: 0.2797970175743103
       Target Frame: world
       Value: XYOrbit (rviz)
-      Yaw: 5.684980869293213
+      Yaw: 1.3967957496643066
     Saved: ~
 Window Geometry:
   Displays:

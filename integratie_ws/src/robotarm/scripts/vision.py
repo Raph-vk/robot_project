@@ -17,7 +17,7 @@ if __name__ == '__main__':
     locatie_object.pose.orientation = Quaternion(x=0, y=0, z=-0.382683432365, w=0.923879532511)
 
     type_object = Int32()
-    type_object.data = 0  # 0=geel 1=paars 2=roze 3=wit
+    type_object.data = 2  # 0=geel 1=paars 2=roze 3=wit
     
     pubPositie.publish(locatie_object)
     pubKlasse.publish(type_object)
