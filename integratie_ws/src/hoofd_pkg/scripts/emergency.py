@@ -45,7 +45,7 @@ def status_callback(msg, action_name):
 
 def cancel_actions():
     actions = [
-        #'/manipulator_action',
+        '/manipulator_action',
         '/transport_control',
     ]
 
@@ -87,6 +87,7 @@ def cancel_actions():
                 break
             rospy.sleep(0.1)
     rospy.loginfo("Noodstop: Alle Action goals zijn gecanceled of gerelaunched.")
+    
 def kill_node(action):
      if action=="/transport_control":
          rospy.loginfo("Noodstop: Killen en relaunchen van transportband programma")
@@ -146,13 +147,6 @@ def poll_errors():
         except KeyboardInterrupt:
             rospy.loginfo("Noodstop: Afsluiten op gebruikersverzoek (Ctrl+C)")
             break
-        except rospy.ServiceException as e:
-            if not rospy.is_shutdown():
-                 rospy.logerr("Noodstop: Noodstop afhandeling is gefaald: %s", str(e))
-                 rospy.logerr("Noodstop: Transportband en manipulator programma worden herstart")
-                 kill_node("/transport_control")
-                 kill_node("/manipulator_action")
-                 break
         rate.sleep()
 
 if __name__ == '__main__':
