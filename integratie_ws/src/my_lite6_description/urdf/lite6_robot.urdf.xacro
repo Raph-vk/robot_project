@@ -183,7 +183,7 @@
 
   <xacro:include filename="$(find my_lite6_description)/urdf/Opstelling.urdf.xacro" />
   <xacro:Opstelling_urdf prefix="$(arg prefix)wand" parent_link="baseplate_link" 
-  mesh_file="package://robotarm/mesh/wand.STL" xyz="0.1 0 -0.015" rpy="0 0 1.57" />
+  mesh_file="package://robotarm/mesh/wand.STL" xyz="0.07 0 -0.015" rpy="0 0 1.57" />
 
   <xacro:include filename="$(find my_lite6_description)/urdf/Opstelling.urdf.xacro" />
   <xacro:Opstelling_urdf prefix="$(arg prefix)robotwand1" parent_link="mountingplate_link" 
@@ -199,7 +199,7 @@
 
   <xacro:include filename="$(find my_lite6_description)/urdf/Opstelling.urdf.xacro" />
   <xacro:Opstelling_urdf prefix="$(arg prefix)vacuumpomp" parent_link="link6" 
-  mesh_file="package://robotarm/mesh/vacuumpomp.STL" xyz="0.05 0.06 0.006" rpy="-1.57 0 1.57" />
+  mesh_file="package://robotarm/mesh/vacuumpomp.STL" xyz="0.04 0.06 0.006" rpy="-1.57 0 1.57" />
 
   <xacro:include filename="$(find depthai_bridge)/urdf/include/depthai_macro.urdf.xacro" />
   <xacro:depthai_camera 
