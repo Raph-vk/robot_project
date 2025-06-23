@@ -179,6 +179,11 @@ Visualization Manager:
             Show Axes: false
             Show Trail: false
             Value: true
+          robotwand3_frame:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
           tcp_link:
             Alpha: 1
             Show Axes: false
@@ -356,6 +361,11 @@ Visualization Manager:
             Show Axes: false
             Show Trail: false
             Value: true
+          robotwand3_frame:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
           tcp_link:
             Alpha: 1
             Show Axes: false
@@ -387,7 +397,7 @@ Visualization Manager:
         Show Robot Collision: false
         Show Robot Visual: true
       Value: true
-      Velocity_Scaling_Factor: 1
+      Velocity_Scaling_Factor: 0.01
     - Alpha: 1
       Class: rviz/RobotModel
       Collision Enabled: false
@@ -503,6 +513,11 @@ Visualization Manager:
           Show Axes: false
           Show Trail: false
           Value: true
+        robotwand3_frame:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
         tcp_link:
           Alpha: 1
           Show Axes: false
@@ -589,6 +604,8 @@ Visualization Manager:
           Value: false
         robotwand2_frame:
           Value: false
+        robotwand3_frame:
+          Value: true
         tcp_link:
           Value: false
         uflite_gripper_link:
@@ -615,6 +632,8 @@ Visualization Manager:
               robotwand1_frame:
                 {}
               robotwand2_frame:
+                {}
+              robotwand3_frame:
                 {}
               xarm_link:
                 link_base:
@@ -681,10 +700,10 @@ Visualization Manager:
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: -0.0852029100060463
+      Pitch: 0.024797089397907257
       Target Frame: world
       Value: XYOrbit (rviz)
-      Yaw: 2.9854321479797363
+      Yaw: 4.750432968139648
     Saved: ~
 Window Geometry:
   Displays:
