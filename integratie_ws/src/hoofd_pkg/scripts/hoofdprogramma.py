@@ -59,6 +59,7 @@ class hoofdprogramma:
         self.start_continue_pressed = False
         self.stop_pressed = False
         self.reset_pressed = False
+        self.noodstop_pressed = False
         self.noodstop_voldaan = False
 
         # HMI-status publisher
@@ -140,14 +141,15 @@ class hoofdprogramma:
             rospy.loginfo("start goal is verzonden naar transportsysteem")
 
 
-    # === STATE METHODS ===
+    # === STATE METHODS ===============================================
+
     def state_wachten_op_start(self):
         self.hmi_pub.publish("WACHTEN_OP_START")
         if self.start_pressed:
             self.start_pressed = False
             self.state = "TRANSPORTSYSTEEM"
 
-        if self.start_pressed:
+        #if self.start_continue_pressed:
 
     def state_transport(self):
         self.hmi_pub.publish("IN_BEDRIJF")
@@ -166,6 +168,7 @@ class hoofdprogramma:
 
     def state_vision(self):
         self.hmi_pub.publish("IN_BEDRIJF")
+        rospy.sleep(1)
         try:
             request = SetBoolRequest(data=True)
             response = self.vision(request)
@@ -214,6 +217,7 @@ class hoofdprogramma:
             rospy.loginfo("Reset knop ingedrukt")
             self.noodstop_uit()
             self.reset_pressed = False
+            self.noodstop_pressed = False
             self.state = "WACHTEN_OP_START"
 
     # === STATE MACHINE LOOP ===
@@ -221,7 +225,9 @@ class hoofdprogramma:
         rospy.loginfo("State machine gestart")
         rate = rospy.Rate(10)
         while not rospy.is_shutdown():
-            if self.state == "WACHTEN_OP_START":
+            if self.noodstop_pressed:
+                self.state_error()
+            elif self.state == "WACHTEN_OP_START":
                 self.state_wachten_op_start()
             elif self.state == "TRANSPORTSYSTEEM":
                 self.state_transport()
@@ -231,8 +237,6 @@ class hoofdprogramma:
                 self.state_manipulator()
             elif self.state == "FOUT":
                 self.state_fout()
-            elif self.state == "ERROR":
-                self.state_error()
             else:
                 rospy.logwarn("Onbekende state: %s", self.state)
                 self.state = "FOUT"
