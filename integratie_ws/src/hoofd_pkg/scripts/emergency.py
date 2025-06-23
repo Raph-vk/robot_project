@@ -9,7 +9,7 @@ Programmeurnummer: 2214688
 Vak: Robotica in de machinebouw
 Locatie: Breda
 Datum: 20-6-2025
-Versie: 1.0
+Versie: 1.1
 
 Functionele beschrijving:
 Hoofdfunctie:
@@ -142,6 +142,7 @@ def poll_errors():
                 while response.err ==2:
                    response = get_err()
                    rospy.sleep(1)
+                pub_uit.publish(True)
                 rospy.loginfo("Noodstop: Noodstop is gedeactiveerd")
                 continue             
         except KeyboardInterrupt:
@@ -157,6 +158,7 @@ if __name__ == '__main__':
     #Publisher
     pub_nood=rospy.Publisher("/Noodstop_aan",Bool, queue_size=1)
     pub_succes=rospy.Publisher("/Noodstop_afgehandeld",Bool, queue_size=1)
+    pub_uit=rospy.Publisher("/Noodstop_uit",Bool, queue_size=1)
     pub_motor=rospy.Publisher("/motor_command",Bool, queue_size=1)
     #Subscriber
     rospy.Subscriber("/transport_control/status", GoalStatusArray, status_callback, callback_args="/transport_control")
