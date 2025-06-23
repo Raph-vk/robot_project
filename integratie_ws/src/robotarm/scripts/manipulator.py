@@ -46,6 +46,8 @@ class unit_manipulator:
         self.group = moveit_commander.MoveGroupCommander('arm')
         self.group.set_max_velocity_scaling_factor(0.02)      
         self.group.set_max_acceleration_scaling_factor(0.02)
+        self.group.set_num_planning_attempts(5)
+        self.group.set_planning_time(30.0)
 
         self.display_trajectory_publisher = rospy.Publisher(
             '/move_group/display_planned_path',
@@ -76,13 +78,13 @@ class unit_manipulator:
             self.foutafhandeling()
             return 
 
-        # self.gripper_openen()  # Optioneel gripper openen
+        self.gripper_openen()  # Optioneel gripper openen
 
         if not self.naar_tandenborstel():
             self.foutafhandeling()
             return 
 
-        # self.gripper_sluiten()  # Optioneel gripper sluiten
+        self.gripper_sluiten()  # Optioneel gripper sluiten
 
         self.feedback.tandenborstel_opgepakt = True
         self.action_server.publish_feedback(self.feedback)
@@ -91,23 +93,20 @@ class unit_manipulator:
             self.foutafhandeling()
             return  
 
-        # self.gripper_openen()  # gripper openen bij sorteerbak
+        self.gripper_openen()  # gripper openen bij sorteerbak
 
 
         self.result.tandenborstel_gesorteerd = True
         self.action_server.set_succeeded(self.result)
 
         # Gripper uitzetten aan het einde
-        # if not self.gripper_uitschakelen():
-        #     self.foutafhandeling()
-        #     return
+        if not self.gripper_uitschakelen():
+            self.foutafhandeling()
+            return
 
         if not self.naar_vaste_positie(4):
             self.foutafhandeling()
             return 
-
-
-
 
     def positie_callback(self, msg):
         self.positie_object_vanuit_camera = msg
@@ -129,8 +128,16 @@ class unit_manipulator:
     def naar_tandenborstel(self):
         try:
             self.group.set_start_state_to_current_state()  # belangrijk!
+            self.group.set_num_planning_attempts(5)
+            self.group.set_planning_time(30.0)
             self.group.set_pose_target(self.positie_object_vanuit_base)
-            success = self.group.go(wait=True)
+
+            plan = self.group.plan()
+            if not plan or not plan.joint_trajectory.points == []:
+                rospy.logerr("Planning naar tandenborstel mislukt.")
+                return False
+
+            success = self.group.execute(plan, wait=True)
             self.group.clear_pose_targets()
 
             if not success:
@@ -155,15 +162,24 @@ class unit_manipulator:
             pose_target.orientation.w = orientatie[3]
 
             self.group.set_start_state_to_current_state()  # belangrijk!
+            self.group.set_num_planning_attempts(5)
+            self.group.set_planning_time(30.0)
             self.group.set_pose_target(pose_target)
-            success = self.group.go(wait=True)
+
+            plan = self.group.plan()
+            if not plan or not plan.joint_trajectory.points == []:
+                rospy.logerr("Planning naar vaste positie mislukt.")
+                return False
+
+            success = self.group.execute(plan, wait=True)
             self.group.clear_pose_targets()
 
             if not success:
                 rospy.logerr("Bewegen naar sorteerbak mislukt")
                 return False
-
-            return success
+            
+            return True
+    
         except Exception as e:
             rospy.logerr("error bij het bewegen richting vaste positie"+ str(locatie) + str(e))    
             return False  

@@ -12,12 +12,12 @@
     <arg name="parent_frame"         default="oak-d-base-frame" />
     <arg name="imuMode"              default="1"                />   <!-- 0 -> COPY, 1 -> LINEAR_INTERPOLATE_GYRO, 2 -> LINEAR_INTERPOLATE_ACCEL -->
 
-    <arg name="cam_pos_x"             default="0.25" /> <!-- Position respect to base frame (i.e. "base_link) -->
-    <arg name="cam_pos_y"             default="0.0" /> <!-- Position respect to base frame (i.e. "base_link) -->
-    <arg name="cam_pos_z"             default="0.5" /> <!-- Position respect to base frame (i.e. "base_link) -->
+    <arg name="cam_pos_x"             default="-0.26" /> <!-- Position respect to base frame (i.e. "base_link) -->
+    <arg name="cam_pos_y"             default="-0.245" /> <!-- Position respect to base frame (i.e. "base_link) -->
+    <arg name="cam_pos_z"             default="0.5275" /> <!-- Position respect to base frame (i.e. "base_link) -->
     <arg name="cam_roll"              default="0.0" /> <!-- Orientation respect to base frame (i.e. "base_link) -->
-    <arg name="cam_pitch"             default="0.0" /> <!-- Orientation respect to base frame (i.e. "base_link) -->
-    <arg name="cam_yaw"               default="0.0" /> <!-- Orientation respect to base frame (i.e. "base_link) -->
+    <arg name="cam_pitch"             default="1.57" /> <!-- Orientation respect to base frame (i.e. "base_link) -->
+    <arg name="cam_yaw"               default="-1.57" /> <!-- Orientation respect to base frame (i.e. "base_link) -->
 
     <arg name="lrcheck"               default="true" />
     <arg name="extended"              default="false"/>

@@ -61,6 +61,7 @@ class hoofdprogramma:
         self.reset_pressed = False
         self.noodstop_pressed = False
         self.noodstop_voldaan = False
+        self.noodstop_is_uit = False
 
         # HMI-status publisher
         self.hmi_pub = rospy.Publisher('/hmi/status', String, queue_size=1)
@@ -73,6 +74,7 @@ class hoofdprogramma:
 
         # Emergency topics
         self.noodstop_ingedrukt = rospy.Subscriber('/Noodstop_aan', Bool, self.noodstop_callback)
+        self.noodstop_uitgerukt = rospy.Subscriber('/Noodstop_uit', Bool, self.noodstop_uitgerukt_callback)
         self.noodstop_afgehandeld = rospy.Subscriber('/Noodstop_afgehandeld', Bool, self.noodstop_voldaan_callback)
         rospy.wait_for_service('/ufactory/moveit_clear_err')
         self.noodstop_uit = rospy.ServiceProxy('/ufactory/moveit_clear_err', ClearErr)
@@ -123,6 +125,9 @@ class hoofdprogramma:
         rospy.logwarn("Emergency button pressed: %s", msg.data)    
         self.noodstop_pressed = msg.data
         self.state = "ERROR"
+
+    def noodstop_uitgerukt_callback(self, msg):
+        self.noodstop_is_uit = msg.data
 
     def noodstop_voldaan_callback(self, msg):
         rospy.logwarn("Noodstop proces is voldaan, reset is mogelijk")    
@@ -215,10 +220,15 @@ class hoofdprogramma:
 
         if self.reset_pressed and self.noodstop_voldaan:
             rospy.loginfo("Reset knop ingedrukt")
-            self.noodstop_uit()
+            
+            while not self.noodstop_is_uit:
+                rospy.loginfo("Haal eerst noodstop eruit!!")
+                self.noodstop_uit() # robot arm uit errorstate halen.
+                rospy.sleep(0.5)
             self.reset_pressed = False
             self.noodstop_pressed = False
             self.state = "WACHTEN_OP_START"
+                
 
     # === STATE MACHINE LOOP ===
     def state_machine(self):
