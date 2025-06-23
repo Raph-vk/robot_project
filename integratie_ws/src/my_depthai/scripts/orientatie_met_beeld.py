@@ -39,8 +39,8 @@ class Bepalen_orientatie:
             img = self.bridge.imgmsg_to_cv2(data, "bgr8")
             h, w = img.shape[:2]
             #Afbeelding besnijden tot enkel zwarte vlak van de Transportband
-            x1, y1 = 0,260 
-            x2, y2 = 780, 580
+            x1, y1 = 0,240 
+            x2, y2 = 770, 554
             x1, y1 = max(0, x1), max(0, y1)
             x2, y2 = min(w, x2), min(h, y2)
             cropped = img[y1:y2, x1:x2]
