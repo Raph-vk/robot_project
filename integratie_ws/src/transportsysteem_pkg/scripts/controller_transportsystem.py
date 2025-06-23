@@ -78,7 +78,7 @@ class TransportController:
                     return self._as.set_succeeded(result)
                 rate.sleep()
 
-            rospy.sleep(1.0)
+            rospy.sleep(0.75)
             self.motor_pub.publish(Bool(data=False))
             feedback.feedback = "Reached end, stopping motor"
             self._as.publish_feedback(feedback)

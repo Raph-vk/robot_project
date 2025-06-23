@@ -19,9 +19,7 @@ class HMI:
         self.start_pub = rospy.Publisher('/start', Bool, queue_size=1, latch=False)
         self.start_continue_pub = rospy.Publisher('/start_continue', Bool, queue_size=1)
         self.stop_pub = rospy.Publisher('/stop', Bool, queue_size=1)
-        self.reset_pub = rospy.Publisher('/reset', Bool, queue_size=1)
-        self.emergency_pub = rospy.Publisher('/emergency_stop', Bool, queue_size=1)
-        
+        self.reset_pub = rospy.Publisher('/reset', Bool, queue_size=1)        
         # LED control publishers
         self.led_rood_pub = rospy.Publisher('/led_rood', Bool, queue_size=1)
         self.led_oranje_pub = rospy.Publisher('/led_oranje', Bool, queue_size=1)
