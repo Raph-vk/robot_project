@@ -10,7 +10,7 @@ Programmeurnummer: 2218115
 Vak: Robotica in de machinebouw
 Locatie: Breda
 Datum: 19-6-2025
-Versie: 1.0
+Versie: 1.1
 
 Functionele beschrijving:
 Hoofdfunctie:
@@ -38,6 +38,7 @@ from std_msgs.msg import String as SignaleringMsg  # assuming signalering.msg = 
 
 # std_srvs
 from std_srvs.srv import SetBool, SetBoolRequest, SetBoolResponse
+from xarm_msgs.srv import ClearErr
 
 # Actionlib
 import actionlib
@@ -58,6 +59,7 @@ class hoofdprogramma:
         self.start_continue_pressed = False
         self.stop_pressed = False
         self.reset_pressed = False
+        self.noodstop_voldaan = False
 
         # HMI-status publisher
         self.hmi_pub = rospy.Publisher('/hmi/status', String, queue_size=1)
@@ -70,13 +72,15 @@ class hoofdprogramma:
 
         # Emergency topics
         self.noodstop_ingedrukt = rospy.Subscriber('/Noodstop_aan', Bool, self.noodstop_callback)
-        self.noodstop_afgehandeld = rospy.Subscriber('/Noodstop_afgehandeld', Bool, self.start_continue_callback)
+        self.noodstop_afgehandeld = rospy.Subscriber('/Noodstop_afgehandeld', Bool, self.noodstop_voldaan_callback)
+        rospy.wait_for_service('/ufactory/moveit_clear_err')
+        self.noodstop_uit = rospy.ServiceProxy('/ufactory/moveit_clear_err', ClearErr)
 
         # Action client
         self.transport_client = actionlib.SimpleActionClient('/transport_control', TransportControlAction)
-        rospy.loginfo("Waiting for transportsystem action server...")
+        rospy.loginfo("Waiting for transportsysteem action server...")
         self.transport_client.wait_for_server(rospy.Duration(30))
-        rospy.loginfo("Connected to transportsystem action server.")
+        rospy.loginfo("Connected to transportsysteem action server.")
 
         # wachten tot Vision service beschikbaar is.
         rospy.wait_for_service('/vision')
@@ -96,9 +100,8 @@ class hoofdprogramma:
 
     # ================= Knoppen CALLBACK FUNCTIES ======================
     def start_callback(self, msg):
-        #rospy.loginfo("Start button pressed: %s", msg.data)
-        #self.start_pressed = msg.data
-        #self.state = "IN_BEDRIJF"
+        rospy.loginfo("Start button pressed: %s", msg.data)
+
         if msg.data and not self.start_pressed:
             rospy.loginfo("Start button pressed.")
             self.start_pressed = True
@@ -106,7 +109,6 @@ class hoofdprogramma:
     def start_continue_callback(self, msg):
         rospy.loginfo("Start/Continue button pressed: %s", msg.data)
         self.start_continue_pressed = msg.data
-        #self.state = "IN_BEDRIJF"
 
     def stop_callback(self, msg):
         rospy.logwarn("Stop button pressed: %s", msg.data)
@@ -115,7 +117,6 @@ class hoofdprogramma:
     def reset_callback(self, msg):
         rospy.loginfo("Reset button pressed: %s", msg.data)    
         self.reset_pressed = msg.data
-        #self.state = "WACHTEN_OP_START"
 
     def noodstop_callback(self, msg):
         rospy.logwarn("Emergency button pressed: %s", msg.data)    
@@ -137,137 +138,110 @@ class hoofdprogramma:
             goal.instruction = "start"
             self.transport_client.send_goal(goal)
             rospy.loginfo("start goal is verzonden naar transportsysteem")
-   
-   
 
 
+    # === STATE METHODS ===
+    def state_wachten_op_start(self):
+        self.hmi_pub.publish("WACHTEN_OP_START")
+        if self.start_pressed:
+            self.start_pressed = False
+            self.state = "TRANSPORTSYSTEEM"
 
- # ================= STATE MACHINE LOOP ==========================
-    def state_machine(self):
-        rospy.loginfo("state_machine draait")
-        rate = rospy.Rate(10)  # 10 Hz
+        if self.start_pressed:
 
-        while not rospy.is_shutdown():
-            # --- WACHTEN OP START status ---
-            if self.state == "WACHTEN_OP_START":
-                self.hmi_pub.publish("WACHTEN_OP_START")
+    def state_transport(self):
+        self.hmi_pub.publish("IN_BEDRIJF")
+        rospy.loginfo("Transportfase gestart")
+        goal = TransportControlGoal(instruction="start")
+        self.transport_client.send_goal(goal)
+        self.transport_client.wait_for_result()
+        result = self.transport_client.get_result()
 
-                if self.start_pressed:
-                    rospy.loginfo("Overgang naar IN_BEDRIJF")
-                    self.state = "IN_BEDRIJF"
-                    self.start_pressed = False #startknop resetten naar false
+        if result and result.result:
+            rospy.loginfo("Transport succesvol")
+            self.state = "VISION"
+        else:
+            rospy.logwarn("Transport mislukt")
+            self.state = "FOUT"
 
-            # ------- IN BEDRIJF status --- dus aftelopen cyclus -----
-            elif self.state == "IN_BEDRIJF":
-                self.hmi_pub.publish("IN_BEDRIJF")
-                rospy.loginfo("in IN_BEDRIJF state")
-
-                #Transportsysteem start-commando openen
-                rospy.loginfo("Startcommando naar transportsysteem")
-                goal = TransportControlGoal()
-                goal.instruction = "start"
-                self.transport_client.send_goal(goal)
-                rospy.loginfo("start goal is verzonden naar transportsysteem")
-
-                # resultaat vanuit transportsysteem is TRUE.
-                self.transport_client.wait_for_result()  # Wacht tot klaar
-                transport = self.transport_client.get_result()  # Resultaat ophalen
-                rospy.loginfo("Resultaat van transportsysteem ontvangen")
-
-                if transport.result:
-                    rospy.loginfo("Transport succesvol gelukt.") #result = true
-                else:
-                    rospy.logwarn("Transport mislukt.") #result = false
-                    self.state = "FOUT"
-
-                #Vision start-commando openen # SetBool service aanroepen met expliciete True
-                try:
-                    rospy.loginfo("Service '/vision' wordt aangeroepen met TRUE...")
-                    request = SetBoolRequest()
-                    request.data = True  # ← hier stuur je echt True
-
-                    # terugkoppeling uitlezen
-                    response = self.vision(request)  # response bevat: success + message
-                    if response.success:
-                        rospy.loginfo("Service succesvol: {}".format(response.message))
-                    else:
-                        rospy.logwarn("Service fout: {}".format(response.message))
-                        self.state = "FOUT"
-                except rospy.ServiceException as e:
-                    rospy.logerr("Service call naar '/vision' faalde: {}".format(e))
-                    self.state = "FOUT"
-            
-                #Manipulator start-commando openen
-                rospy.loginfo("Startcommando naar manipulator")
-                goal = manipulatorActionGoal()
-                goal.manipulator_start = True
-                self.manipulator_client.send_goal(goal)
-                rospy.loginfo("start goal is verzonden naar manipulator")            
-
-                # feedback verwerken
-                # 
-
-                # resultaat vanuit transportsysteem is TRUE.
-                self.manipulator_client.wait_for_result()  # Wacht tot klaar
-                transport = self.manipulator_client.get_result()  # Resultaat ophalen
-                rospy.loginfo("Resultaat van manipulator ontvangen")
-
-                if manipulator.result:
-                    rospy.loginfo("Uitsorteren succesvol gelukt.") #result = true
-                else:
-                    rospy.logwarn("Uitsorteren mislukt.") #result = false
-                    self.state = "FOUT"
-
-
-                self.state = "WACHTEN_OP_START"
-
-            # ------- ERROR status --- dus noodstop ingedrukt of crash -----
-            elif self.state == "ERROR":
-                self.hmi_pub.publish("ERROR")
-                rospy.loginfo("in ERROR state")
-
-                self.start_continue_pressed = False
-                self.start_pressed = False
-
-                # Resetknop indrukken
-                if self.reset_pressed and noodstop_voldaan:
-                    rospy.loginfo("Reset knop ingedrukt")
-                    self.state = "WACHTEN_OP_START"
-                    self.reset_pressed = False
-
-            # ------- FOUT status --- false als result teruggekregen -----
-            elif self.state == "FOUT":
-                self.hmi_pub.publish("FOUT")
-                rospy.loginfo("in FOUT state")
-
-                self.start_continue_pressed = False
-                self.start_pressed = False
-
-                # Resetknop indrukken
-                if self.reset_pressed:
-                    rospy.loginfo("Reset knop ingedrukt")
-                    self.state = "WACHTEN_OP_START"
-                    self.reset_pressed = False
-
-            # ------- else ------
+    def state_vision(self):
+        self.hmi_pub.publish("IN_BEDRIJF")
+        try:
+            request = SetBoolRequest(data=True)
+            response = self.vision(request)
+            if response.success:
+                rospy.loginfo("Vision succesvol: %s", response.message)
+                self.state = "MANIPULATOR"
             else:
-                self.hmi_pub.publish("FOUT")
-                rospy.loginfo("in FOUT state")
+                rospy.logwarn("Vision fout: %s", response.message)
+                self.state = "FOUT"
+        except rospy.ServiceException as e:
+            rospy.logerr("Service call vision faalde: %s", e)
+            self.state = "FOUT"
 
-                self.start_continue_pressed = False
-                self.start_pressed = False
+    def state_manipulator(self):
+        self.hmi_pub.publish("IN_BEDRIJF")
+        goal = manipulatorGoal(manipulator_start=True)
+        self.manipulator_client.send_goal(goal)
+        self.manipulator_client.wait_for_result()
+        result = self.manipulator_client.get_result()
 
-                # Resetknop indrukken
-                if self.reset_pressed:
-                    rospy.loginfo("Reset knop ingedrukt")
-                    self.state = "WACHTEN_OP_START"
-                    self.reset_pressed = False
-        
+        if result and result.tandenborstel_gesorteerd:
+            rospy.loginfo("Manipulatie succesvol")
+            self.state = "WACHTEN_OP_START"
+        else:
+            rospy.logwarn("Manipulatie mislukt")
+            self.state = "FOUT"
+
+    def state_fout(self):
+        self.hmi_pub.publish("FOUT")
+        rospy.loginfo("In FOUT state")
+        self.start_continue_pressed = False
+        self.start_pressed = False
+
+        if self.reset_pressed:
+            rospy.loginfo("Reset knop ingedrukt")
+            self.reset_pressed = False
+            self.state = "WACHTEN_OP_START"
+
+    def state_error(self):
+        self.hmi_pub.publish("ERROR")
+        rospy.loginfo("In ERROR state")
+        self.start_continue_pressed = False
+        self.start_pressed = False
+
+        if self.reset_pressed and self.noodstop_voldaan:
+            rospy.loginfo("Reset knop ingedrukt")
+            self.noodstop_uit()
+            self.reset_pressed = False
+            self.state = "WACHTEN_OP_START"
+
+    # === STATE MACHINE LOOP ===
+    def state_machine(self):
+        rospy.loginfo("State machine gestart")
+        rate = rospy.Rate(10)
+        while not rospy.is_shutdown():
+            if self.state == "WACHTEN_OP_START":
+                self.state_wachten_op_start()
+            elif self.state == "TRANSPORTSYSTEEM":
+                self.state_transport()
+            elif self.state == "VISION":
+                self.state_vision()
+            elif self.state == "MANIPULATOR":
+                self.state_manipulator()
+            elif self.state == "FOUT":
+                self.state_fout()
+            elif self.state == "ERROR":
+                self.state_error()
+            else:
+                rospy.logwarn("Onbekende state: %s", self.state)
+                self.state = "FOUT"
             rate.sleep()
+
 
 if __name__ == '__main__':
     rospy.loginfo("hoofdprogramma node wordt gestart.")
-    rospy.init_node('hoofdprogramma_node')       # Initialize the ROS node.
+    rospy.init_node('hoofdprogramma_node')
     
     try:
         hoofdprogramma()
