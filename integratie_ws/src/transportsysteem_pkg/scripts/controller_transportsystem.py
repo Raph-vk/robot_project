@@ -38,6 +38,7 @@ class TransportController:
     def _ir_end_cb(self, msg):
         self.ir_end = msg.data                       # Update end‐sensor flag
     
+
     # Handle the instructions
     def _handle_control(self, req):
         feedback = TransportControlFeedback()
@@ -68,7 +69,7 @@ class TransportController:
                     return self._as.set_preempted()
 
                 # timeout check
-                if (rospy.Time.now() - start_time).to_sec() > 10.0:
+                if (rospy.Time.now() - start_time).to_sec() > 15.0:
                     rospy.logwarn("Timeout: object did not reach end within 10s")
                     self.motor_pub.publish(Bool(data=False))
                     result.result = False
@@ -94,6 +95,7 @@ class TransportController:
 
             # Result false as error because no object in area.
             if not self.ir_end:
+                
                 result.result = False
                 self._as.publish_feedback(   # send one last feedback
                     TransportControlFeedback(feedback="No object in area"))

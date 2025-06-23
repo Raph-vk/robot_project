@@ -131,6 +131,7 @@ def poll_errors():
             if response.err == 2:
                 rospy.logwarn("Noodstop: Noodstop is geactiveerd!")
                 pub_nood.publish(True)
+                pub_motor.publish(False)
                 rospy.logerr("Noodstop: Actions stoppen of herstarten")
                 cancel_actions()
                 rospy.loginfo("Noodstop: Actions gestopt of herstart")
@@ -162,6 +163,7 @@ if __name__ == '__main__':
     #Publisher
     pub_nood=rospy.Publisher("/Noodstop_aan",Bool, queue_size=1)
     pub_succes=rospy.Publisher("/Noodstop_afgehandeld",Bool, queue_size=1)
+    pub_motor=rospy.Publisher("/motor_command",Bool, queue_size=1)
     #Subscriber
     rospy.Subscriber("/transport_control/status", GoalStatusArray, status_callback, callback_args="/transport_control")
     rospy.Subscriber("/manipulator_action/status", GoalStatusArray, status_callback, callback_args="/manipulator_action")
