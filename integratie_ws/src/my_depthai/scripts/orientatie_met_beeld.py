@@ -9,7 +9,7 @@ Programmeurnummer: 2214688
 Vak: Robotica in de machinebouw
 Locatie: Breda
 Datum: 12-6-2025
-Versie: 1.1
+Versie: 1.2
 
 Functionele beschrijving:
 Hoofdfunctie:
