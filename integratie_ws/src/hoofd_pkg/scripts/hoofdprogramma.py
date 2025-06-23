@@ -84,6 +84,12 @@ class hoofdprogramma:
         self.vision = rospy.ServiceProxy('/vision', SetBool)
         rospy.loginfo("Connected to vision service server.")
         
+        # Action Client
+        self.manipulator_client = actionlib.SimpleActionClient('manipulator_action', manipulatorAction)
+        rospy.loginfo("Waiting for manipulator action server...")
+        self.manipulator_client.wait_for_server(rospy.Duration(30))
+        rospy.loginfo("Connected to manipulator action server.")
+
         #State machine oproepen
         self.state_machine()
 
@@ -120,6 +126,20 @@ class hoofdprogramma:
         rospy.logwarn("Noodstop proces is voldaan, reset is mogelijk")    
         self.noodstop_voldaan = msg.data
 
+    def feedback_manipulator_callback(self, feedback):
+
+        if manipulator.feedback:
+            rospy.loginfo("Object is opgepakt")
+
+            #Transportsysteem start-commando versturen
+            rospy.loginfo("Startcommando naar transportsysteem")
+            goal = TransportControlGoal()
+            goal.instruction = "start"
+            self.transport_client.send_goal(goal)
+            rospy.loginfo("start goal is verzonden naar transportsysteem")
+   
+   
+
 
 
  # ================= STATE MACHINE LOOP ==========================
@@ -136,7 +156,7 @@ class hoofdprogramma:
                     rospy.loginfo("Overgang naar IN_BEDRIJF")
                     self.state = "IN_BEDRIJF"
                     self.start_pressed = False #startknop resetten naar false
-        
+
             # ------- IN BEDRIJF status --- dus aftelopen cyclus -----
             elif self.state == "IN_BEDRIJF":
                 self.hmi_pub.publish("IN_BEDRIJF")
@@ -176,7 +196,29 @@ class hoofdprogramma:
                 except rospy.ServiceException as e:
                     rospy.logerr("Service call naar '/vision' faalde: {}".format(e))
                     self.state = "FOUT"
-                
+            
+                #Manipulator start-commando openen
+                rospy.loginfo("Startcommando naar manipulator")
+                goal = manipulatorActionGoal()
+                goal.manipulator_start = True
+                self.manipulator_client.send_goal(goal)
+                rospy.loginfo("start goal is verzonden naar manipulator")            
+
+                # feedback verwerken
+                # 
+
+                # resultaat vanuit transportsysteem is TRUE.
+                self.manipulator_client.wait_for_result()  # Wacht tot klaar
+                transport = self.manipulator_client.get_result()  # Resultaat ophalen
+                rospy.loginfo("Resultaat van manipulator ontvangen")
+
+                if manipulator.result:
+                    rospy.loginfo("Uitsorteren succesvol gelukt.") #result = true
+                else:
+                    rospy.logwarn("Uitsorteren mislukt.") #result = false
+                    self.state = "FOUT"
+
+
                 self.state = "WACHTEN_OP_START"
 
             # ------- ERROR status --- dus noodstop ingedrukt of crash -----
@@ -226,7 +268,6 @@ class hoofdprogramma:
 if __name__ == '__main__':
     rospy.loginfo("hoofdprogramma node wordt gestart.")
     rospy.init_node('hoofdprogramma_node')       # Initialize the ROS node.
-    
     
     try:
         hoofdprogramma()

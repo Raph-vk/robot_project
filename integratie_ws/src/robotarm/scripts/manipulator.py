@@ -44,8 +44,8 @@ class unit_manipulator:
         self.robot = moveit_commander.RobotCommander()
         self.scene = moveit_commander.PlanningSceneInterface()
         self.group = moveit_commander.MoveGroupCommander('arm')
-        # self.group.set_max_velocity_scaling_factor(0.01)      
-        # self.group.set_max_acceleration_scaling_factor(0.02)
+        self.group.set_max_velocity_scaling_factor(0.02)      
+        self.group.set_max_acceleration_scaling_factor(0.02)
 
         self.display_trajectory_publisher = rospy.Publisher(
             '/move_group/display_planned_path',
