@@ -70,6 +70,7 @@ def detecteer_en_publiceer(msg):
      #Bepaal klasse id en positie van de meest linksboven gedetecteerde object
      klasse_id = linksboven_detectie.results[0].id
      positie = linksboven_detectie.position
+     positie.y = -positie.y
      
      # Maak PoseStamped object aan
      pose_msg = PoseStamped()

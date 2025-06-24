@@ -35,7 +35,7 @@ class unit_manipulator:
             # bak3
             2: ((-0.1259 , 0.3191 , 0.1596), (-0.6286 ,-0.7171 ,-0.2482 , 0.1704)),
             # bak4
-            3: ((-0.1200 , 0.1957 , 0.0698), (-0.6779 ,-0.7206 ,-0.1454 , 0.0093)),
+            7: ((-0.1200 , 0.1957 , 0.0698), (-0.6779 ,-0.7206 ,-0.1454 , 0.0093)),
             #russtand boven transportband
             4: ((-0.0346 , -0.2287 , 0.1078), (-0.9436 ,-0.2733 ,0.1623 , 0.0925)),
         }
@@ -44,7 +44,7 @@ class unit_manipulator:
         self.robot = moveit_commander.RobotCommander()
         self.scene = moveit_commander.PlanningSceneInterface()
         self.group = moveit_commander.MoveGroupCommander('arm')
-        self.group.set_max_velocity_scaling_factor(0.02)      
+        self.group.set_max_velocity_scaling_factor(0.01)      
         self.group.set_max_acceleration_scaling_factor(0.02)
         self.group.set_num_planning_attempts(5)
         self.group.set_planning_time(30.0)
@@ -123,6 +123,7 @@ class unit_manipulator:
         except (tf2_ros.LookupException, tf2_ros.ConnectivityException, tf2_ros.ExtrapolationException) as e:
             rospy.logerr("error bij transformeren: "+ str(e))
             return False
+        
             
 
     def naar_tandenborstel(self):
@@ -133,12 +134,16 @@ class unit_manipulator:
             self.group.set_pose_target(self.positie_object_vanuit_base)
 
             plan = self.group.plan()
-            if not plan or not plan.joint_trajectory.points == []:
-                rospy.logerr("Planning naar tandenborstel mislukt.")
-                return False
-
             success = self.group.execute(plan, wait=True)
             self.group.clear_pose_targets()
+        
+            self.group.set_start_state_to_current_state()
+            self.positie_object_vanuit_base.pose.position.z = 0.0522
+            self.group.set_pose_target(self.positie_object_vanuit_base)
+            plan = self.group.plan()
+            success = self.group.execute(plan, wait=True)
+            self.group.clear_pose_targets()
+
 
             if not success:
                 rospy.logerr("Bewegen naar tandenborstel mislukt")
@@ -167,9 +172,9 @@ class unit_manipulator:
             self.group.set_pose_target(pose_target)
 
             plan = self.group.plan()
-            if not plan or not plan.joint_trajectory.points == []:
-                rospy.logerr("Planning naar vaste positie mislukt.")
-                return False
+            # if not plan or not plan.joint_trajectory.points == []:
+            #     rospy.logerr("Planning naar vaste positie mislukt.")
+            #     return False
 
             success = self.group.execute(plan, wait=True)
             self.group.clear_pose_targets()
