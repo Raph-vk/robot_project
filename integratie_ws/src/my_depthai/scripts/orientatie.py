@@ -40,15 +40,15 @@ class Bepalen_orientatie:
             img = self.bridge.imgmsg_to_cv2(data, "bgr8")
             h, w = img.shape[:2]
             #Afbeelding besnijden tot enkel zwarte vlak van de Transportband
-            x1, y1 = 0,240 
-            x2, y2 = 770, 554
+            x1, y1 = 0,250 
+            x2, y2 = 760, 554
             x1, y1 = max(0, x1), max(0, y1)
             x2, y2 = min(w, x2), min(h, y2)
             cropped = img[y1:y2, x1:x2]
             
             #Besnijden afbeelding binair maken met global thresholding
             gray = cv2.cvtColor(cropped, cv2.COLOR_BGR2GRAY)
-            _, binair = cv2.threshold(gray, 70, 255, cv2.THRESH_BINARY )
+            _, binair = cv2.threshold(gray, 60, 255, cv2.THRESH_BINARY )
             _, contours, hierarchy = cv2.findContours(binair, cv2.RETR_EXTERNAL,cv2.CHAIN_APPROX_SIMPLE)
             bbox=self.detectie.bbox
             

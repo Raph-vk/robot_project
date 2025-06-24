@@ -44,7 +44,7 @@ class unit_manipulator:
         self.robot = moveit_commander.RobotCommander()
         self.scene = moveit_commander.PlanningSceneInterface()
         self.group = moveit_commander.MoveGroupCommander('arm')
-        self.group.set_max_velocity_scaling_factor(0.01)      
+        self.group.set_max_velocity_scaling_factor(0.05)      
         self.group.set_max_acceleration_scaling_factor(0.02)
         self.group.set_num_planning_attempts(5)
         self.group.set_planning_time(30.0)
@@ -99,6 +99,7 @@ class unit_manipulator:
         self.result.tandenborstel_gesorteerd = True
         self.action_server.set_succeeded(self.result)
 
+        rospy.sleep(1)
         # Gripper uitzetten aan het einde
         if not self.gripper_uitschakelen():
             self.foutafhandeling()
@@ -192,21 +193,24 @@ class unit_manipulator:
     def gripper_openen(self):
         rospy.wait_for_service('/ufactory/vacuum_gripper_set')
         gripper = rospy.ServiceProxy('/ufactory/vacuum_gripper_set', SetInt16)
-        resp = gripper(self.GRIPPER_OPEN)
 
-        # toegestane_timeout = 5  # seconden
-        # start = time.time()
+        toegestane_timeout =rospy.Duration(5)  # seconden
+        start = rospy.Time.now()
+        while True:
+            resp = gripper(self.GRIPPER_OPEN)
+            if resp.ret ==0:
+                 return
+            if rospy.Time.now() - start > toegestane_timeout:
+                 rospy.logerr("Fout: Gripper opent niet!")
+                 return
+            time.sleep(0.1)
 
-        # while resp.ret != self.GRIPPER_OPEN:
-        #     if time.time() - start > toegestane_timeout:
-        #         rospy.logerr("Fout: Gripper opent niet!")
-        #         break
-        #     time.sleep(0.01)
     
     def gripper_sluiten(self):
         rospy.wait_for_service('/ufactory/vacuum_gripper_set')
         gripper = rospy.ServiceProxy('/ufactory/vacuum_gripper_set', SetInt16)
         resp = gripper(self.GRIPPER_DICHT)
+            
 
 
     def gripper_uitschakelen(self):

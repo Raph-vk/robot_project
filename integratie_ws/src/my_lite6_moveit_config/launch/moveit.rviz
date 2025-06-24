@@ -399,7 +399,7 @@ Visualization Manager:
         Show Robot Collision: false
         Show Robot Visual: true
       Value: true
-      Velocity_Scaling_Factor: 0.01
+      Velocity_Scaling_Factor: 0.1
     - Alpha: 1
       Class: rviz/RobotModel
       Collision Enabled: false
@@ -562,8 +562,6 @@ Visualization Manager:
         All Enabled: false
         Opstelling_frame:
           Value: false
-        Wit_0:
-          Value: false
         baseplate_link:
           Value: false
         link1:
@@ -702,8 +700,7 @@ Visualization Manager:
                 {}
               oak_rgb_camera_frame:
                 oak_rgb_camera_optical_frame:
-                  Wit_0:
-                    {}
+                  {}
               oak_right_camera_frame:
                 oak_right_camera_optical_frame:
                   {}
@@ -791,4 +788,4 @@ Window Geometry:
     collapsed: false
   Width: 1080
   X: 0
-  Y: 539
+  Y: 479

@@ -173,7 +173,7 @@ class hoofdprogramma:
 
     def state_vision(self):
         self.hmi_pub.publish("IN_BEDRIJF")
-        rospy.sleep(1)
+        rospy.sleep(3)
         try:
             request = SetBoolRequest(data=True)
             response = self.vision(request)
