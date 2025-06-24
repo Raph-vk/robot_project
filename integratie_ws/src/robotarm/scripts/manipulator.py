@@ -11,7 +11,7 @@ from geometry_msgs.msg import PoseStamped, Pose, Point, Quaternion
 from tf2_geometry_msgs.tf2_geometry_msgs import do_transform_pose
 import moveit_msgs.msg
 import time
-
+import copy
 
 
 
@@ -21,6 +21,9 @@ class unit_manipulator:
         self.positie_object_vanuit_camera = None
         #getransformeerde coordinaten
         self.positie_object_vanuit_base = None
+        #positie waar gripper gesloten kan worden
+        self.positie_object_oppakken = None
+        #een getal dat aanduid welk type tandenborstel is gedecteerd
         self.type_tandenborstel = None
         #getal waarmee gripper kan worden gesloten
         self.GRIPPER_DICHT = 0
@@ -35,9 +38,9 @@ class unit_manipulator:
             # bak3
             2: ((-0.1259 , 0.3191 , 0.1596), (-0.6286 ,-0.7171 ,-0.2482 , 0.1704)),
             # bak4
-            7: ((-0.1200 , 0.1957 , 0.0698), (-0.6779 ,-0.7206 ,-0.1454 , 0.0093)),
+            3: ((-0.1200 , 0.1957 , 0.0698), (-0.6779 ,-0.7206 ,-0.1454 , 0.0093)),
             #russtand boven transportband
-            4: ((-0.0346 , -0.2287 , 0.1078), (-0.9436 ,-0.2733 ,0.1623 , 0.0925)),
+            4: ((-0.0345 , -0.2287 , 0.1078), (0.9436 ,-0.2732 ,0.1624 , 0.0926)),
         }
 
         moveit_commander.roscpp_initialize(sys.argv)
@@ -69,22 +72,18 @@ class unit_manipulator:
         rospy.loginfo("Manipulator action server gestart")
 
     def start_manipulator(self, goal):   
-        if self.positie_object_vanuit_camera is None or self.type_tandenborstel is None:
-            rospy.logerr("Ontbrekende gegevens: positie of type tandenborstel is nog niet ontvangen van visionsysteem.")
-            self.foutafhandeling()
-            return
 
         if not self.transformeren():
             self.foutafhandeling()
             return 
-
-        self.gripper_openen()  # Optioneel gripper openen
+        
+        # self.gripper_openen()  
 
         if not self.naar_tandenborstel():
             self.foutafhandeling()
             return 
 
-        self.gripper_sluiten()  # Optioneel gripper sluiten
+        # self.gripper_sluiten()  
 
         self.feedback.tandenborstel_opgepakt = True
         self.action_server.publish_feedback(self.feedback)
@@ -93,17 +92,17 @@ class unit_manipulator:
             self.foutafhandeling()
             return  
 
-        self.gripper_openen()  # gripper openen bij sorteerbak
+        # self.gripper_openen() 
 
 
         self.result.tandenborstel_gesorteerd = True
         self.action_server.set_succeeded(self.result)
 
-        rospy.sleep(1)
-        # Gripper uitzetten aan het einde
-        if not self.gripper_uitschakelen():
-            self.foutafhandeling()
-            return
+        # rospy.sleep(1)
+        # # Gripper uitzetten aan het einde
+        # if not self.gripper_uitschakelen():
+        #     self.foutafhandeling()
+        #     return
 
         if not self.naar_vaste_positie(4):
             self.foutafhandeling()
@@ -111,16 +110,23 @@ class unit_manipulator:
 
     def positie_callback(self, msg):
         self.positie_object_vanuit_camera = msg
+            
     
     def type_callback(self, msg):
         self.type_tandenborstel = msg.data
 
     def transformeren(self):
         try:
+            if self.positie_object_vanuit_camera is None or self.type_tandenborstel is None:
+                rospy.logerr("Ontbrekende gegevens: positie of type tandenborstel is nog niet ontvangen van visionsysteem.")
+                self.foutafhandeling()
+                return False
+
             transform = self.tf_buffer.lookup_transform('world', self.positie_object_vanuit_camera.header.frame_id, 
             rospy.Time(0), rospy.Duration(1.0))
             self.positie_object_vanuit_base = do_transform_pose(self.positie_object_vanuit_camera, transform)
             return True
+
         except (tf2_ros.LookupException, tf2_ros.ConnectivityException, tf2_ros.ExtrapolationException) as e:
             rospy.logerr("error bij transformeren: "+ str(e))
             return False
@@ -129,30 +135,25 @@ class unit_manipulator:
 
     def naar_tandenborstel(self):
         try:
-            self.group.set_start_state_to_current_state()  # belangrijk!
-            self.group.set_num_planning_attempts(5)
-            self.group.set_planning_time(30.0)
-            self.group.set_pose_target(self.positie_object_vanuit_base)
-
-            plan = self.group.plan()
-            success = self.group.execute(plan, wait=True)
-            self.group.clear_pose_targets()
-        
-            self.group.set_start_state_to_current_state()
-            self.positie_object_vanuit_base.pose.position.z = 0.0522
-            self.group.set_pose_target(self.positie_object_vanuit_base)
-            plan = self.group.plan()
-            success = self.group.execute(plan, wait=True)
-            self.group.clear_pose_targets()
-
-
+            success = self.plan_en_executeer(self.positie_object_vanuit_base)
             if not success:
-                rospy.logerr("Bewegen naar tandenborstel mislukt")
+                rospy.logerr("Beweging naar positie boven tandenborstel mislukt")
                 return False
 
-            return success
+            self.positie_object_oppakken = copy.deepcopy(self.positie_object_vanuit_base.pose)
+
+            #gripper bevind zich rechtboven tandenborstel en moet alleen dalen tot een bepaalde hoogte.
+            self.positie_object_oppakken.position.z = 0.0522
+            
+            success = self.plan_en_executeer(self.positie_object_oppakken)
+            if not success:
+                rospy.logerr("Beweging naar positie op hoogte tandenborstel mislukt")
+                return False
+
+            return True
+
         except Exception as e:
-            rospy.logerr("error bij het bewegen richting de tandenborstel: "+ str(e))  
+            rospy.logerr("exception error bij het bewegen richting de tandenborstel: "+ str(e))  
             return False
 
     def naar_vaste_positie(self, locatie):
@@ -167,27 +168,38 @@ class unit_manipulator:
             pose_target.orientation.z = orientatie[2]
             pose_target.orientation.w = orientatie[3]
 
-            self.group.set_start_state_to_current_state()  # belangrijk!
-            self.group.set_num_planning_attempts(5)
-            self.group.set_planning_time(30.0)
-            self.group.set_pose_target(pose_target)
-
-            plan = self.group.plan()
-            # if not plan or not plan.joint_trajectory.points == []:
-            #     rospy.logerr("Planning naar vaste positie mislukt.")
-            #     return False
-
-            success = self.group.execute(plan, wait=True)
-            self.group.clear_pose_targets()
+            success = self.plan_en_executeer(pose_target)
 
             if not success:
-                rospy.logerr("Bewegen naar sorteerbak mislukt")
+                rospy.logerr("Bewegen naar vaste positie" + str(locatie) +" mislukt")
                 return False
             
             return True
     
         except Exception as e:
-            rospy.logerr("error bij het bewegen richting vaste positie"+ str(locatie) + str(e))    
+            rospy.logerr("exception error bij het bewegen richting vaste positie"+ str(locatie) + str(e))    
+            return False  
+
+    def plan_en_executeer(self, pose_target):
+        try:
+            self.group.set_start_state_to_current_state()
+            self.group.set_pose_target(pose_target)
+            plan = self.group.plan()
+
+            if not plan or not plan.joint_trajectory.points:
+                rospy.logerr("Plannen mislukt: geen trajectory gegenereerd")
+                return False
+
+            success = self.group.execute(plan, wait=True)
+            self.group.clear_pose_targets()
+
+            if not success:
+                rospy.logerr("Uitvoeren van plan mislukt")
+                return False
+
+            return True
+
+        except Exception as e: 
             return False  
 
     def gripper_openen(self):
