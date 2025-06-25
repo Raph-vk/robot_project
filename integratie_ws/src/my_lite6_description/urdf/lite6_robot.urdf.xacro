@@ -191,11 +191,15 @@
 
   <xacro:include filename="$(find my_lite6_description)/urdf/Opstelling.urdf.xacro" />
   <xacro:Opstelling_urdf prefix="$(arg prefix)robotwand2" parent_link="mountingplate_link" 
-  mesh_file="package://robotarm/mesh/robotwand.STL" xyz="-0.08 0.25 0" rpy="0 0 1.57" />
+  mesh_file="package://robotarm/mesh/robotwand.STL" xyz="-0.08 0.2 0" rpy="0 0 1.57" />
 
   <xacro:include filename="$(find my_lite6_description)/urdf/Opstelling.urdf.xacro" />
   <xacro:Opstelling_urdf prefix="$(arg prefix)robotwand3" parent_link="mountingplate_link" 
-  mesh_file="package://robotarm/mesh/robotwand.STL" xyz="0 0.25 0.7" rpy="1.57 0 0" />
+  mesh_file="package://robotarm/mesh/robotwand.STL" xyz="0 0.25 0.6" rpy="1.57 0 0" />
+
+  <xacro:include filename="$(find my_lite6_description)/urdf/Opstelling.urdf.xacro" />
+  <xacro:Opstelling_urdf prefix="$(arg prefix)robotwand4" parent_link="mountingplate_link" 
+  mesh_file="package://robotarm/mesh/robotwand.STL" xyz="0.3 0.25 0.6" rpy="1.57 0 0" />
 
   <xacro:include filename="$(find my_lite6_description)/urdf/Opstelling.urdf.xacro" />
   <xacro:Opstelling_urdf prefix="$(arg prefix)vacuumpomp" parent_link="link6" 

@@ -40,9 +40,10 @@
   <include file="$(find my_lite6_moveit_config)/launch/demo.launch"/>
   -->
 
-  <!-- 14) Start manipulator_node.py -->
+  <!-- 14) Start robotcel.launch for manipulator cycle -->
   <include file="$(find robotarm)/launch/robotcel.launch"/>  
 
+  <!-- 15) Start realMove_exec.launch for planning and calculating movements-->
   <include file="$(find my_lite6_moveit_config)/launch/realMove_exec.launch">
     <arg name="robot_ip" value="192.168.1.163"/>
   </include>

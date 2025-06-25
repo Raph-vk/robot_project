@@ -19,7 +19,6 @@ Hoofdfunctie:
 Deelfuncties:
 
 '''
-
 import rospy
 
 # std_msgs
