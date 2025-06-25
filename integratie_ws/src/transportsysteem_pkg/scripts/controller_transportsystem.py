@@ -41,7 +41,6 @@ class TransportController:
 
     # Handle the instructions
     def _handle_control(self, req):
-        feedback = TransportControlFeedback()
         result   = TransportControlResult()
         instru = req.instruction.strip().lower()
         rate = rospy.Rate(10)
@@ -49,8 +48,6 @@ class TransportController:
         if instru == 'start':            
             rospy.loginfo("Start sequence initiated")
             rospy.loginfo("Looking for object...")
-            feedback.feedback = "Looking for object at start"
-            self._as.publish_feedback(feedback)
 
             # wait for object at beginning
             while not rospy.is_shutdown() and not self.ir_begin:
@@ -58,47 +55,40 @@ class TransportController:
                     return self._as.set_preempted()
                 rate.sleep()
 
-            feedback.feedback = "Object detected, running motor"
-            self._as.publish_feedback(feedback)
+            rospy.loginfo("Object detected, running motor")
             self.motor_pub.publish(Bool(data=True))
 
-            # wait for object at end, but give up after 10s
+            # wait for object at end, but give up after 20s
             start_time = rospy.Time.now()
             while not rospy.is_shutdown() and not self.ir_end:
                 if self._as.is_preempt_requested():
                     return self._as.set_preempted()
 
                 # timeout check
-                if (rospy.Time.now() - start_time).to_sec() > 15.0:
-                    rospy.logwarn("Timeout: object did not reach end within 10s")
+                if (rospy.Time.now() - start_time).to_sec() > 20.0:
+                    rospy.logerr("Timeout: object bereikte de eind-sensor niet, binnen gestelde tijd.")
                     self.motor_pub.publish(Bool(data=False))
-                    result.result = False
-                    self._as.publish_feedback(
-                        TransportControlFeedback(feedback="No object getting to the end"))
+                    result.gelukt = False
+                    result.bericht = "Timeout: object bereikte de eind-sensor niet, binnen gestelde tijd."
                     return self._as.set_succeeded(result)
                 rate.sleep()
 
             rospy.sleep(0.75)
             self.motor_pub.publish(Bool(data=False))
-            feedback.feedback = "Reached end, stopping motor"
-            self._as.publish_feedback(feedback)
+            rospy.loginfo("Reached end, stopping motor")
 
-
-            result.result = True
-            self._as.publish_feedback(   # send one last feedback
-                TransportControlFeedback(feedback="Start sequence complete"))
+            result.gelukt = True
+            result.bericht = "Product is aangekomen op eindpositie."
             self._as.set_succeeded(result)
 
         elif instru == 'dump':
-            feedback.feedback = "Dump: dumping product."
-            self._as.publish_feedback(feedback)
+            rospy.loginfo("Dump: dumping product.")
 
             # Result false as error because no object in area.
             if not self.ir_end:
-                
-                result.result = False
-                self._as.publish_feedback(   # send one last feedback
-                    TransportControlFeedback(feedback="No object in area"))
+                rospy.logerr("Dump: dumping product.")
+                result.gelukt = False
+                result.bericht = "Geen product gedetecteerd om te dumpen."
                 self._as.set_succeeded(result)
                 return
 
@@ -106,21 +96,20 @@ class TransportController:
             # wait for object to leave the sensor
             while not rospy.is_shutdown() and self.ir_end:
                 rate.sleep()
-    
-            # Keep spinning for a second and stop
-            rospy.sleep(1.0)
-            self.motor_pub.publish(Bool(data=False))
+            rospy.loginfo("Product is verdwenen voor de sensor.")
 
-            result.result = True
-            self._as.publish_feedback(   # send one last feedback
-                TransportControlFeedback(feedback="Dump sequence complete"))
+            # Keep spinning for a second and stop
+            rospy.sleep(2.0)
+            self.motor_pub.publish(Bool(data=False))
+            rospy.loginfo("Motor gestopt, dump is succesvol.")
+
+            result.gelukt = True
+            result.bericht = "Dump sequence complete"
             self._as.set_succeeded(result)
 
         else:
-            result.result   = False
-            feedback.feedback = "Unknown instruction"
-
-            self._as.publish_feedback(feedback)
+            result.gelukt   = False
+            result.bericht = "onbekende instructie"
             self._as.set_aborted(result)
 
 if __name__ == '__main__':

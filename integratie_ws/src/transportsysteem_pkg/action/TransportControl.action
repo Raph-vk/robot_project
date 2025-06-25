@@ -2,7 +2,7 @@
 string instruction
 ---
 # Result
-bool result
+bool gelukt
+string bericht
 ---
 # Feedback
-string feedback
