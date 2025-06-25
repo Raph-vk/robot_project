@@ -19,7 +19,6 @@ Hoofdfunctie:
 Deelfuncties:
 
 '''
-
 import rospy
 
 # std_msgs
@@ -62,6 +61,7 @@ class hoofdprogramma:
         self.noodstop_pressed = False
         self.noodstop_voldaan = False
         self.noodstop_is_uit = False
+        self.continue_mode = False
 
         # HMI-status publisher
         self.hmi_pub = rospy.Publisher('/hmi/status', String, queue_size=1)
@@ -113,9 +113,15 @@ class hoofdprogramma:
         rospy.loginfo("Start/Continue button pressed: %s", msg.data)
         self.start_continue_pressed = msg.data
 
+        if msg.data and not self.continue_mode:
+            self.continue_mode = True
+            self.start_pressed = True
+
     def stop_callback(self, msg):
         rospy.logwarn("Stop button pressed: %s", msg.data)
         self.stop_pressed = msg.data
+        if msg.data:
+            self.continue_mode = False
 
     def reset_callback(self, msg):
         rospy.loginfo("Reset button pressed: %s", msg.data)    
@@ -153,8 +159,10 @@ class hoofdprogramma:
         if self.start_pressed:
             self.start_pressed = False
             self.state = "TRANSPORTSYSTEEM"
-
-        #if self.start_continue_pressed:
+        elif self.continue_mode:
+            self.state = "TRANSPORTSYSTEEM"
+        else:
+            rospy.loginfo("Druk een startknop in.")
 
     def state_transport(self):
         self.hmi_pub.publish("IN_BEDRIJF")

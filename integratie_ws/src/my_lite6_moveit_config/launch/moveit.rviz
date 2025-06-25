@@ -10,7 +10,7 @@ Panels:
         - /Pose1
         - /Image1
       Splitter Ratio: 0.7425600290298462
-    Tree Height: 132
+    Tree Height: 197
   - Class: rviz/Help
     Name: Help
   - Class: rviz/Views
@@ -182,6 +182,11 @@ Visualization Manager:
             Show Trail: false
             Value: true
           robotwand3_frame:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          robotwand4_frame:
             Alpha: 1
             Show Axes: false
             Show Trail: false
@@ -368,6 +373,11 @@ Visualization Manager:
             Show Axes: false
             Show Trail: false
             Value: true
+          robotwand4_frame:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
           tcp_link:
             Alpha: 1
             Show Axes: false
@@ -520,6 +530,11 @@ Visualization Manager:
           Show Axes: false
           Show Trail: false
           Value: true
+        robotwand4_frame:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
         tcp_link:
           Alpha: 1
           Show Axes: false
@@ -562,6 +577,8 @@ Visualization Manager:
         All Enabled: false
         Opstelling_frame:
           Value: false
+        Wit_0:
+          Value: true
         baseplate_link:
           Value: false
         link1:
@@ -628,6 +645,8 @@ Visualization Manager:
           Value: false
         robotwand3_frame:
           Value: true
+        robotwand4_frame:
+          Value: true
         tcp_link:
           Value: false
         uflite_gripper_link:
@@ -656,6 +675,8 @@ Visualization Manager:
               robotwand2_frame:
                 {}
               robotwand3_frame:
+                {}
+              robotwand4_frame:
                 {}
               xarm_link:
                 link_base:
@@ -700,7 +721,8 @@ Visualization Manager:
                 {}
               oak_rgb_camera_frame:
                 oak_rgb_camera_optical_frame:
-                  {}
+                  Wit_0:
+                    {}
               oak_right_camera_frame:
                 oak_right_camera_optical_frame:
                   {}
@@ -764,15 +786,15 @@ Visualization Manager:
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.6847969889640808
+      Pitch: 0.029797475785017014
       Target Frame: world
       Value: XYOrbit (rviz)
-      Yaw: 5.185434341430664
+      Yaw: 3.2104194164276123
     Saved: ~
 Window Geometry:
   Displays:
     collapsed: false
-  Height: 892
+  Height: 1025
   Help:
     collapsed: false
   Hide Left Dock: false
@@ -783,9 +805,9 @@ Window Geometry:
     collapsed: false
   MotionPlanning - Trajectory Slider:
     collapsed: false
-  QMainWindow State: 000000ff00000000fd0000000100000000000002ad00000314fc0200000007fb000000100044006900730070006c006100790073010000004700000120000000f100fffffffb0000000800480065006c00700000000342000000bb0000008400fffffffb0000000a0056006900650077007300000003b0000000b0000000c200fffffffb0000000c00430061006d00650072006100000002ff000001610000000000000000fb0000001e004d006f00740069006f006e00200050006c0061006e006e0069006e00670100000374000001890000000000000000fb00000044004d006f00740069006f006e0050006c0061006e006e0069006e00670020002d0020005400720061006a006500630074006f0072007900200053006c00690064006500720000000000ffffffff0000001900000019fc0000016e000001ed000001e101000023fa000000010100000002fb0000000a0049006d0061006700650100000000ffffffff0000006900fffffffb0000001c004d006f00740069006f006e0050006c0061006e006e0069006e00670100000000000002ad0000024e00ffffff000001840000031400000001000000020000000100000002fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000
+  QMainWindow State: 000000ff00000000fd0000000100000000000001f3000003a7fc0200000007fb000000100044006900730070006c006100790073010000003d00000157000000c900fffffffb0000000800480065006c00700000000342000000bb0000006e00fffffffb0000000a0056006900650077007300000003b0000000b0000000a400fffffffb0000000c00430061006d00650072006100000002ff000001610000000000000000fb0000001e004d006f00740069006f006e00200050006c0061006e006e0069006e00670100000374000001890000000000000000fb00000044004d006f00740069006f006e0050006c0061006e006e0069006e00670020002d0020005400720061006a006500630074006f0072007900200053006c00690064006500720000000000ffffffff0000001600000016fc0000019a0000024a0000019a0100001cfa000000010100000002fb0000000a0049006d0061006700650100000000ffffffff0000005e00fffffffb0000001c004d006f00740069006f006e0050006c0061006e006e0069006e00670100000000000002ad000001f300ffffff00000544000003a700000001000000020000000100000002fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000
   Views:
     collapsed: false
-  Width: 1080
-  X: 0
-  Y: 479
+  Width: 1853
+  X: 67
+  Y: 27

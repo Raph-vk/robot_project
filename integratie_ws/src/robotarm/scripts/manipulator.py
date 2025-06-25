@@ -33,24 +33,24 @@ class unit_manipulator:
         self.GRIPPER_OPEN = 1
 
         self.vaste_posities = {
-            # bak1
-            0: ((-0.2186, 0.2695, 0.1484), (-0.7491, -0.6599, -0.0574,0.0130)), 
-            # bak2
-            1: ((-0.2113 , 0.2005 , 0.0625), (-0.8069 ,-0.5821 ,-0.0822 , 0.0583)),
-            # bak3
-            2: ((-0.1259 , 0.3191 , 0.1596), (-0.6286 ,-0.7171 ,-0.2482 , 0.1704)),
-            # bak4
-            3: ((-0.1200 , 0.1957 , 0.0698), (-0.6779 ,-0.7206 ,-0.1454 , 0.0093)),
+            # bak0 / blauw
+            0: ((-0.2100 , 0.3000 , 0.1725), (-0.6755 ,-0.7364 ,-0.0366 , 0.0057)), 
+            # bak1 / geel
+            2: ((-0.1103 , 0.3000 , 0.1725), (-0.7318 ,-0.6803 ,-0.0346 , 0.0224)),
+            # bak2 / paars
+            3: ((-0.2126 , 0.240 , 0.045), (-0.6761 ,0.7347 ,0.0342 , 0.0431)),
+            # bak3/ kopstuk/wit
+            4: ((-0.1080 , 0.240 , 0.045), (-0.7159 ,0.6959 ,0.0219 , 0.0521)),
             #russtand boven transportband
-            4: ((-0.0345 , -0.2287 , 0.1078), (0.9436 ,-0.2732 ,0.1624 , 0.0926)),
+            10: ((-0.0345 , -0.2287 , 0.1078), (0.9436 ,-0.2732 ,0.1624 , 0.0926)),
         }
 
         moveit_commander.roscpp_initialize(sys.argv)
         self.robot = moveit_commander.RobotCommander()
         self.scene = moveit_commander.PlanningSceneInterface()
         self.group = moveit_commander.MoveGroupCommander('arm')
-        self.group.set_max_velocity_scaling_factor(0.05)      
-        self.group.set_max_acceleration_scaling_factor(0.02)
+        self.group.set_max_velocity_scaling_factor(0.2)      
+        self.group.set_max_acceleration_scaling_factor(0.05)
         self.group.set_num_planning_attempts(5)
         self.group.set_planning_time(10)
 
@@ -76,16 +76,16 @@ class unit_manipulator:
     def start_manipulator(self, goal):   
 
         if not self.transformeren():
-            self.foutafhandeling()
-            return 
+           self.foutafhandeling()
+           return 
         
-        # self.gripper_openen()  
+        self.gripper_openen()  
 
         if not self.naar_tandenborstel():
-            self.foutafhandeling()
-            return 
+           self.foutafhandeling()
+           return 
 
-        # self.gripper_sluiten()  
+        self.gripper_sluiten()
 
         self.feedback.tandenborstel_opgepakt = True
         self.action_server.publish_feedback(self.feedback)
@@ -96,20 +96,19 @@ class unit_manipulator:
             self.foutafhandeling()
             return  
 
-        # self.gripper_openen() 
+        self.gripper_openen()
 
         self.result.tandenborstel_gesorteerd = True
         self.action_server.set_succeeded(self.result)
+        #self.verwijder_tandenborstel_mesh()
 
-        self.verwijder_tandenborstel_mesh()
+        rospy.sleep(1)
+        # Gripper uitzetten aan het einde
+        if not self.gripper_uitschakelen():
+            self.foutafhandeling()
+            return
 
-        # rospy.sleep(1)
-        # # Gripper uitzetten aan het einde
-        # if not self.gripper_uitschakelen():
-        #     self.foutafhandeling()
-        #     return
-
-        if not self.naar_vaste_positie(4):
+        if not self.naar_vaste_positie(10):
             self.foutafhandeling()
             return 
 
@@ -148,7 +147,7 @@ class unit_manipulator:
             self.positie_object_oppakken = copy.deepcopy(self.positie_object_vanuit_base.pose)
 
             #gripper bevind zich rechtboven tandenborstel en moet alleen dalen tot een bepaalde hoogte.
-            self.positie_object_oppakken.position.z = 0.0522
+            self.positie_object_oppakken.position.z = 0.0501
             
             success = self.plan_en_executeer(self.positie_object_oppakken)
             if not success:
@@ -173,10 +172,33 @@ class unit_manipulator:
             pose_target.orientation.z = orientatie[2]
             pose_target.orientation.w = orientatie[3]
 
+            if locatie == 3 or locatie == 4:
+                rospy.loginfo("We gaan nu in de Y bewegen in de bak")
+                pose_target.position.y -= 0.085
+
             success = self.plan_en_executeer(pose_target)
 
             if not success:
                 rospy.logerr("Bewegen naar vaste positie " + str(locatie) +" mislukt")
+                return False
+
+            self.verwijder_tandenborstel_mesh()
+
+            if locatie == 0 or locatie == 2:
+                rospy.loginfo("We gaan nu in de Z omlaag in de bak")
+                pose_target.position.z -= 0.050
+            elif locatie == 3 or locatie == 4:
+                rospy.loginfo("We gaan nu in de Y bewegen in de bak")
+                pose_target.position.y += 0.080
+            elif locatie == 10:
+                rospy.loginfo("Naar vaste positie bewegen")
+            else:
+                rospy.loginfo("Verkeerd object gecommuniceerd")
+
+            success = self.plan_en_executeer(pose_target)
+
+            if not success:
+                rospy.logerr("Bewegen naar in de bak " + str(locatie) +" mislukt")
                 return False
             
             return True
@@ -184,6 +206,7 @@ class unit_manipulator:
         except Exception as e:
             rospy.logerr("exception error bij het bewegen richting vaste positie"+ str(locatie) + str(e))    
             return False  
+
 
     def plan_en_executeer(self, pose_target):
         try:
@@ -245,11 +268,11 @@ class unit_manipulator:
         tandenborstel_pose.header.frame_id = "link_tcp"
         tandenborstel_pose.pose.orientation.x = 0 
         tandenborstel_pose.pose.orientation.y = 0
-        tandenborstel_pose.pose.orientation.z = 0.9 
+        tandenborstel_pose.pose.orientation.z = 0.9
         tandenborstel_pose.pose.orientation.w = 1.0  
         tandenborstel_pose.pose.position.x = 0.0
         tandenborstel_pose.pose.position.y = 0.0
-        tandenborstel_pose.pose.position.z = -0.04
+        tandenborstel_pose.pose.position.z = -0.01
 
         rospack = rospkg.RosPack()
         package_path = rospack.get_path('robotarm')
