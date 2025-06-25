@@ -152,8 +152,14 @@ class hoofdprogramma:
         if self.start_pressed:
             self.start_pressed = False
             self.state = "TRANSPORTSYSTEEM"
+            
+        elif self.start_continue_pressed:
+            self.state = "TRANSPORTSYSTEEM"
 
-        #if self.start_continue_pressed:
+            if self.stop_pressed:
+                self.start_continue_pressed = False
+                self.stop_pressed = False
+
 
     def state_transport(self):
         self.hmi_pub.publish("IN_BEDRIJF")

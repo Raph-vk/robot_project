@@ -36,21 +36,21 @@ class unit_manipulator:
             # bak0 / blauw
             0: ((-0.2100 , 0.3000 , 0.1725), (-0.6755 ,-0.7364 ,-0.0366 , 0.0057)), 
             # bak1 / geel
-            2: ((-0.115 , 0.300 , 0.1725), (-0.6861 ,-0.7274 ,0.000 , 0.0008)),
+            2: ((-0.1103 , 0.3000 , 0.1725), (-0.7318 ,-0.6803 ,-0.0346 , 0.0224)),
             # bak2 / paars
-            5: ((-0.2149 , 0.1701 , 0.0424), (-0.7083 ,-0.7059 ,-0.0013 , 0.0095)),
+            3: ((-0.2126 , 0.240 , 0.045), (-0.6761 ,0.7347 ,0.0342 , 0.0431)),
             # bak3/ kopstuk/wit
-            7: ((-0.1136 , 0.3210 , 0.1052), (-0.6997 ,-0.7135 ,-0.0301 , 0.0192)),
+            4: ((-0.1080 , 0.240 , 0.045), (-0.7159 ,0.6959 ,0.0219 , 0.0521)),
             #russtand boven transportband
-            4: ((-0.0345 , -0.2287 , 0.1078), (0.9436 ,-0.2732 ,0.1624 , 0.0926)),
-        }   
+            10: ((-0.0345 , -0.2287 , 0.1078), (0.9436 ,-0.2732 ,0.1624 , 0.0926)),
+        }
 
         moveit_commander.roscpp_initialize(sys.argv)
         self.robot = moveit_commander.RobotCommander()
         self.scene = moveit_commander.PlanningSceneInterface()
         self.group = moveit_commander.MoveGroupCommander('arm')
-        self.group.set_max_velocity_scaling_factor(0.05)      
-        self.group.set_max_acceleration_scaling_factor(0.02)
+        self.group.set_max_velocity_scaling_factor(0.2)      
+        self.group.set_max_acceleration_scaling_factor(0.05)
         self.group.set_num_planning_attempts(5)
         self.group.set_planning_time(10)
 
@@ -76,16 +76,16 @@ class unit_manipulator:
     def start_manipulator(self, goal):   
 
         if not self.transformeren():
-            self.foutafhandeling()
-            return 
+           self.foutafhandeling()
+           return 
         
         self.gripper_openen()  
 
         if not self.naar_tandenborstel():
-            self.foutafhandeling()
-            return 
+           self.foutafhandeling()
+           return 
 
-        self.gripper_sluiten()  
+        self.gripper_sluiten()
 
         self.feedback.tandenborstel_opgepakt = True
         self.action_server.publish_feedback(self.feedback)
@@ -96,12 +96,11 @@ class unit_manipulator:
             self.foutafhandeling()
             return  
 
-        self.gripper_openen() 
+        self.gripper_openen()
 
         self.result.tandenborstel_gesorteerd = True
         self.action_server.set_succeeded(self.result)
-
-        self.verwijder_tandenborstel_mesh()
+        #self.verwijder_tandenborstel_mesh()
 
         rospy.sleep(1)
         # Gripper uitzetten aan het einde
@@ -109,7 +108,7 @@ class unit_manipulator:
             self.foutafhandeling()
             return
 
-        if not self.naar_vaste_positie(4):
+        if not self.naar_vaste_positie(10):
             self.foutafhandeling()
             return 
 
@@ -148,7 +147,7 @@ class unit_manipulator:
             self.positie_object_oppakken = copy.deepcopy(self.positie_object_vanuit_base.pose)
 
             #gripper bevind zich rechtboven tandenborstel en moet alleen dalen tot een bepaalde hoogte.
-            self.positie_object_oppakken.position.z = 0.0522
+            self.positie_object_oppakken.position.z = 0.0501
             
             success = self.plan_en_executeer(self.positie_object_oppakken)
             if not success:
@@ -173,20 +172,28 @@ class unit_manipulator:
             pose_target.orientation.z = orientatie[2]
             pose_target.orientation.w = orientatie[3]
 
+            if locatie == 3 or locatie == 4:
+                rospy.loginfo("We gaan nu in de Y bewegen in de bak")
+                pose_target.position.y -= 0.085
+
             success = self.plan_en_executeer(pose_target)
 
             if not success:
                 rospy.logerr("Bewegen naar vaste positie " + str(locatie) +" mislukt")
                 return False
 
+            self.verwijder_tandenborstel_mesh()
+
             if locatie == 0 or locatie == 2:
                 rospy.loginfo("We gaan nu in de Z omlaag in de bak")
                 pose_target.position.z -= 0.050
-            elif locatie == 5 or locatie == 7:
+            elif locatie == 3 or locatie == 4:
                 rospy.loginfo("We gaan nu in de Y bewegen in de bak")
-                pose_target.position.y += 0.075
+                pose_target.position.y += 0.080
+            elif locatie == 10:
+                rospy.loginfo("Naar vaste positie bewegen")
             else:
-                rospy.loginfo("weet niet wat die doet")
+                rospy.loginfo("Verkeerd object gecommuniceerd")
 
             success = self.plan_en_executeer(pose_target)
 
