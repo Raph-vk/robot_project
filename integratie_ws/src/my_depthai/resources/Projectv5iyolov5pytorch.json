@@ -1,0 +1,64 @@
+{
+    "model": {
+        "xml": "Projectv5iyolov5pytorch.xml",
+        "bin": "Projectv5iyolov5pytorch.bin"
+    },
+    "nn_config": {
+        "output_format": "detection",
+        "NN_family": "YOLO",
+        "input_size": "416x416",
+        "NN_specific_metadata": {
+            "classes": 5,
+            "coordinates": 4,
+            "anchors": [
+                57.1875,
+                22.578125,
+                13.984375,
+                101.5625,
+                49.09375,
+                68.375,
+                45.40625,
+                79.5,
+                16.921875,
+                253.875,
+                144.0,
+                31.28125,
+                118.8125,
+                154.75,
+                107.9375,
+                177.375,
+                124.0,
+                168.125
+            ],
+            "anchor_masks": {
+                "side52": [
+                    0,
+                    1,
+                    2
+                ],
+                "side26": [
+                    3,
+                    4,
+                    5
+                ],
+                "side13": [
+                    6,
+                    7,
+                    8
+                ]
+            },
+            "iou_threshold": 0.5,
+            "confidence_threshold": 0.5
+        }
+    },
+    "mappings": {
+        "labels": [
+            "Blauw",
+            "Cyaan",
+            "Geel",
+            "Paars",
+            "Wit"
+        ]
+    },
+    "version": 1
+}
