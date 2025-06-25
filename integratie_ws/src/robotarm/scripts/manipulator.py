@@ -12,6 +12,8 @@ from tf2_geometry_msgs.tf2_geometry_msgs import do_transform_pose
 import moveit_msgs.msg
 import time
 import copy
+import rospkg
+
 
 
 
@@ -50,7 +52,7 @@ class unit_manipulator:
         self.group.set_max_velocity_scaling_factor(0.05)      
         self.group.set_max_acceleration_scaling_factor(0.02)
         self.group.set_num_planning_attempts(5)
-        self.group.set_planning_time(30.0)
+        self.group.set_planning_time(10)
 
         self.display_trajectory_publisher = rospy.Publisher(
             '/move_group/display_planned_path',
@@ -88,15 +90,18 @@ class unit_manipulator:
         self.feedback.tandenborstel_opgepakt = True
         self.action_server.publish_feedback(self.feedback)
 
+        self.voeg_tandenborstel_toe_als_collision_mesh()
+
         if not self.naar_vaste_positie(self.type_tandenborstel):
             self.foutafhandeling()
             return  
 
         # self.gripper_openen() 
 
-
         self.result.tandenborstel_gesorteerd = True
         self.action_server.set_succeeded(self.result)
+
+        self.verwijder_tandenborstel_mesh()
 
         # rospy.sleep(1)
         # # Gripper uitzetten aan het einde
@@ -171,7 +176,7 @@ class unit_manipulator:
             success = self.plan_en_executeer(pose_target)
 
             if not success:
-                rospy.logerr("Bewegen naar vaste positie" + str(locatie) +" mislukt")
+                rospy.logerr("Bewegen naar vaste positie " + str(locatie) +" mislukt")
                 return False
             
             return True
@@ -235,9 +240,43 @@ class unit_manipulator:
             rospy.logwarn("Uitschakelen van gripper faalde: "+ str(e))
             return False
 
+    def voeg_tandenborstel_toe_als_collision_mesh(self):
+        tandenborstel_pose = PoseStamped()
+        tandenborstel_pose.header.frame_id = "link_tcp"
+        tandenborstel_pose.pose.orientation.x = 0 
+        tandenborstel_pose.pose.orientation.y = 0
+        tandenborstel_pose.pose.orientation.z = 0.9 
+        tandenborstel_pose.pose.orientation.w = 1.0  
+        tandenborstel_pose.pose.position.x = 0.0
+        tandenborstel_pose.pose.position.y = 0.0
+        tandenborstel_pose.pose.position.z = -0.04
+
+        rospack = rospkg.RosPack()
+        package_path = rospack.get_path('robotarm')
+        mesh_path = package_path + '/mesh/tandenborstel.stl'
+
+        self.scene.add_mesh("tandenborstel", tandenborstel_pose, mesh_path, size=(1, 1, 1))
+        rospy.sleep(1)
+
+        touch_links = self.robot.get_link_names(group="arm")
+        self.scene.attach_mesh("link_tcp", "tandenborstel", touch_links=touch_links)
+        rospy.sleep(1)
+
+
+    def verwijder_tandenborstel_mesh(self):
+        self.scene.remove_attached_object("link_tcp", name="tandenborstel")
+        rospy.sleep(1)
+
+        self.scene.remove_world_object("tandenborstel")
+        rospy.sleep(1)
+
+
+
+
     def foutafhandeling(self):
         self.result.tandenborstel_gesorteerd = False
         self.action_server.set_aborted(self.result)
+        self.verwijder_tandenborstel_mesh()
 
 
 if __name__ == "__main__":
