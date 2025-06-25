@@ -57,8 +57,8 @@
     <arg name="yoloPyTorch"            default="true"/>
 
     <!-- Network trainded by pyTorch -->
-    <arg name="nnName"                 default="Projectv6iyolov5pytorch_openvino_2022.1_6shave.blob" if="$(eval arg('yoloPyTorch') == true)"      />
-    <arg name="nnConfig"               default="Projectv6iyolov5pytorch.json" if="$(eval arg('yoloPyTorch') == true)"       />
+    <arg name="nnName"                 default="Projectv5iyolov5pytorch_openvino_2022.1_6shave.blob" if="$(eval arg('yoloPyTorch') == true)"      />
+    <arg name="nnConfig"               default="Projectv5iyolov5pytorch.json" if="$(eval arg('yoloPyTorch') == true)"       />
 
     <!-- network trainded by Roboflow -->
     <arg name="nnName"                 default="simplefruits_V1.blob"  unless="$(eval arg('yoloPyTorch') == true)"       />
