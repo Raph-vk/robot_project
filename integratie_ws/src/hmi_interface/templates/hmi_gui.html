@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="refresh" content="2">
     <title>HMI Controlepaneel</title>
     <style>
         body {
@@ -26,8 +25,17 @@
             width: 100px;
             height: 100px;
             border-radius: 50%;
+            border: 4px solid #444;
             background-color: grey;
-            border: 3px solid #444;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .lamp-inner {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background-color: grey;
         }
         .status {
             margin-top: 30px;
@@ -63,18 +71,29 @@
         .continue  { background-color: darkgreen; }
         .reset     { background-color: orange; }
         .stop      { background-color: red; }
+
+        @keyframes blink {
+            0%   { opacity: 1; }
+            50%  { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        .blink {
+            animation: blink 1s infinite;
+        }
     </style>
 </head>
+
 <body>
     <h1>HMI Controlepaneel</h1>
 
     <div class="lamp-container">
-        <div class="lamp" style="background-color: {{ 'green' if 'green' in lamp_state else 'grey' }}"></div>
-        <div class="lamp" style="background-color: {{ 'orange' if 'orange' in lamp_state else 'grey' }}"></div>
-        <div class="lamp" style="background-color: {{ 'red' if 'red' in lamp_state else 'grey' }}"></div>
+        <div class="lamp"><div class="lamp-inner" id="lamp-green"></div></div>
+        <div class="lamp"><div class="lamp-inner" id="lamp-orange"></div></div>
+        <div class="lamp"><div class="lamp-inner" id="lamp-red"></div></div>
     </div>
 
-    <div class="status">Status: {{ state }}</div>
+    <div class="status" id="status-text">Status: Initialiseren</div>
 
     <form method="POST">
         <div class="button-row">
@@ -87,6 +106,52 @@
             <button class="stop" name="action" value="stop">Stop</button>
         </div>
     </form>
+
+    <script>
+        function updateStatus() {
+            fetch('/status')
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('status-text').innerText = 'Status: ' + data.state;
+
+                    const lampGreen = document.getElementById('lamp-green');
+                    const lampOrange = document.getElementById('lamp-orange');
+                    const lampRed = document.getElementById('lamp-red');
+
+                    // Green lamp
+                    if (data.lamp_state.includes('green')) {
+                        lampGreen.style.backgroundColor = 'green';
+                    } else {
+                        lampGreen.style.backgroundColor = 'grey';
+                    }
+
+                    // Orange lamp
+                    if (data.lamp_state.includes('orange')) {
+                        lampOrange.style.backgroundColor = 'orange';
+                        if (data.orange_blink) {
+                            lampOrange.classList.add('blink');
+                        } else {
+                            lampOrange.classList.remove('blink');
+                        }
+                    } else {
+                        lampOrange.style.backgroundColor = 'grey';
+                        lampOrange.classList.remove('blink');
+                    }
+
+                    // Red lamp
+                    if (data.lamp_state.includes('red')) {
+                        lampRed.style.backgroundColor = 'red';
+                    } else {
+                        lampRed.style.backgroundColor = 'grey';
+                    }
+
+                });
+        }
+
+        // Every 500ms
+        setInterval(updateStatus, 500);
+        updateStatus();
+    </script>
 </body>
 </html>
 
