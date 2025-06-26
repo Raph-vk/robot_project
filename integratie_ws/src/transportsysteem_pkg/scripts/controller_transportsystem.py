@@ -99,7 +99,7 @@ class TransportController:
             rospy.loginfo("Product is verdwenen voor de sensor.")
 
             # Keep spinning for a second and stop
-            rospy.sleep(2.0)
+            rospy.sleep(5.0)
             self.motor_pub.publish(Bool(data=False))
             rospy.loginfo("Motor gestopt, dump is succesvol.")
 
