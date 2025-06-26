@@ -56,7 +56,7 @@ class unit_manipulator:
         self.group = moveit_commander.MoveGroupCommander('arm')
         self.group.set_max_velocity_scaling_factor(0.2)      
         self.group.set_max_acceleration_scaling_factor(0.05)
-        self.group.set_num_planning_attempts(5)
+        self.group.set_num_planning_attempts(10)
         self.group.set_planning_time(10)
 
         self.display_trajectory_publisher = rospy.Publisher(

@@ -154,12 +154,10 @@ class hoofdprogramma:
         if self.continue_mode and feedback.tandenborstel_opgepakt:
             rospy.loginfo("Object is opgepakt, start transportfase gestart")
             rospy.sleep(10)
+            self.object_ready = True
             doel = TransportControlGoal(instruction="start")
             self.transport_client.send_goal(doel)
 
-            self.transport_client.wait_for_result()
-            self.object_ready = True
-            rospy.loginfo("Er ligt een object klaar onder vision-camera")
 
     # === STATE METHODS ===============================================
 
@@ -192,6 +190,7 @@ class hoofdprogramma:
             group.set_start_state_to_current_state()
             group.set_pose_target(pose_target)
             plan = group.plan()
+            
 
             if not plan or not plan.joint_trajectory.points:
                 rospy.logerr("Plannen mislukt: geen trajectory gegenereerd")
@@ -216,24 +215,32 @@ class hoofdprogramma:
 
     def state_transport(self):
         self.hmi_pub.publish("IN_BEDRIJF")
+        rospy.logwarn(self.object_ready)
 
         if not self.object_ready:
             rospy.loginfo("Transportfase gestart")
             doel = TransportControlGoal(instruction="start")
             self.transport_client.send_goal(doel)
-            self.transport_client.wait_for_result()
         else:
             rospy.loginfo("Er is ligt al een object klaar")
 
+        self.transport_client.wait_for_result()
         result = self.transport_client.get_result()
         rospy.loginfo("Er ligt een object klaar onder vision-camera")
+        if result is None:
+            rospy.logerr("Transport actie heeft geen resultaat teruggegeven (None).")
+            self.state = "FOUT"
+            return
 
         if result.gelukt:
             rospy.loginfo("Transport succesvol%s", result.bericht)
             self.state = "VISION"
         else:
-            rospy.logerr("Transport mislukt: %s", result.bericht)
+            rospy.logerr("Transport mislukt: %s",result.bericht)
             self.state = "FOUT"
+        self.object_ready=False
+        
+
 
     def state_vision(self):
         self.hmi_pub.publish("IN_BEDRIJF")
