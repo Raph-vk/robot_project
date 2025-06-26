@@ -67,8 +67,6 @@ class manipulatorFeedback {
     # Feedback
     bool tandenborstel_opgepakt
     
-    
-    
     `;
   }
 

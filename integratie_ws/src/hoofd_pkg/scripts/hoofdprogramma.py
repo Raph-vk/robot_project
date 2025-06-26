@@ -68,6 +68,7 @@ class hoofdprogramma:
 
         # HMI-status publisher
         self.hmi_pub = rospy.Publisher('/hmi/status', String, queue_size=1)
+        self.continue_mode_pub = rospy.Publisher('/continue_mode', Bool, queue_size=1)
 
         # Subscribers for buttons
         self.start = rospy.Subscriber('/start', Bool, self.start_callback)
@@ -119,12 +120,14 @@ class hoofdprogramma:
         if msg.data and not self.continue_mode:
             self.continue_mode = True
             self.start_pressed = True
+            self.continue_mode_pub.publish(Bool(data=True))
 
     def stop_callback(self, msg):
         rospy.logwarn("Stop button pressed: %s", msg.data)
         self.stop_pressed = msg.data
         if msg.data:
             self.continue_mode = False
+            self.continue_mode_pub.publish(Bool(data=False))
 
     def reset_callback(self, msg):
         rospy.loginfo("Reset button pressed: %s", msg.data)    
@@ -143,7 +146,6 @@ class hoofdprogramma:
         self.noodstop_voldaan = msg.data
 
     def feedback_manipulator_callback(self, feedback):
-
         if self.continue_mode and feedback.object_opgepakt:
             rospy.loginfo("Object is opgepakt, start transportfase gestart")
             doel = TransportControlGoal(instruction="start")
@@ -201,10 +203,10 @@ class hoofdprogramma:
             #Controleren of dump gelukt is
             self.transport_client.wait_for_result()
             dump_result = self.transport_client.get_result()
-            if dump_result and dump_result.result:
-                rospy.loginfo("Dump succesvol%s", result.bericht)
+            if dump_result and dump_result.gelukt:
+                rospy.loginfo("Dump succesvol%s", dump_result.bericht)
             else:
-                rospy.logerr("Dump mislukt,%s", result.bericht)
+                rospy.logerr("Dump mislukt,%s", dump_result.bericht)
             self.state = "FOUT"
 
     def state_manipulator(self):
@@ -255,7 +257,6 @@ class hoofdprogramma:
         rospy.loginfo("State machine gestart")
         rate = rospy.Rate(10)
         while not rospy.is_shutdown():
-            rospy.loginfo("Current state: %s", self.state)
             if self.noodstop_pressed:
                 self.state_error()
             elif self.state == "WACHTEN_OP_START":

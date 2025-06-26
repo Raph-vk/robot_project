@@ -24,10 +24,11 @@ class HMI:
         # Interne toestand van de HMI
         self.machine_state = "Initialiseren"
         self.lamp_state = ["off"]
-        self.orange_blink = False
+        self.continue_mode = False
 
         # Subscribers
         rospy.Subscriber('/hmi/status', String, self.status_callback)
+        rospy.Subscriber('/continue_mode', Bool, self.continue_mode_callback)
 
         # Webroute
         self.app.add_url_rule('/', 'index', self.index, methods=['GET', 'POST'])
@@ -36,9 +37,12 @@ class HMI:
         self.run()
         rospy.spin()
 
+    def continue_mode_callback(self, msg):
+        rospy.loginfo("Continue Mode changed to: %s", msg.data)
+        self.continue_mode = msg.data
+
     def status_callback(self, msg):
         status = msg.data.upper()
-        self.orange_blink = False # Reset knipperen bij nieuwe status
 
         if status == "WACHTEN_OP_START":
             self.machine_state = "WachtOpStart"
@@ -49,7 +53,6 @@ class HMI:
         elif status == "FOUT":
             self.machine_state = "Fout opgetreden"
             self.lamp_state = ["green", "orange"]    
-            self.orange_blink = True
         elif status == "ERROR":
             self.machine_state = "ERROR, controleer machine"
             self.lamp_state = ["red"]
@@ -70,17 +73,26 @@ class HMI:
                 self.start_continue_pub.publish(True)
             elif action == 'stop':
                 self.stop_pub.publish(True)
-                self.orange_blink = True
             elif action == 'reset':
                 self.reset_pub.publish(True)
 
         return render_template('hmi_gui.html', state=self.machine_state, lamp_state=self.lamp_state)
 
     def status_json(self):
+
+        # Dynamisch bepalen of de oranje lamp moet knipperen
+        if self.machine_state == "IN_BEDRIJF" and not self.continue_mode:
+            orange_blink = True
+        elif self.machine_state == "FOUT":
+            orange_blink = True
+        else:
+            orange_blink = False
+        
+        #Lamp statussen doorgeven
         return jsonify({
             'state': self.machine_state,
             'lamp_state': self.lamp_state,
-            'orange_blink': self.orange_blink
+            'orange_blink': orange_blink
         })
 
     def run(self):

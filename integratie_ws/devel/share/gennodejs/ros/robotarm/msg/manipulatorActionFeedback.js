@@ -158,8 +158,6 @@ class manipulatorActionFeedback {
     # Feedback
     bool tandenborstel_opgepakt
     
-    
-    
     `;
   }
 

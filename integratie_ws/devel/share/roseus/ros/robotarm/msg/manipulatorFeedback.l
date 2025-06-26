@@ -56,8 +56,6 @@
 # Feedback
 bool tandenborstel_opgepakt
 
-
-
 ")
 
 
