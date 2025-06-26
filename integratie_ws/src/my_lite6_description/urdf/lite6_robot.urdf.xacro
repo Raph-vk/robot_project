@@ -200,7 +200,7 @@
   <!-- wanden om rare bewegingen te voorkomen -->
   <xacro:include filename="$(find my_lite6_description)/urdf/Opstelling.urdf.xacro" />
   <xacro:Opstelling_urdf prefix="$(arg prefix)robotwand1" parent_link="mountingplate_link" 
-  mesh_file="package://robotarm/mesh/robotwand.STL" xyz="-0.08 -0.4 0" rpy="0 0 1.57" />
+  mesh_file="package://robotarm/mesh/robotwand.STL" xyz="-0.07 -0.5 0" rpy="0 0 1.57" />
 
   <xacro:include filename="$(find my_lite6_description)/urdf/Opstelling.urdf.xacro" />
   <xacro:Opstelling_urdf prefix="$(arg prefix)robotwand2" parent_link="mountingplate_link" 

@@ -153,7 +153,7 @@ class hoofdprogramma:
     def feedback_manipulator_callback(self, feedback):
         if self.continue_mode and feedback.tandenborstel_opgepakt:
             rospy.loginfo("Object is opgepakt, start transportfase gestart")
-            rospy.sleep(5)
+            rospy.sleep(10)
             doel = TransportControlGoal(instruction="start")
             self.transport_client.send_goal(doel)
 
@@ -203,8 +203,8 @@ class hoofdprogramma:
             if not success:
                 rospy.logerr("Uitvoeren van plan mislukt")
                 self.state = "FOUT"
-
-            self.state = "WACHTEN_OP_START"
+            else:
+                self.state = "WACHTEN_OP_START"
 
     def state_wachten_op_start(self):
         self.hmi_pub.publish("WACHTEN_OP_START")

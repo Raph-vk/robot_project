@@ -35,15 +35,20 @@ class unit_manipulator:
         self.vaste_posities = {
             # bak0 / blauw
             0: ((-0.2100 , 0.3000 , 0.1725), (-0.6755 ,-0.7364 ,-0.0366 , 0.0057)), 
+            
             # bak1 / kopstuk
             4: ((-0.1103 , 0.3000 , 0.1725), (-0.7318 ,-0.6803 ,-0.0346 , 0.0224)),
+            
             # bak2 / paars
-            3: ((-0.2190 , 0.2291 , 0.0565), (-0.6281 ,0.7781 ,0.0053 , 0.0034)),
-            # bak3/ geel
-            2: ((-0.1183 , 0.2291 , 0.0565), (-0.6281 ,0.7781 ,0.0053 , 0.0034)),
-            #russtand boven transportband
+            3: ((-0.2108 , 0.2222 , 0.0501), (0.7099 ,-0.7042 ,0.0060 , 0.0002)),
+            
+            # bak3 / geel
+            2: ((-0.1119 , 0.2304 , 0.0565), (-0.6901 ,0.7236 ,0.0058 , 0.0090)),
+            
+            # russtand boven transportband
             10: ((-0.0345 , -0.2287 , 0.1078), (0.9436 ,-0.2732 ,0.1624 , 0.0926)),
         }
+
 
         moveit_commander.roscpp_initialize(sys.argv)
         self.robot = moveit_commander.RobotCommander()
@@ -74,7 +79,7 @@ class unit_manipulator:
         rospy.loginfo("Manipulator action server gestart")
 
     def start_manipulator(self, goal):   
-        # self.gripper_openen() 
+        self.gripper_openen() 
 
 
         if not self.transformeren():
@@ -86,7 +91,7 @@ class unit_manipulator:
            self.foutafhandeling()
            return 
 
-        # self.gripper_sluiten()
+        self.gripper_sluiten()
 
         self.feedback.tandenborstel_opgepakt = True
         self.action_server.publish_feedback(self.feedback)
@@ -97,7 +102,7 @@ class unit_manipulator:
             self.foutafhandeling()
             return  
 
-        # self.gripper_openen()
+        self.gripper_openen()
 
         self.result.tandenborstel_gesorteerd = True
         self.action_server.set_succeeded(self.result)
@@ -105,9 +110,9 @@ class unit_manipulator:
 
         rospy.sleep(1)
         # Gripper uitzetten aan het einde
-        # if not self.gripper_uitschakelen():
-        #     self.foutafhandeling()
-        #     return
+        if not self.gripper_uitschakelen():
+            self.foutafhandeling()
+            return
 
         if not self.naar_vaste_positie(10):
             self.foutafhandeling()
@@ -178,6 +183,9 @@ class unit_manipulator:
             if not success:
                 rospy.logerr("Bewegen naar vaste positie " + str(locatie) +" mislukt")
                 return False
+            
+            
+            if locatie == 0 or locatie == 4:
                 pose_target.position.z -= 0.02
 
                 success = self.plan_en_executeer(pose_target)
