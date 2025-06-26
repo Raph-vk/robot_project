@@ -175,15 +175,29 @@
   <xacro:include filename="$(find xarm_description)/urdf/gripper/lite_gripper.urdf.xacro" />
   <xacro:uflite_gripper_urdf prefix="$(arg prefix)" attach_to='link_eef' />
 
-
-  <xacro:include filename="$(find my_lite6_description)/urdf/Opstelling.urdf.xacro" />
+   <!-- transportband en sorteerbakken -->
+  <!-- <xacro:include filename="$(find my_lite6_description)/urdf/Opstelling.urdf.xacro" />
   <xacro:Opstelling_urdf prefix="$(arg prefix)Opstelling" parent_link="baseplate_link" 
-  mesh_file="package://robotarm/mesh/Opstelling.STL" xyz="-0.34 -0.36 -0.015" rpy="0 0 1.57" />
+  mesh_file="package://robotarm/mesh/Opstelling.STL" xyz="-0.34 -0.38 -0.015" rpy="0 0 1.57" /> -->
 
+  <!-- transportband -->
+  <xacro:include filename="$(find my_lite6_description)/urdf/Opstelling.urdf.xacro" />
+  <xacro:Opstelling_urdf prefix="$(arg prefix)transportband" parent_link="baseplate_link" 
+  mesh_file="package://robotarm/mesh/transportband.STL" xyz="-0.34 -0.38 -0.015" rpy="0 0 1.57" />
+
+
+  <!-- sorteerbakken -->
+  <xacro:include filename="$(find my_lite6_description)/urdf/Opstelling.urdf.xacro" />
+  <xacro:Opstelling_urdf prefix="$(arg prefix)sorteerbakken" parent_link="baseplate_link" 
+  mesh_file="package://robotarm/mesh/sorteerbakken.STL" xyz="-0.3 0.02 -0.015" rpy="0 0 1.57" />
+
+
+   <!-- wand tussen transportband en sorteerbakken -->
   <xacro:include filename="$(find my_lite6_description)/urdf/Opstelling.urdf.xacro" />
   <xacro:Opstelling_urdf prefix="$(arg prefix)wand" parent_link="baseplate_link" 
   mesh_file="package://robotarm/mesh/wand.STL" xyz="0.05 -0.020 -0.015" rpy="0 0 1.57" />
 
+  <!-- wanden om rare bewegingen te voorkomen -->
   <xacro:include filename="$(find my_lite6_description)/urdf/Opstelling.urdf.xacro" />
   <xacro:Opstelling_urdf prefix="$(arg prefix)robotwand1" parent_link="mountingplate_link" 
   mesh_file="package://robotarm/mesh/robotwand.STL" xyz="-0.08 -0.4 0" rpy="0 0 1.57" />
@@ -200,10 +214,12 @@
   <xacro:Opstelling_urdf prefix="$(arg prefix)robotwand4" parent_link="mountingplate_link" 
   mesh_file="package://robotarm/mesh/robotwand.STL" xyz="0.1 0.25 0.6" rpy="1.57 0 0" />
 
+  <!-- vacuumpomp-->
   <xacro:include filename="$(find my_lite6_description)/urdf/Opstelling.urdf.xacro" />
   <xacro:Opstelling_urdf prefix="$(arg prefix)vacuumpomp" parent_link="link6" 
   mesh_file="package://robotarm/mesh/vacuumpomp.STL" xyz="0.03 0.06 0.006" rpy="-1.57 0 1.57" />
 
+  <!-- camera -->
   <xacro:include filename="$(find depthai_bridge)/urdf/include/depthai_macro.urdf.xacro" />
   <xacro:depthai_camera 
       camera_name="oak_d"
