@@ -56,7 +56,7 @@
         <joint name="joint5" value="0.0598" />
         <joint name="joint6" value="0.2805" />
     </group_state>
-    <group_state name="sorteerbak1" group="arm">
+    <group_state name="sorteerbak0" group="arm">
         <joint name="joint1" value="1.3538" />
         <joint name="joint2" value="0.3327" />
         <joint name="joint3" value="0.9047" />
@@ -66,40 +66,31 @@
     </group_state>
     <group_state name="sorteerbak2" group="arm">
         <joint name="joint1" value="1.215" />
-        <joint name="joint2" value="0.4484" />
+        <joint name="joint2" value="0.4773" />
         <joint name="joint3" value="0.495" />
         <joint name="joint4" value="-0.0347" />
-        <joint name="joint5" value="-0.1554" />
-        <joint name="joint6" value="0" />
+        <joint name="joint5" value="0.012" />
+        <joint name="joint6" value="2.8118" />
+    </group_state>
+    <group_state name="sorteerbak1" group="arm">
+        <joint name="joint1" value="1.0067" />
+        <joint name="joint2" value="0.4194" />
+        <joint name="joint3" value="0.8755" />
+        <joint name="joint4" value="-1.6315" />
+        <joint name="joint5" value="-0.0837" />
+        <joint name="joint6" value="0.9373" />
     </group_state>
     <group_state name="sorteerbak3" group="arm">
-        <joint name="joint1" value="1.0067" />
-        <joint name="joint2" value="0.4484" />
-        <joint name="joint3" value="0.9925" />
-        <joint name="joint4" value="-1.4927" />
-        <joint name="joint5" value="-0.2511" />
-        <joint name="joint6" value="0.8678" />
-    </group_state>
-    <group_state name="sorteerbak4" group="arm">
-        <joint name="joint1" value="0.8678" />
-        <joint name="joint2" value="0.5062" />
-        <joint name="joint3" value="0.6414" />
-        <joint name="joint4" value="-0.0347" />
-        <joint name="joint5" value="-0.1554" />
-        <joint name="joint6" value="-0.729" />
+        <joint name="joint1" value="0.6596" />
+        <joint name="joint2" value="0.6219" />
+        <joint name="joint3" value="0.6706" />
+        <joint name="joint4" value="-3.2978" />
+        <joint name="joint5" value="-0.0359" />
+        <joint name="joint6" value="-0.7984" />
     </group_state>
     <!--END EFFECTOR: Purpose: Represent information about an end effector.-->
     <end_effector name="end_effector" parent_link="link6" group="tool_end" />
     <!--DISABLE COLLISIONS: By default it is assumed that any link of the robot could potentially come into collision with any other link in the robot. This tag disables collision checking between a specified pair of links. -->
-    <disable_collisions link1="Opstelling_frame" link2="baseplate_link" reason="Adjacent" />
-    <disable_collisions link1="Opstelling_frame" link2="link1" reason="Never" />
-    <disable_collisions link1="Opstelling_frame" link2="link_base" reason="Never" />
-    <disable_collisions link1="Opstelling_frame" link2="mountingplate_link" reason="Never" />
-    <disable_collisions link1="Opstelling_frame" link2="oak_d_model_origin" reason="Never" />
-    <disable_collisions link1="Opstelling_frame" link2="robotwand1_frame" reason="Never" />
-    <disable_collisions link1="Opstelling_frame" link2="robotwand2_frame" reason="Never" />
-    <disable_collisions link1="Opstelling_frame" link2="robotwand3_frame" reason="Never" />
-    <disable_collisions link1="Opstelling_frame" link2="wand_frame" reason="Never" />
     <disable_collisions link1="baseplate_link" link2="link1" reason="Never" />
     <disable_collisions link1="baseplate_link" link2="link2" reason="Never" />
     <disable_collisions link1="baseplate_link" link2="link_base" reason="Never" />
@@ -108,13 +99,20 @@
     <disable_collisions link1="baseplate_link" link2="robotwand1_frame" reason="Never" />
     <disable_collisions link1="baseplate_link" link2="robotwand2_frame" reason="Never" />
     <disable_collisions link1="baseplate_link" link2="robotwand3_frame" reason="Never" />
+    <disable_collisions link1="baseplate_link" link2="robotwand4_frame" reason="Never" />
+    <disable_collisions link1="baseplate_link" link2="sorteerbakken_frame" reason="Adjacent" />
+    <disable_collisions link1="baseplate_link" link2="transportband_frame" reason="Adjacent" />
     <disable_collisions link1="baseplate_link" link2="wand_frame" reason="Adjacent" />
     <disable_collisions link1="link1" link2="link2" reason="Adjacent" />
     <disable_collisions link1="link1" link2="link_base" reason="Adjacent" />
     <disable_collisions link1="link1" link2="mountingplate_link" reason="Never" />
     <disable_collisions link1="link1" link2="oak_d_model_origin" reason="Never" />
+    <disable_collisions link1="link1" link2="robotwand1_frame" reason="Never" />
     <disable_collisions link1="link1" link2="robotwand2_frame" reason="Never" />
     <disable_collisions link1="link1" link2="robotwand3_frame" reason="Never" />
+    <disable_collisions link1="link1" link2="robotwand4_frame" reason="Never" />
+    <disable_collisions link1="link1" link2="sorteerbakken_frame" reason="Never" />
+    <disable_collisions link1="link1" link2="transportband_frame" reason="Never" />
     <disable_collisions link1="link1" link2="wand_frame" reason="Never" />
     <disable_collisions link1="link2" link2="link3" reason="Adjacent" />
     <disable_collisions link1="link2" link2="link5" reason="Never" />
@@ -122,11 +120,14 @@
     <disable_collisions link1="link2" link2="mountingplate_link" reason="Never" />
     <disable_collisions link1="link2" link2="oak_d_model_origin" reason="Never" />
     <disable_collisions link1="link2" link2="robotwand3_frame" reason="Never" />
+    <disable_collisions link1="link2" link2="robotwand4_frame" reason="Never" />
+    <disable_collisions link1="link2" link2="sorteerbakken_frame" reason="Never" />
     <disable_collisions link1="link3" link2="link4" reason="Adjacent" />
     <disable_collisions link1="link3" link2="link5" reason="Never" />
     <disable_collisions link1="link3" link2="link6" reason="Never" />
     <disable_collisions link1="link3" link2="oak_d_model_origin" reason="Never" />
     <disable_collisions link1="link3" link2="robotwand3_frame" reason="Never" />
+    <disable_collisions link1="link3" link2="robotwand4_frame" reason="Never" />
     <disable_collisions link1="link3" link2="uflite_gripper_link" reason="Never" />
     <disable_collisions link1="link3" link2="vacuumpomp_frame" reason="Never" />
     <disable_collisions link1="link4" link2="link5" reason="Adjacent" />
@@ -142,21 +143,45 @@
     <disable_collisions link1="link_base" link2="robotwand1_frame" reason="Never" />
     <disable_collisions link1="link_base" link2="robotwand2_frame" reason="Never" />
     <disable_collisions link1="link_base" link2="robotwand3_frame" reason="Never" />
+    <disable_collisions link1="link_base" link2="robotwand4_frame" reason="Never" />
+    <disable_collisions link1="link_base" link2="sorteerbakken_frame" reason="Never" />
+    <disable_collisions link1="link_base" link2="transportband_frame" reason="Never" />
     <disable_collisions link1="link_base" link2="wand_frame" reason="Never" />
     <disable_collisions link1="mountingplate_link" link2="oak_d_model_origin" reason="Never" />
     <disable_collisions link1="mountingplate_link" link2="robotwand1_frame" reason="Adjacent" />
     <disable_collisions link1="mountingplate_link" link2="robotwand2_frame" reason="Adjacent" />
     <disable_collisions link1="mountingplate_link" link2="robotwand3_frame" reason="Adjacent" />
+    <disable_collisions link1="mountingplate_link" link2="robotwand4_frame" reason="Adjacent" />
+    <disable_collisions link1="mountingplate_link" link2="sorteerbakken_frame" reason="Never" />
+    <disable_collisions link1="mountingplate_link" link2="transportband_frame" reason="Never" />
     <disable_collisions link1="mountingplate_link" link2="wand_frame" reason="Never" />
     <disable_collisions link1="oak_d_model_origin" link2="robotwand1_frame" reason="Never" />
     <disable_collisions link1="oak_d_model_origin" link2="robotwand2_frame" reason="Never" />
     <disable_collisions link1="oak_d_model_origin" link2="robotwand3_frame" reason="Never" />
+    <disable_collisions link1="oak_d_model_origin" link2="robotwand4_frame" reason="Never" />
+    <disable_collisions link1="oak_d_model_origin" link2="sorteerbakken_frame" reason="Never" />
+    <disable_collisions link1="oak_d_model_origin" link2="transportband_frame" reason="Default" />
     <disable_collisions link1="oak_d_model_origin" link2="wand_frame" reason="Never" />
     <disable_collisions link1="robotwand1_frame" link2="robotwand2_frame" reason="Never" />
     <disable_collisions link1="robotwand1_frame" link2="robotwand3_frame" reason="Never" />
+    <disable_collisions link1="robotwand1_frame" link2="robotwand4_frame" reason="Never" />
+    <disable_collisions link1="robotwand1_frame" link2="sorteerbakken_frame" reason="Never" />
+    <disable_collisions link1="robotwand1_frame" link2="transportband_frame" reason="Never" />
     <disable_collisions link1="robotwand1_frame" link2="wand_frame" reason="Never" />
     <disable_collisions link1="robotwand2_frame" link2="robotwand3_frame" reason="Never" />
+    <disable_collisions link1="robotwand2_frame" link2="robotwand4_frame" reason="Never" />
+    <disable_collisions link1="robotwand2_frame" link2="sorteerbakken_frame" reason="Never" />
+    <disable_collisions link1="robotwand2_frame" link2="transportband_frame" reason="Never" />
     <disable_collisions link1="robotwand2_frame" link2="wand_frame" reason="Never" />
+    <disable_collisions link1="robotwand3_frame" link2="robotwand4_frame" reason="Default" />
+    <disable_collisions link1="robotwand3_frame" link2="sorteerbakken_frame" reason="Never" />
+    <disable_collisions link1="robotwand3_frame" link2="transportband_frame" reason="Never" />
     <disable_collisions link1="robotwand3_frame" link2="wand_frame" reason="Never" />
+    <disable_collisions link1="robotwand4_frame" link2="sorteerbakken_frame" reason="Never" />
+    <disable_collisions link1="robotwand4_frame" link2="transportband_frame" reason="Never" />
+    <disable_collisions link1="robotwand4_frame" link2="wand_frame" reason="Never" />
+    <disable_collisions link1="sorteerbakken_frame" link2="transportband_frame" reason="Never" />
+    <disable_collisions link1="sorteerbakken_frame" link2="wand_frame" reason="Never" />
+    <disable_collisions link1="transportband_frame" link2="wand_frame" reason="Never" />
     <disable_collisions link1="uflite_gripper_link" link2="vacuumpomp_frame" reason="Never" />
 </robot>

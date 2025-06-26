@@ -13,11 +13,11 @@ if __name__ == '__main__':
     
     locatie_object = PoseStamped()
     locatie_object.header.frame_id = "oak_d_rgb_camera_optical_frame"  
-    locatie_object.pose.position = Point(x=-0.01, y=0.002, z=0.45)
+    locatie_object.pose.position = Point(x=-0.01, y=0.003, z=0.45)
     locatie_object.pose.orientation = Quaternion(x=0, y=0, z=-0.382683432365, w=0.923879532511)
 
     type_object = Int32()
-    type_object.data = 4  # 0=blauw 1=geel 3=wit 4=paars
+    type_object.data = 3  # 0=blauw 1=geel 3=wit 4=paars
     
     pubPositie.publish(locatie_object)
     pubKlasse.publish(type_object)
