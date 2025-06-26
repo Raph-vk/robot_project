@@ -46,12 +46,17 @@ import actionlib
 from robotarm.msg import manipulatorAction, manipulatorGoal, manipulatorFeedback, manipulatorResult
 from transportsysteem_pkg.msg import TransportControlAction, TransportControlGoal, TransportControlFeedback, TransportControlResult
 
+# For robot init location
+import moveit_commander
+import sys
+from geometry_msgs.msg import Pose, Point, Quaternion
+
 class hoofdprogramma:
     
     # Initialize the controller
     def __init__(self):        
         # Interne Toestanden stellen
-        self.state = "WACHTEN_OP_START" # opties: "WACHTEN_OP_START", "IN_BEDRIJF", "ERROR", "FOUT" 
+        self.state = "INITIALISATIE" # opties: "WACHTEN_OP_START", "IN_BEDRIJF", "ERROR", "FOUT" 
         
         # Button state
         self.start_pressed = False
@@ -146,8 +151,9 @@ class hoofdprogramma:
         self.noodstop_voldaan = msg.data
 
     def feedback_manipulator_callback(self, feedback):
-        if self.continue_mode and feedback.object_opgepakt:
+        if self.continue_mode and feedback.tandenborstel_opgepakt:
             rospy.loginfo("Object is opgepakt, start transportfase gestart")
+            rospy.sleep(5)
             doel = TransportControlGoal(instruction="start")
             self.transport_client.send_goal(doel)
 
@@ -156,6 +162,49 @@ class hoofdprogramma:
             rospy.loginfo("Er ligt een object klaar onder vision-camera")
 
     # === STATE METHODS ===============================================
+
+    def state_initialisatie(self):
+        self.hmi_pub.publish("INITIALISATIE")
+
+        if self.start_pressed:
+            self.start_pressed = False
+            init_positie = ((-0.0345 , -0.2287 , 0.1078), (0.9436 ,-0.2732 ,0.1624 , 0.0926))
+
+            moveit_commander.roscpp_initialize(sys.argv)
+            robot = moveit_commander.RobotCommander()
+            scene = moveit_commander.PlanningSceneInterface()
+            group = moveit_commander.MoveGroupCommander('arm')
+            group.set_max_velocity_scaling_factor(0.2)      
+            group.set_max_acceleration_scaling_factor(0.05)
+            group.set_num_planning_attempts(5)
+            group.set_planning_time(10)
+
+            positie, orientatie = init_positie
+            pose_target = Pose()
+            pose_target.position.x = positie[0]
+            pose_target.position.y = positie[1]
+            pose_target.position.z = positie[2]
+            pose_target.orientation.x = orientatie[0]
+            pose_target.orientation.y = orientatie[1]
+            pose_target.orientation.z = orientatie[2]
+            pose_target.orientation.w = orientatie[3]
+
+            group.set_start_state_to_current_state()
+            group.set_pose_target(pose_target)
+            plan = group.plan()
+
+            if not plan or not plan.joint_trajectory.points:
+                rospy.logerr("Plannen mislukt: geen trajectory gegenereerd")
+                self.state = "FOUT"
+
+            success = group.execute(plan, wait=True)
+            group.clear_pose_targets()
+
+            if not success:
+                rospy.logerr("Uitvoeren van plan mislukt")
+                self.state = "FOUT"
+
+            self.state = "WACHTEN_OP_START"
 
     def state_wachten_op_start(self):
         self.hmi_pub.publish("WACHTEN_OP_START")
@@ -233,7 +282,7 @@ class hoofdprogramma:
         if self.reset_pressed:
             rospy.loginfo("Reset knop ingedrukt")
             self.reset_pressed = False
-            self.state = "WACHTEN_OP_START"
+            self.state = "INITIALISATIE"
 
     def state_error(self):
         self.hmi_pub.publish("ERROR")
@@ -250,7 +299,7 @@ class hoofdprogramma:
                 rospy.sleep(0.5)
             self.reset_pressed = False
             self.noodstop_pressed = False
-            self.state = "WACHTEN_OP_START"
+            self.state = "INITIALISATIE"
 
     # === STATE MACHINE LOOP ===
     def state_machine(self):
@@ -259,6 +308,8 @@ class hoofdprogramma:
         while not rospy.is_shutdown():
             if self.noodstop_pressed:
                 self.state_error()
+            elif self.state == "INITIALISATIE":
+                self.state_initialisatie()
             elif self.state == "WACHTEN_OP_START":
                 self.state_wachten_op_start()
             elif self.state == "TRANSPORTSYSTEEM":

@@ -56,8 +56,8 @@ class HMI:
         elif status == "ERROR":
             self.machine_state = "ERROR, controleer machine"
             self.lamp_state = ["red"]
-        elif status == "Initialiseren":
-            self.machine_state = "Initialiseren"
+        elif status == "INITIALISATIE":
+            self.machine_state = "Initialiseren, druk start"
             self.lamp_state = ["off"]
         else:
             self.machine_state = "FOUT, Onbekende state"

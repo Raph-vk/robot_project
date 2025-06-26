@@ -70,7 +70,7 @@
         <joint name="joint3" value="0.495" />
         <joint name="joint4" value="-0.0347" />
         <joint name="joint5" value="0.012" />
-        <joint name="joint6" value="2.8118" />
+        <joint name="joint6" value="-3.4366" />
     </group_state>
     <group_state name="sorteerbak1" group="arm">
         <joint name="joint1" value="1.0067" />
