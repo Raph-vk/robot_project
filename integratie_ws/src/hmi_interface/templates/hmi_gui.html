@@ -112,6 +112,7 @@
             fetch('/status')
                 .then(response => response.json())
                 .then(data => {
+                    console.log(data);
                     document.getElementById('status-text').innerText = 'Status: ' + data.state;
 
                     const lampGreen = document.getElementById('lamp-green');
@@ -128,11 +129,13 @@
                     // Orange lamp
                     if (data.lamp_state.includes('orange')) {
                         lampOrange.style.backgroundColor = 'orange';
-                        if (data.orange_blink) {
+
+                        if (data.orange_blink && !lampOrange.classList.contains('blink')) {
                             lampOrange.classList.add('blink');
-                        } else {
+                        } else if (!data.orange_blink && lampOrange.classList.contains('blink')) {
                             lampOrange.classList.remove('blink');
                         }
+
                     } else {
                         lampOrange.style.backgroundColor = 'grey';
                         lampOrange.classList.remove('blink');

@@ -81,9 +81,7 @@ class HMI:
     def status_json(self):
 
         # Dynamisch bepalen of de oranje lamp moet knipperen
-        if self.machine_state == "IN_BEDRIJF" and not self.continue_mode:
-            orange_blink = True
-        elif self.machine_state == "FOUT":
+        if self.machine_state == "In bedrijf" and not self.continue_mode:
             orange_blink = True
         else:
             orange_blink = False
