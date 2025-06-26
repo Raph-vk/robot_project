@@ -195,7 +195,7 @@
    <!-- wand tussen transportband en sorteerbakken -->
   <xacro:include filename="$(find my_lite6_description)/urdf/Opstelling.urdf.xacro" />
   <xacro:Opstelling_urdf prefix="$(arg prefix)wand" parent_link="baseplate_link" 
-  mesh_file="package://robotarm/mesh/wand.STL" xyz="0.05 -0.020 -0.015" rpy="0 0 1.57" />
+  mesh_file="package://robotarm/mesh/wand.STL" xyz="0.04 -0.020 -0.015" rpy="0 0 1.57" />
 
   <!-- wanden om rare bewegingen te voorkomen -->
   <xacro:include filename="$(find my_lite6_description)/urdf/Opstelling.urdf.xacro" />
