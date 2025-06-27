@@ -153,7 +153,7 @@ class hoofdprogramma:
     def feedback_manipulator_callback(self, feedback):
         if self.continue_mode and feedback.tandenborstel_opgepakt:
             rospy.loginfo("Object is opgepakt, start transportfase gestart")
-            rospy.sleep(10)
+            rospy.sleep(25)
             self.object_ready = True
             doel = TransportControlGoal(instruction="start")
             self.transport_client.send_goal(doel)
@@ -204,6 +204,9 @@ class hoofdprogramma:
                 self.state = "FOUT"
             else:
                 self.state = "WACHTEN_OP_START"
+            self.start_continue_pressed=False
+            self.stop_pressed=False
+            self.reset_pressed=False
 
     def state_wachten_op_start(self):
         self.hmi_pub.publish("WACHTEN_OP_START")
@@ -211,7 +214,10 @@ class hoofdprogramma:
             self.start_pressed = False
             self.state = "TRANSPORTSYSTEEM"
         elif self.continue_mode:
+            self.start_continue_pressed=False
             self.state = "TRANSPORTSYSTEEM"
+        self.stop_pressed=False
+        self.reset_pressed=False
 
     def state_transport(self):
         self.hmi_pub.publish("IN_BEDRIJF")
@@ -239,7 +245,11 @@ class hoofdprogramma:
             rospy.logerr("Transport mislukt: %s",result.bericht)
             self.state = "FOUT"
         self.object_ready=False
-        
+
+        self.start_pressed=False
+        self.reset_pressed=False
+        if not self.continue_mode:
+             self.stop_pressed=False
 
 
     def state_vision(self):
@@ -265,6 +275,12 @@ class hoofdprogramma:
                 rospy.logerr("Dump mislukt,%s", dump_result.bericht)
             self.state = "FOUT"
 
+        self.start_pressed=False
+        self.reset_pressed=False
+        if not self.continue_mode:
+             self.stop_pressed=False
+        
+
     def state_manipulator(self):
         self.hmi_pub.publish("IN_BEDRIJF")
         goal = manipulatorGoal(manipulator_start=True)
@@ -280,11 +296,18 @@ class hoofdprogramma:
             rospy.logerr("Uitsorteren van object mislukt")
             self.state = "FOUT"
 
+        self.start_pressed=False
+        self.reset_pressed=False
+        if not self.continue_mode:
+             self.stop_pressed=False
+
     def state_fout(self):
         self.hmi_pub.publish("FOUT")
         self.start_continue_pressed = False
         self.start_pressed = False
         self.continue_mode = False
+
+        self.stop_pressed=False
 
         if self.reset_pressed:
             rospy.loginfo("Reset knop ingedrukt")
@@ -296,6 +319,8 @@ class hoofdprogramma:
         self.start_continue_pressed = False
         self.start_pressed = False
         self.continue_mode = False
+        
+        self.stop_pressed=False
 
         if self.reset_pressed and self.noodstop_voldaan:
             rospy.loginfo("Reset knop ingedrukt")
@@ -306,6 +331,8 @@ class hoofdprogramma:
                 rospy.sleep(0.5)
             self.reset_pressed = False
             self.noodstop_pressed = False
+            self.noodstop_voldaan=False
+            self.noodstop_is_uit=False
             self.state = "INITIALISATIE"
 
     # === STATE MACHINE LOOP ===

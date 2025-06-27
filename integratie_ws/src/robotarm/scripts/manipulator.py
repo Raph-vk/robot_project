@@ -56,8 +56,8 @@ class unit_manipulator:
         self.group = moveit_commander.MoveGroupCommander('arm')
         self.group.set_max_velocity_scaling_factor(0.2)      
         self.group.set_max_acceleration_scaling_factor(0.05)
-        self.group.set_num_planning_attempts(10)
-        self.group.set_planning_time(10)
+        self.group.set_num_planning_attempts(50)
+        self.group.set_planning_time(15)
 
         self.display_trajectory_publisher = rospy.Publisher(
             '/move_group/display_planned_path',
@@ -78,8 +78,10 @@ class unit_manipulator:
         self.action_server.start()
         rospy.loginfo("Manipulator action server gestart")
 
-    def start_manipulator(self, goal):   
-        self.gripper_openen() 
+    def start_manipulator(self, goal): 
+        if not self.gripper_openen():
+            self.foutafhandeling()
+            return
 
 
         if not self.transformeren():
@@ -98,11 +100,18 @@ class unit_manipulator:
 
         self.voeg_tandenborstel_toe_als_collision_mesh()
 
+
+        # if not self.naar_vaste_positie(10):
+        #     self.foutafhandeling()
+        #     return 
+
         if not self.naar_vaste_positie(self.type_tandenborstel):
             self.foutafhandeling()
             return  
 
-        self.gripper_openen()
+        if not self.gripper_openen():
+            self.foutafhandeling()
+            return
 
         self.result.tandenborstel_gesorteerd = True
         self.action_server.set_succeeded(self.result)
@@ -113,6 +122,7 @@ class unit_manipulator:
         if not self.gripper_uitschakelen():
             self.foutafhandeling()
             return
+        
 
         if not self.naar_vaste_positie(10):
             self.foutafhandeling()
@@ -129,12 +139,12 @@ class unit_manipulator:
         try:
             if self.positie_object_vanuit_camera is None or self.type_tandenborstel is None:
                 rospy.logerr("Ontbrekende gegevens: positie of type tandenborstel is nog niet ontvangen van visionsysteem.")
-                self.foutafhandeling()
                 return False
 
             transform = self.tf_buffer.lookup_transform('world', self.positie_object_vanuit_camera.header.frame_id, 
             rospy.Time(0), rospy.Duration(1.0))
             self.positie_object_vanuit_base = do_transform_pose(self.positie_object_vanuit_camera, transform)
+            rospy.loginfo("Coordinaten tandenborstel terug getransformeerd")
             return True
 
         except (tf2_ros.LookupException, tf2_ros.ConnectivityException, tf2_ros.ExtrapolationException) as e:
@@ -149,6 +159,8 @@ class unit_manipulator:
             if not success:
                 rospy.logerr("Beweging naar positie boven tandenborstel mislukt")
                 return False
+            
+            rospy.loginfo("Beweging naar positie boven tandenborstel gelukt")
 
             self.positie_object_oppakken = copy.deepcopy(self.positie_object_vanuit_base.pose)
 
@@ -159,6 +171,8 @@ class unit_manipulator:
             if not success:
                 rospy.logerr("Beweging naar positie op hoogte tandenborstel mislukt")
                 return False
+            
+            rospy.loginfo("Beweging tot hoogte tandenborstel gelukt")
 
             return True
 
@@ -183,6 +197,8 @@ class unit_manipulator:
             if not success:
                 rospy.logerr("Bewegen naar vaste positie " + str(locatie) +" mislukt")
                 return False
+            
+            rospy.loginfo("Bewegen naar vaste positie" + str(locatie) +  "gelukt")
             
             
             if locatie == 0 or locatie == 4:
@@ -232,10 +248,11 @@ class unit_manipulator:
         while True:
             resp = gripper(self.GRIPPER_OPEN)
             if resp.ret ==0:
-                 return
+                rospy.loginfo("gripper geopend")
+                return True
             if rospy.Time.now() - start > toegestane_timeout:
                  rospy.logerr("Fout: Gripper opent niet!")
-                 return
+                 return False
             time.sleep(0.1)
 
     
@@ -272,19 +289,19 @@ class unit_manipulator:
         mesh_path = package_path + '/mesh/tandenborstel.stl'
 
         self.scene.add_mesh("tandenborstel", tandenborstel_pose, mesh_path, size=(1, 1, 1))
-        rospy.sleep(1)
+        rospy.sleep(0.1)
 
         touch_links = self.robot.get_link_names(group="arm")
         self.scene.attach_mesh("link_tcp", "tandenborstel", touch_links=touch_links)
-        rospy.sleep(1)
+        rospy.sleep(0.1)
 
 
     def verwijder_tandenborstel_mesh(self):
         self.scene.remove_attached_object("link_tcp", name="tandenborstel")
-        rospy.sleep(1)
+        rospy.sleep(0.1)
 
         self.scene.remove_world_object("tandenborstel")
-        rospy.sleep(1)
+        rospy.sleep(0.1)
 
 
 

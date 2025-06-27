@@ -27,7 +27,6 @@ class Bepalen_orientatie:
           self.bridge = CvBridge()
           self.hoek=1000
           self.detectie = detection
-          self.image_pub = rospy.Publisher("/ImgOut", Image, queue_size = 10)
           self.msg =rospy.wait_for_message("/stereo_inertial_nn_publisher/color/image", Image, timeout=5.0 )
           self.image_callback(self.msg)
 

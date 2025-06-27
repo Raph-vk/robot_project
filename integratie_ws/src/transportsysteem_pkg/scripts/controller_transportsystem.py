@@ -47,9 +47,18 @@ class TransportController:
 
         if instru == 'start':            
             rospy.loginfo("Start sequence initiated")
-            rospy.loginfo("Looking for object...")
+
+            if self.ir_end:
+                rospy.loginfo("Product staat al op eindpositie.")
+                if self._as.is_active():
+                    result.gelukt = True
+                    result.bericht = "Product onder vision camera."
+                    self._as.set_succeeded(result)
+                return
+            rospy.loginfo("Nog geen product op eindpostie")
 
             # wait for object at beginning
+            rospy.loginfo("Wachten op object op begin positie...")
             while not rospy.is_shutdown() and not self.ir_begin:
                 if self._as.is_preempt_requested():
                     return self._as.set_preempted()
