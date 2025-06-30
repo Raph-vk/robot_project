@@ -175,7 +175,7 @@ class hoofdprogramma:
         self.hmi_pub.publish("INITIALISATIE")
 
         if self.start_pressed:
-            self.start_pressed = False
+            
             init_positie = ((-0.0345 , -0.2287 , 0.1078), (0.9436 ,-0.2732 ,0.1624 , 0.0926))
 
             moveit_commander.roscpp_initialize(sys.argv)
@@ -217,6 +217,7 @@ class hoofdprogramma:
             self.start_continue_pressed=False
             self.stop_pressed=False
             self.reset_pressed=False
+            self.start_pressed = False
 
     def state_wachten_op_start(self):
         self.hmi_pub.publish("WACHTEN_OP_START")

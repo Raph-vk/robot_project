@@ -236,15 +236,6 @@ class unit_manipulator:
             rospy.loginfo("Bewegen naar vaste positie " + str(locatie) +  " gelukt")
             
             
-            if locatie == 0 or locatie == 4:
-                pose_target.position.z -= 0.02
-
-                success = self.plan_en_executeer(pose_target)
-            
-                if not success:
-                    rospy.logerr("Bewegen naar binnekant bakje " + str(locatie) +" mislukt")
-                    return False
-            
             return True
     
         except Exception as e:
