@@ -115,38 +115,29 @@ class hoofdprogramma:
     def start_callback(self, msg):
         rospy.loginfo("Start button pressed: %s", msg.data)
 
-        if msg.data and not self.start_pressed and(self.state == "INITIALISATIE" or self.state == "WACHTEN_OP_START"):
+        if msg.data and not self.start_pressed:
             rospy.loginfo("Start button pressed.")
             self.start_pressed = True
-        else: 
-            self.start_pressed = False
 
     def start_continue_callback(self, msg):
         rospy.loginfo("Start/Continue button pressed: %s", msg.data)
         self.start_continue_pressed = msg.data
 
-        if msg.data and not self.continue_mode and (self.state == "TRANSPORTSYSTEEM" or self.state == "VISION" or self.state == "MANIPULATOR" or self.state == "WACHTEN_OP_START" ):
+        if msg.data and not self.continue_mode:
             self.continue_mode = True
             self.start_pressed = True
             self.continue_mode_pub.publish(Bool(data=True))
-        else:
-             self.start_continue_pressed =False
 
     def stop_callback(self, msg):
         rospy.logwarn("Stop button pressed: %s", msg.data)
         self.stop_pressed = msg.data
-        if msg.data and (self.state == "TRANSPORTSYSTEEM" or self.state == "VISION" or self.state == "MANIPULATOR"):
-             self.continue_mode = False
-             self.continue_mode_pub.publish(Bool(data=False))
-        else:
-             self.stop_pressed=False
+        if msg.data:
+            self.continue_mode = False
+            self.continue_mode_pub.publish(Bool(data=False))
 
     def reset_callback(self, msg):
-        rospy.loginfo("Reset button pressed: %s", msg.data) 
-        if self.noodstop_pressed or self.state == "FOUT":   
-             self.reset_pressed = msg.data
-        else:
-             self.reset_pressed =False
+        rospy.loginfo("Reset button pressed: %s", msg.data)    
+        self.reset_pressed = msg.data
 
     def noodstop_callback(self, msg):
         rospy.logerr("Emergency button pressed: %s", msg.data)    
@@ -256,6 +247,11 @@ class hoofdprogramma:
             self.state = "FOUT"
         self.object_ready=False
 
+        self.start_pressed=False
+        self.reset_pressed=False
+        if not self.continue_mode:
+             self.stop_pressed=False
+
 
     def state_vision(self):
         self.hmi_pub.publish("IN_BEDRIJF")
@@ -280,6 +276,10 @@ class hoofdprogramma:
                 rospy.logerr("Dump mislukt,%s", dump_result.bericht)
             self.state = "FOUT"
 
+        self.start_pressed=False
+        self.reset_pressed=False
+        if not self.continue_mode:
+             self.stop_pressed=False
         
 
     def state_manipulator(self):
@@ -297,12 +297,17 @@ class hoofdprogramma:
             rospy.logerr("Uitsorteren van object mislukt")
             self.state = "FOUT"
 
+        self.start_pressed=False
+        self.reset_pressed=False
+        if not self.continue_mode:
+             self.stop_pressed=False
 
     def state_fout(self):
         self.hmi_pub.publish("FOUT")
         self.start_continue_pressed = False
         self.start_pressed = False
         self.continue_mode = False
+
         self.stop_pressed=False
 
         if self.reset_pressed:
