@@ -76,11 +76,6 @@ Visualization Manager:
           Expand Link Details: false
           Expand Tree: false
           Link Tree Style: Links in Alphabetic Order
-          Opstelling_frame:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
           baseplate_link:
             Alpha: 1
             Show Axes: false
@@ -191,10 +186,20 @@ Visualization Manager:
             Show Axes: false
             Show Trail: false
             Value: true
+          sorteerbakken_frame:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
           tcp_link:
             Alpha: 1
             Show Axes: false
             Show Trail: false
+          transportband_frame:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
           uflite_gripper_link:
             Alpha: 1
             Show Axes: false
@@ -263,11 +268,6 @@ Visualization Manager:
           Expand Link Details: false
           Expand Tree: false
           Link Tree Style: Links in Alphabetic Order
-          Opstelling_frame:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
           baseplate_link:
             Alpha: 1
             Show Axes: false
@@ -378,10 +378,20 @@ Visualization Manager:
             Show Axes: false
             Show Trail: false
             Value: true
+          sorteerbakken_frame:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
           tcp_link:
             Alpha: 1
             Show Axes: false
             Show Trail: false
+          transportband_frame:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
           uflite_gripper_link:
             Alpha: 1
             Show Axes: false
@@ -420,11 +430,6 @@ Visualization Manager:
         Expand Link Details: false
         Expand Tree: false
         Link Tree Style: Links in Alphabetic Order
-        Opstelling_frame:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
         baseplate_link:
           Alpha: 1
           Show Axes: false
@@ -535,10 +540,20 @@ Visualization Manager:
           Show Axes: false
           Show Trail: false
           Value: true
+        sorteerbakken_frame:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
         tcp_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
+        transportband_frame:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
         uflite_gripper_link:
           Alpha: 1
           Show Axes: false
@@ -575,10 +590,6 @@ Visualization Manager:
       Frame Timeout: 15
       Frames:
         All Enabled: false
-        Opstelling_frame:
-          Value: false
-        Wit_0:
-          Value: true
         baseplate_link:
           Value: false
         link1:
@@ -601,10 +612,6 @@ Visualization Manager:
           Value: false
         mountingplate_link:
           Value: false
-        oak-d-base-frame:
-          Value: true
-        oak-d_frame:
-          Value: true
         oak_d_base_link:
           Value: false
         oak_d_imu_frame:
@@ -618,27 +625,11 @@ Visualization Manager:
         oak_d_rgb_camera_frame:
           Value: false
         oak_d_rgb_camera_optical_frame:
-          Value: false
+          Value: true
         oak_d_right_camera_frame:
           Value: false
         oak_d_right_camera_optical_frame:
           Value: false
-        oak_imu_frame:
-          Value: true
-        oak_left_camera_frame:
-          Value: true
-        oak_left_camera_optical_frame:
-          Value: true
-        oak_model_origin:
-          Value: true
-        oak_rgb_camera_frame:
-          Value: true
-        oak_rgb_camera_optical_frame:
-          Value: true
-        oak_right_camera_frame:
-          Value: true
-        oak_right_camera_optical_frame:
-          Value: true
         robotwand1_frame:
           Value: false
         robotwand2_frame:
@@ -647,8 +638,12 @@ Visualization Manager:
           Value: true
         robotwand4_frame:
           Value: true
+        sorteerbakken_frame:
+          Value: true
         tcp_link:
           Value: false
+        transportband_frame:
+          Value: true
         uflite_gripper_link:
           Value: false
         vacuumpomp_frame:
@@ -667,8 +662,6 @@ Visualization Manager:
       Tree:
         world:
           baseplate_link:
-            Opstelling_frame:
-              {}
             mountingplate_link:
               robotwand1_frame:
                 {}
@@ -708,24 +701,12 @@ Visualization Manager:
               oak_d_right_camera_frame:
                 oak_d_right_camera_optical_frame:
                   {}
+            sorteerbakken_frame:
+              {}
+            transportband_frame:
+              {}
             wand_frame:
               {}
-          oak-d-base-frame:
-            oak-d_frame:
-              oak_imu_frame:
-                {}
-              oak_left_camera_frame:
-                oak_left_camera_optical_frame:
-                  {}
-              oak_model_origin:
-                {}
-              oak_rgb_camera_frame:
-                oak_rgb_camera_optical_frame:
-                  Wit_0:
-                    {}
-              oak_right_camera_frame:
-                oak_right_camera_optical_frame:
-                  {}
       Update Interval: 0
       Value: true
     - Alpha: 1

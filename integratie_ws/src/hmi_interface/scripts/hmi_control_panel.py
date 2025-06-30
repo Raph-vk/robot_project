@@ -98,7 +98,10 @@ class HMI:
             target=self.app.run,
             kwargs={'host': '0.0.0.0', 'port': 5000, 'debug': False}
         )
+        # stelt in dat de pagina stopt met draaien wanneer deze functie is gestopt.
         thread.daemon = True
+
+        # Start pagina
         thread.start()
 
 if __name__ == '__main__':

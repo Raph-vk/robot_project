@@ -84,6 +84,7 @@ class unit_manipulator:
         self.tandenborstel_pose.pose.position.y = 0.0
         self.tandenborstel_pose.pose.position.z = -0.02
 
+        #moveIt instellingen
         moveit_commander.roscpp_initialize(sys.argv)
         self.robot = moveit_commander.RobotCommander()
         self.scene = moveit_commander.PlanningSceneInterface()
@@ -93,23 +94,27 @@ class unit_manipulator:
         self.group.set_num_planning_attempts(50)
         self.group.set_planning_time(15)
 
+        #Bewegingen in Rviz publiseren
         self.display_trajectory_publisher = rospy.Publisher(
             '/move_group/display_planned_path',
             moveit_msgs.msg.DisplayTrajectory,
             queue_size=20)
 
+        #opslag voor transformeer data
         self.tf_buffer = tf2_ros.Buffer()
+        # om benodigde transformatie en rotatie op te halen voor het terugtransformeren
         tf2_ros.TransformListener(self.tf_buffer)
 
+        #subscribers voor topics uit vision-systeem
         rospy.Subscriber('/pos_tb_camera', PoseStamped, self.positie_callback)
         rospy.Subscriber('/type_tb', Int32, self.type_callback)
 
+        #declaren variabelen voor feedback sturen en result
         self.feedback = manipulatorFeedback()
         self.result = manipulatorResult()
         
         # Action server aanmaken en starten
-        self.action_server = actionlib.SimpleActionServer('manipulator_action', manipulatorAction, self.start_manipulator, False)
-        self.action_server.start()
+        self.action_server = actionlib.SimpleActionServer('manipulator_action', manipulatorAction, self.start_manipulator, True)
         rospy.loginfo("Manipulator action server gestart")
 
     def start_manipulator(self, goal): 
@@ -247,7 +252,7 @@ class unit_manipulator:
         try:
             self.group.set_start_state_to_current_state()
             self.group.set_pose_target(pose_target)
-            plan = self.group.plan()
+            plan = self.group.plan() # laat ook in Rviz zien hoe die plant
 
             if not plan or not plan.joint_trajectory.points:
                 rospy.logerr("Plannen mislukt: geen trajectory gegenereerd")

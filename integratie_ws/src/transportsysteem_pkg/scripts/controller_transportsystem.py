@@ -19,35 +19,32 @@ class TransportController:
         # Internal flags to hold latest IR readings
         self.ir_begin = False
         self.ir_end   = False
-        # State: one of 'idle', 'start', 'running_to_end', or 'dump'
+        # State: one of 'idle', 'start', or 'dump'
         self.state = 'idle'
 
         # Create action server
-        self._as = actionlib.SimpleActionServer(
-            'transport_control',
-            TransportControlAction,
-            execute_cb=self._handle_control,
-            auto_start=False
-        )
-        self._as.start()
+        self._as = actionlib.SimpleActionServer('transport_control', TransportControlAction, self._handle_control, True)
         rospy.loginfo("TransportControlAction server started.")
 
+
+    # ==== CALLBACK FUNCTIES ====
     def _ir_begin_cb(self, msg):
         self.ir_begin = msg.data                     # Update begin‐sensor flag
 
     def _ir_end_cb(self, msg):
         self.ir_end = msg.data                       # Update end‐sensor flag
-    
 
     # Handle the instructions
     def _handle_control(self, req):
         result   = TransportControlResult()
-        instru = req.instruction.strip().lower()
+        instructie = req.instruction.strip().lower()
         rate = rospy.Rate(10)
 
-        if instru == 'start':            
+        # start cyclus
+        if instructie == 'start':            
             rospy.loginfo("Start sequence initiated")
 
+            # Als er al een product op eindpositie is
             if self.ir_end:
                 rospy.loginfo("Product staat al op eindpositie.")
                 if self._as.is_active():
@@ -57,23 +54,28 @@ class TransportController:
                 return
             rospy.loginfo("Nog geen product op eindpostie")
 
-            # wait for object at beginning
+            # Loopen tot een object bij begin positie is.
             rospy.loginfo("Wachten op object op begin positie...")
             while not rospy.is_shutdown() and not self.ir_begin:
+
+                # controleren of er een andere goal/cancel ontvangen is.
                 if self._as.is_preempt_requested():
                     return self._as.set_preempted()
+
                 rate.sleep()
 
+            # Motor starten
             rospy.loginfo("Object detected, running motor")
             self.motor_pub.publish(Bool(data=True))
 
-            # wait for object at end, but give up after 20s
+            # Wacht tot er een object bij eindpositie is
             start_time = rospy.Time.now()
             while not rospy.is_shutdown() and not self.ir_end:
+                # controleren of er ondertussen een andere goal/cancel ontvangen is.
                 if self._as.is_preempt_requested():
                     return self._as.set_preempted()
 
-                # timeout check
+                # Stop whileloop als het langer dan 20sec duurt.
                 if (rospy.Time.now() - start_time).to_sec() > 20.0:
                     rospy.logerr("Timeout: object bereikte de eind-sensor niet, binnen gestelde tijd.")
                     self.motor_pub.publish(Bool(data=False))
@@ -82,40 +84,54 @@ class TransportController:
                     return self._as.set_succeeded(result)
                 rate.sleep()
 
+            # Met kleine delay motor uitzetten en resultaat delen
             rospy.sleep(0.75)
             self.motor_pub.publish(Bool(data=False))
             rospy.loginfo("Reached end, stopping motor")
-
             result.gelukt = True
             result.bericht = "Product is aangekomen op eindpositie."
             self._as.set_succeeded(result)
 
-        elif instru == 'dump':
+        # Dump cyclus
+        elif instructie == 'dump':
             rospy.loginfo("Dump: dumping product.")
 
-            # Result false as error because no object in area.
+            # Result false als er geen object voor sensor is.
             if not self.ir_end:
-                rospy.logerr("Dump: dumping product.")
+                rospy.logerr("Geen product op eindpositie gedetecteerd.")
                 result.gelukt = False
                 result.bericht = "Geen product gedetecteerd om te dumpen."
                 self._as.set_succeeded(result)
                 return
 
+            # Motor inschakelen
             self.motor_pub.publish(Bool(data=True))
-            # wait for object to leave the sensor
+
+            # Wacht tot object sensor verlaten heeft.
+            start_time = rospy.Time.now()
             while not rospy.is_shutdown() and self.ir_end:
+
+                # Stop whileloop als het langer dan 20sec duurt.
+                if (rospy.Time.now() - start_time).to_sec() > 10.0:
+                    rospy.logerr("Timeout: object bereikte de eind-sensor niet, binnen gestelde tijd.")
+                    self.motor_pub.publish(Bool(data=False))
+                    result.gelukt = False
+                    result.bericht = "Timeout: object bereikte de eind-sensor niet, binnen gestelde tijd."
+                    return self._as.set_succeeded(result)
                 rate.sleep()
             rospy.loginfo("Product is verdwenen voor de sensor.")
 
-            # Keep spinning for a second and stop
+            # Blijf nog even draaien voor de zekerheid en stop de motor
             rospy.sleep(5.0)
             self.motor_pub.publish(Bool(data=False))
             rospy.loginfo("Motor gestopt, dump is succesvol.")
 
+            # Publiseer dat gelukt is
             result.gelukt = True
             result.bericht = "Dump sequence complete"
             self._as.set_succeeded(result)
 
+        # Als er een onbekende instructie ontvangen wordt, Fout
         else:
             result.gelukt   = False
             result.bericht = "onbekende instructie"
