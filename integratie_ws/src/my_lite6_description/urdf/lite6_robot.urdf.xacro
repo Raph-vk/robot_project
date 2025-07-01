@@ -175,10 +175,6 @@
   <xacro:include filename="$(find xarm_description)/urdf/gripper/lite_gripper.urdf.xacro" />
   <xacro:uflite_gripper_urdf prefix="$(arg prefix)" attach_to='link_eef' />
 
-   <!-- transportband en sorteerbakken -->
-  <!-- <xacro:include filename="$(find my_lite6_description)/urdf/Opstelling.urdf.xacro" />
-  <xacro:Opstelling_urdf prefix="$(arg prefix)Opstelling" parent_link="baseplate_link" 
-  mesh_file="package://robotarm/mesh/Opstelling.STL" xyz="-0.34 -0.38 -0.015" rpy="0 0 1.57" /> -->
 
   <!-- transportband -->
   <xacro:include filename="$(find my_lite6_description)/urdf/Opstelling.urdf.xacro" />
@@ -189,8 +185,7 @@
   <!-- sorteerbakken -->
   <xacro:include filename="$(find my_lite6_description)/urdf/Opstelling.urdf.xacro" />
   <xacro:Opstelling_urdf prefix="$(arg prefix)sorteerbakken" parent_link="baseplate_link" 
-  mesh_file="package://robotarm/mesh/sorteerbakken.STL" xyz="-0.3 0.03 -0.015" rpy="0 0 1.57" />
-
+  mesh_file="package://robotarm/mesh/sorteerbakken.STL" xyz="-0.3 0.4675 0.015" rpy="0 0 0" />
 
    <!-- wand tussen transportband en sorteerbakken -->
   <xacro:include filename="$(find my_lite6_description)/urdf/Opstelling.urdf.xacro" />
@@ -227,7 +222,7 @@
       parent="baseplate_link"
       base_frame="oak_d_base_link"
       cam_pos_x="-0.26"
-      cam_pos_y="-0.245"
+      cam_pos_y="-0.245" 
       cam_pos_z="0.5275"
       cam_roll="0"
       cam_pitch="1.57"
