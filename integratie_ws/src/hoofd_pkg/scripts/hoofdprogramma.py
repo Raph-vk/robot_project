@@ -69,7 +69,6 @@ class hoofdprogramma:
 
         #Variable state
         self.continue_mode = False
-        self.object_ready = False
 
         # HMI-status publisher
         self.hmi_pub = rospy.Publisher('/hmi/status', String, queue_size=1)
@@ -80,6 +79,9 @@ class hoofdprogramma:
         self.start_continue = rospy.Subscriber('/start_continue', Bool, self.start_continue_callback)
         self.stop = rospy.Subscriber('/stop', Bool, self.stop_callback)
         self.reset = rospy.Subscriber('/reset', Bool, self.reset_callback)
+
+        # Subscriben van ir eindsensor
+        self.ir_end_sub   = rospy.Subscriber('/ir_end',   Bool, self._ir_end_cb)
 
         # Emergency topics
         self.noodstop_ingedrukt = rospy.Subscriber('/Noodstop_aan', Bool, self.noodstop_callback)
@@ -115,17 +117,19 @@ class hoofdprogramma:
         rospy.loginfo("Start button pressed: %s", msg.data)
 
         if msg.data and not self.start_pressed:
-            rospy.loginfo("Start button pressed.")
             self.start_pressed = True
 
     def start_continue_callback(self, msg):
-        rospy.loginfo("Start/Continue button pressed: %s", msg.data)
-        self.start_continue_pressed = msg.data
+        rospy.loginfo("Start_Continue button pressed: %s", msg.data)
+        
+        if not self.state == "INITIALISATIE":
+            self.start_continue_pressed = msg.data
 
-        if msg.data and not self.continue_mode:
-            self.continue_mode = True
-            self.start_pressed = True
-            self.continue_mode_pub.publish(Bool(data=True))
+            if msg.data and not self.continue_mode:
+                self.continue_mode = True
+                self.continue_mode_pub.publish(Bool(data=True))
+                rospy.loginfo("Continue_mode aan")
+            self.start_continue_pressed = False
 
     def stop_callback(self, msg):
         rospy.logwarn("Stop button pressed: %s", msg.data)
@@ -133,15 +137,20 @@ class hoofdprogramma:
         if msg.data:
             self.continue_mode = False
             self.continue_mode_pub.publish(Bool(data=False))
+            self.stop_pressed = False
 
     def reset_callback(self, msg):
         rospy.loginfo("Reset button pressed: %s", msg.data)    
-        self.reset_pressed = msg.data
+        if msg.data:
+            self.reset_pressed = msg.data
 
     def noodstop_callback(self, msg):
-        rospy.logerr("Emergency button pressed: %s", msg.data)    
-        self.noodstop_pressed = msg.data
-        self.state = "ERROR"
+        if msg.data:
+            rospy.logerr("Emergency button pressed: %s", msg.data)    
+            rospy.logerr("Noodstop geactiveerd! Overschakelen naar ERROR state.")
+            self.state = "ERROR"
+            self.noodstop_pressed = True
+
 
     def noodstop_uitgerukt_callback(self, msg):
         self.noodstop_is_uit = msg.data
@@ -150,14 +159,24 @@ class hoofdprogramma:
         rospy.logwarn("Noodstop proces is voldaan, reset is mogelijk")    
         self.noodstop_voldaan = msg.data
 
+
+    def _ir_end_cb(self, msg):
+        self.ir_end = msg.data                       # Update end‐sensor flag
+
     def feedback_manipulator_callback(self, feedback):
         if self.continue_mode and feedback.tandenborstel_opgepakt:
-            rospy.loginfo("Object is opgepakt, start transportfase gestart")
-            rospy.sleep(25)
-            self.object_ready = True
+            rospy.loginfo("Object is opgepakt, wachten tot robot weg is")
+            
+            # Wachten tot eindsensor uit gaat, dus robot weg
+            while self.ir_end:
+                rospy.sleep(0.5)
+
+            # Start signaal naar transprotsysteem sturen
+            rospy.loginfo("Robot is weg, start signaal naar transportband sturen")
+            rospy.sleep(2)
             doel = TransportControlGoal(instruction="start")
             self.transport_client.send_goal(doel)
-
+            rospy.loginfo("Transprot start Goal is verzonden vanuit feedback")
 
     # === STATE METHODS ===============================================
 
@@ -222,23 +241,14 @@ class hoofdprogramma:
             self.start_pressed = False
             self.state = "TRANSPORTSYSTEEM"
         elif self.continue_mode:
-            self.start_continue_pressed=False
             self.state = "TRANSPORTSYSTEEM"
-        self.stop_pressed=False
-        self.reset_pressed=False
-        self.object_ready = False
 
     def state_transport(self):
         self.hmi_pub.publish("IN_BEDRIJF")
-        rospy.logwarn("Ligt al object klaar: %s", self.object_ready)
 
-        # Als er nog geen object ready is.
-        if not self.object_ready:
-            rospy.loginfo("Transportfase gestart")
-            doel = TransportControlGoal(instruction="start")
-            self.transport_client.send_goal(doel)
-        else:
-            rospy.loginfo("Er is ligt al een object klaar")
+        rospy.loginfo("Transportfase gestart")
+        doel = TransportControlGoal(instruction="start")
+        self.transport_client.send_goal(doel)
 
         # Wacht tot resultaat verkregen wordt.
         self.transport_client.wait_for_result()
@@ -258,15 +268,12 @@ class hoofdprogramma:
         else:
             rospy.logerr("Transport mislukt: %s",result.bericht)
             self.state = "FOUT"
-        self.object_ready=False
-        self.start_pressed=False
-        self.reset_pressed=False
-        if not self.continue_mode:
-             self.stop_pressed=False
 
     def state_vision(self):
         self.hmi_pub.publish("IN_BEDRIJF")
+        rospy.loginfo("Vision start over paar seconden")
         rospy.sleep(3)
+        rospy.loginfo("Vision gestart")
 
         # Voer vision uit en zet resultaat in "response"
         response = self.vision(SetBoolRequest(data=True))
@@ -289,10 +296,6 @@ class hoofdprogramma:
             else:
                 rospy.logerr("Dump mislukt,%s", dump_result.bericht)
             self.state = "FOUT"
-        self.start_pressed=False
-        self.reset_pressed=False
-        if not self.continue_mode:
-             self.stop_pressed=False
         
 
     def state_manipulator(self):
@@ -314,10 +317,6 @@ class hoofdprogramma:
         else:
             rospy.logerr("Uitsorteren van object mislukt")
             self.state = "FOUT"
-        self.start_pressed=False
-        self.reset_pressed=False
-        if not self.continue_mode:
-             self.stop_pressed=False
 
     def state_fout(self):
         self.hmi_pub.publish("FOUT")
@@ -358,7 +357,7 @@ class hoofdprogramma:
         rospy.loginfo("State machine gestart")
         rate = rospy.Rate(10)
         while not rospy.is_shutdown():
-            if self.noodstop_pressed:
+            if self.noodstop_pressed or self.state == "ERROR":
                 self.state_error()
             elif self.state == "INITIALISATIE":
                 self.state_initialisatie()

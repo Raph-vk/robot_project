@@ -185,7 +185,7 @@
   <!-- sorteerbakken -->
   <xacro:include filename="$(find my_lite6_description)/urdf/Opstelling.urdf.xacro" />
   <xacro:Opstelling_urdf prefix="$(arg prefix)sorteerbakken" parent_link="baseplate_link" 
-  mesh_file="package://robotarm/mesh/sorteerbakken.STL" xyz="-0.3 0.4675 0.015" rpy="0 0 0" />
+  mesh_file="package://robotarm/mesh/sorteerbakken.STL" xyz="-0.3 0.465 0.015" rpy="0 0 0" />
 
    <!-- wand tussen transportband en sorteerbakken -->
   <xacro:include filename="$(find my_lite6_description)/urdf/Opstelling.urdf.xacro" />

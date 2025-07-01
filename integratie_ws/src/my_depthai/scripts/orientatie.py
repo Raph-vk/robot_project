@@ -40,7 +40,7 @@ class Bepalen_orientatie:
             h, w = img.shape[:2]
             #Afbeelding besnijden tot enkel zwarte vlak van de Transportband
             x1, y1 = 0,300 
-            x2, y2 = 760, 580
+            x2, y2 = 760, 540
             x1, y1 = max(0, x1), max(0, y1)
             x2, y2 = min(w, x2), min(h, y2)
             cropped = img[y1:y2, x1:x2]

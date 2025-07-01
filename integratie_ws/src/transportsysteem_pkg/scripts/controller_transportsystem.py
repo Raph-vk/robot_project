@@ -59,8 +59,8 @@ class TransportController:
             while not rospy.is_shutdown() and not self.ir_begin:
 
                 # controleren of er een andere goal/cancel ontvangen is.
-                if self._as.is_preempt_requested():
-                    return self._as.set_preempted()
+                #if self._as.is_preempt_requested():
+                #    return self._as.set_preempted()
 
                 rate.sleep()
 
@@ -72,8 +72,8 @@ class TransportController:
             start_time = rospy.Time.now()
             while not rospy.is_shutdown() and not self.ir_end:
                 # controleren of er ondertussen een andere goal/cancel ontvangen is.
-                if self._as.is_preempt_requested():
-                    return self._as.set_preempted()
+                #if self._as.is_preempt_requested():
+                #    return self._as.set_preempted()
 
                 # Stop whileloop als het langer dan 20sec duurt.
                 if (rospy.Time.now() - start_time).to_sec() > 20.0:

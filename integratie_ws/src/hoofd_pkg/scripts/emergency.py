@@ -30,8 +30,8 @@ from transportsysteem_pkg.msg import TransportControlAction
 
 
 cancel_status = {}
-timeout_Cancelen = rospy.Duration(60)
-timeout_Killen = rospy.Duration(60)
+timeout_Cancelen = rospy.Duration(5)
+timeout_Killen = rospy.Duration(5)
 
 def status_callback(msg, action_name):
     if not msg.status_list:
