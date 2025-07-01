@@ -222,7 +222,7 @@
       parent="baseplate_link"
       base_frame="oak_d_base_link"
       cam_pos_x="-0.26"
-      cam_pos_y="-0.245" 
+      cam_pos_y="-0.2325" 
       cam_pos_z="0.5275"
       cam_roll="0"
       cam_pitch="1.57"
