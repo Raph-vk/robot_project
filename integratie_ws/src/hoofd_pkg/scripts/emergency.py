@@ -12,10 +12,14 @@ Datum: 23-6-2025
 Versie: 1.1
 
 Functionele beschrijving:
-Hoofdfunctie:
+Noodstop verwerking
 
+Hoofdfunctie:
+ poll_errors
 
 Deelfuncties:
+ cancel_actions
+ kill_nodes
 
 '''
 import rospy
@@ -30,8 +34,8 @@ from transportsysteem_pkg.msg import TransportControlAction
 
 
 cancel_status = {}
-timeout_Cancelen = rospy.Duration(5)
-timeout_Killen = rospy.Duration(5)
+timeout_Cancelen = rospy.Duration(60)
+timeout_Killen = rospy.Duration(60)
 
 def status_callback(msg, action_name):
     if not msg.status_list:
@@ -64,7 +68,7 @@ def cancel_actions():
         topic = action + "/cancel"
         pub = rospy.Publisher(topic, GoalID, queue_size=1, latch=True)
         start_time = rospy.Time.now()
-        # Controleer of er binnen 2 seconden de action verbonden is met publisher
+        # Controleer of er binnen 60 seconden de action verbonden is met publisher
         while pub.get_num_connections() == 0:
             if rospy.Time.now() - start_time > timeout_Cancelen:
                 rospy.logerr("Noodstop: Kon niet op tijd verbinden met %s", topic)
@@ -78,7 +82,7 @@ def cancel_actions():
         
         rospy.loginfo("Noodstop: Cancel aangevraagt naar %s", topic)
 
-        #Controleer of er binnen 2 seconden de action geschikt is om opnieuw een goal te ontvangen
+        #Controleer of er binnen 60 seconden de action geschikt is om opnieuw een goal te ontvangen
         start_time = rospy.Time.now()
         while cancel_status[action]:
             if rospy.Time.now() - start_time > timeout_Cancelen:

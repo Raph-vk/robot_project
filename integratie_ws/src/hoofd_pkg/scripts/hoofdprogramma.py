@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 '''
-Type: Programma
+Type: Script
 Naam programma: hoofdprogramma.py
 
 Programmeur 1: Raph van Koeveringe
@@ -13,11 +13,15 @@ Datum: 19-6-2025
 Versie: 1.1
 
 Functionele beschrijving:
-Hoofdfunctie:
+Het plaatsen van het systeem naar verschillende statussen en aansturen van deel systemen.
 
+Hoofdfunctie:
+    - Statemachine
 
 Deelfuncties:
-
+    - Callback functies van iedeere drukknop
+    - Callback functies van continuemode of feedback vanuit manipulator
+    - Statussen aansturing
 '''
 import rospy
 
@@ -113,12 +117,15 @@ class hoofdprogramma:
 
 
     # ================= Knoppen CALLBACK FUNCTIES ======================
+
+    # Startknop callback
     def start_callback(self, msg):
         rospy.loginfo("Start button pressed: %s", msg.data)
 
         if msg.data and not self.start_pressed:
             self.start_pressed = True
 
+    # Start_continue knop callback
     def start_continue_callback(self, msg):
         rospy.loginfo("Start_Continue button pressed: %s", msg.data)
         
@@ -131,6 +138,7 @@ class hoofdprogramma:
                 rospy.loginfo("Continue_mode aan")
             self.start_continue_pressed = False
 
+    #Stop Callback functie
     def stop_callback(self, msg):
         rospy.logwarn("Stop button pressed: %s", msg.data)
         self.stop_pressed = msg.data
@@ -139,18 +147,19 @@ class hoofdprogramma:
             self.continue_mode_pub.publish(Bool(data=False))
             self.stop_pressed = False
 
+    # Reset callback functie
     def reset_callback(self, msg):
         rospy.loginfo("Reset button pressed: %s", msg.data)    
         if msg.data:
             self.reset_pressed = msg.data
 
+    # Noodstop callback
     def noodstop_callback(self, msg):
         if msg.data:
             rospy.logerr("Emergency button pressed: %s", msg.data)    
             rospy.logerr("Noodstop geactiveerd! Overschakelen naar ERROR state.")
             self.state = "ERROR"
             self.noodstop_pressed = True
-
 
     def noodstop_uitgerukt_callback(self, msg):
         self.noodstop_is_uit = msg.data
@@ -161,8 +170,9 @@ class hoofdprogramma:
 
 
     def _ir_end_cb(self, msg):
-        self.ir_end = msg.data                       # Update end‐sensor flag
+        self.ir_end = msg.data
 
+    # Feedback manipulator verwerken
     def feedback_manipulator_callback(self, feedback):
         if self.continue_mode and feedback.tandenborstel_opgepakt:
             rospy.loginfo("Object is opgepakt, wachten tot robot weg is")
@@ -180,6 +190,7 @@ class hoofdprogramma:
 
     # === STATE METHODS ===============================================
 
+    # Initialisatie state methode
     def state_initialisatie(self):
         self.hmi_pub.publish("INITIALISATIE")
 
@@ -233,6 +244,7 @@ class hoofdprogramma:
             self.stop_pressed=False
             self.reset_pressed=False
 
+    # "Wachten op start" methode
     def state_wachten_op_start(self):
         self.hmi_pub.publish("WACHTEN_OP_START")
 
@@ -243,6 +255,7 @@ class hoofdprogramma:
         elif self.continue_mode:
             self.state = "TRANSPORTSYSTEEM"
 
+    # transportsysteem methode
     def state_transport(self):
         self.hmi_pub.publish("IN_BEDRIJF")
 
@@ -269,6 +282,7 @@ class hoofdprogramma:
             rospy.logerr("Transport mislukt: %s",result.bericht)
             self.state = "FOUT"
 
+    # Vision code
     def state_vision(self):
         self.hmi_pub.publish("IN_BEDRIJF")
         rospy.loginfo("Vision start over paar seconden")
@@ -297,7 +311,7 @@ class hoofdprogramma:
                 rospy.logerr("Dump mislukt,%s", dump_result.bericht)
             self.state = "FOUT"
         
-
+    # manipulator methode
     def state_manipulator(self):
         self.hmi_pub.publish("IN_BEDRIJF")
 
@@ -356,9 +370,13 @@ class hoofdprogramma:
     def state_machine(self):
         rospy.loginfo("State machine gestart")
         rate = rospy.Rate(10)
+
+        # Controleer welke state en activeer die functie
         while not rospy.is_shutdown():
             if self.noodstop_pressed or self.state == "ERROR":
                 self.state_error()
+            elif self.state == "FOUT":
+                self.state_fout()
             elif self.state == "INITIALISATIE":
                 self.state_initialisatie()
             elif self.state == "WACHTEN_OP_START":
@@ -369,8 +387,6 @@ class hoofdprogramma:
                 self.state_vision()
             elif self.state == "MANIPULATOR":
                 self.state_manipulator()
-            elif self.state == "FOUT":
-                self.state_fout()
             else:
                 rospy.logerr("Onbekende state: %s", self.state)
                 self.state = "FOUT"

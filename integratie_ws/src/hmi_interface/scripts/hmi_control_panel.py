@@ -1,9 +1,31 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# HMI met Flask + ROS (statusvisualisatie en knopacties)
-# Deze HMI ontvangt de status van een ROS-hoofdprogramma en toont die visueel via lampkleuren en tekst.
-# Alleen knopcommando's (start, stop, reset, etc.) worden teruggestuurd naar ROS.
+'''
+Type: Script
+Naam programma: hmi_control_panel.py
 
+Programmeur 1: Pim van de Goorberg
+Programmeurnummer: 
+
+Vak: Robotica in de machinebouw
+Locatie: Breda
+Datum: 19-6-2025
+Versie: 1.1
+
+Functionele beschrijving:
+HMI met Flask + ROS (statusvisualisatie en knopacties)
+Deze HMI ontvangt de status van een ROS-hoofdprogramma en toont die visueel via lampkleuren en tekst.
+Alleen knopcommando's (start, stop, reset, etc.) worden teruggestuurd naar ROS.
+
+Hoofdfunctie:
+    - run, HMI runnen op port 5000.
+
+Deelfuncties:
+    - continue_mode callback
+    - StatusCallback, Actuele-status ontvangen en verwerken.
+    - Index, drukknop interactie vanuit het web verwerken.
+    - Status Json, delen van informatie naar web.
+'''
 from flask import Flask, render_template, request, jsonify
 import os
 import rospy

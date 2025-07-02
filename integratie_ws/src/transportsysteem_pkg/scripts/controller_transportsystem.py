@@ -1,6 +1,28 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+'''
+Type: Script
+Naam programma: controller_transportsysteem.py
 
+Programmeur 1: Raph van Koeveringe
+Programmeurnummer: 2218115
+
+Vak: Robotica in de machinebouw
+Locatie: Breda
+Datum: 19-6-2025
+Versie: 1.1
+
+Functionele beschrijving:
+Het aansturen van het transportsysteem via een action server. 
+Er is een 'start'-cyclus om het product naar de robotcel te transporteren.
+Er is ook een 'dump'-cyclus om een foutief product te deponeren
+
+Hoofdfunctie:
+    - Handlecontrole om de instructie-cyclus te verwerken
+
+Deelfuncties:
+    - Callback functies voor de sensoren
+'''
 import rospy                                      # ROS Python client library
 import actionlib
 from std_msgs.msg import Bool                     # For publishing motor on/off
@@ -57,11 +79,6 @@ class TransportController:
             # Loopen tot een object bij begin positie is.
             rospy.loginfo("Wachten op object op begin positie...")
             while not rospy.is_shutdown() and not self.ir_begin:
-
-                # controleren of er een andere goal/cancel ontvangen is.
-                #if self._as.is_preempt_requested():
-                #    return self._as.set_preempted()
-
                 rate.sleep()
 
             # Motor starten
@@ -71,9 +88,6 @@ class TransportController:
             # Wacht tot er een object bij eindpositie is
             start_time = rospy.Time.now()
             while not rospy.is_shutdown() and not self.ir_end:
-                # controleren of er ondertussen een andere goal/cancel ontvangen is.
-                #if self._as.is_preempt_requested():
-                #    return self._as.set_preempted()
 
                 # Stop whileloop als het langer dan 20sec duurt.
                 if (rospy.Time.now() - start_time).to_sec() > 20.0:
@@ -111,7 +125,7 @@ class TransportController:
             start_time = rospy.Time.now()
             while not rospy.is_shutdown() and self.ir_end:
 
-                # Stop whileloop als het langer dan 20sec duurt.
+                # Stop whileloop als het langer dan 10sec duurt.
                 if (rospy.Time.now() - start_time).to_sec() > 10.0:
                     rospy.logerr("Timeout: object bereikte de eind-sensor niet, binnen gestelde tijd.")
                     self.motor_pub.publish(Bool(data=False))
